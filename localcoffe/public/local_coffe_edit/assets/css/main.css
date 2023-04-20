@@ -2463,6 +2463,15 @@ section {
   font-size: 14px;
 }
 
+
+
+.team-member img {
+  max-width: 140px;
+  box-shadow: -10px -10px 0 #393a3a;
+  border-radius: 100px;
+
+}
+
 /*--------------------------------------------------------------
 # Blog Comments
 --------------------------------------------------------------*/
@@ -2599,6 +2608,7 @@ section {
 }
 
 .footer .footer-content .footer-info h3 {
+  text-align: center;
   font-size: 28px;
   margin: 0 0 20px 0;
   padding: 2px 0 2px 0;
@@ -2612,6 +2622,7 @@ section {
 }
 
 .footer .footer-content .footer-info p {
+  text-align: center;
   font-size: 14px;
   line-height: 24px;
   margin-bottom: 0;
