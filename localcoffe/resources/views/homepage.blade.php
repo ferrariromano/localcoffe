@@ -67,9 +67,7 @@
         <div class="row justify-content-center">
           <div class="col-lg-6 text-center">
             <h2 data-aos="fade-down">Welcome to <span>Local Coffenesia</span></h2>
-            <p data-aos="fade-up">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-              incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-              laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p data-aos="fade-up">MONITORING SISTEM BERBASIS WEBSITE LOCAL COFFEE GUNA MENUNJANG PROSES USAHA PADA PEMASARAN DAN PENCATATAN USAHA.</p>
             <a data-aos="fade-up" data-aos-delay="200" href="#get-started" class="btn-get-started">MULAI</a>
           </div>
         </div>
@@ -104,11 +102,10 @@
           <div class="col-lg-6 d-flex align-items-center" data-aos="fade-up">
             <div class="content">
               <h3>CERITA KAMI.</h3>
-              <p>Rem id rerum. Debitis deserunt quidem delectus expedita ducimus dolor. Aut iusto ipsa. Eos ipsum nobis
-                ipsa soluta itaque perspiciatis fuga ipsum perspiciatis. Eum amet fugiat totam nisi possimus ut delectus
-                dicta.
-              <p>Aliquam velit deserunt autem. Inventore et saepe. Tenetur suscipit eligendi labore culpa eos. Deserunt
-                porro magni qui necessitatibus dolorem at animi cupiditate.</p>
+              <p>Local Coffee adalah aplikasi sistem monitoring mengenai pencatatan dan pemasaran yang digunakan untuk membantu menunjang usaha yang berbasis website.
+                Pada aplikasi sistem ini dapat membantu para pemilik perkebunan kopi dan juga pemilik usaha kopi dalam memonitoring pemasaran dan pencatatan mereka..
+              <p>Dalam proses monitoring di pihak perkebunan, mereka dapat melakukan pencatatan dalam hal pengolahan kopi pasca panen hingga kopi dapat dipasarkan, sedangkan proses monitoring disisi pemilik usaha mereka dapat melakukan pencatatan stok olahan kopi yang mereka miliki. 
+                Selain itu, dengan adanya aplikasi sistem ini diharapkan dapat mempermudah mitra yang berkaitan dalam mencari perkebunan kopi yang terbaik dan juga dapat membantu mitra dalam administrasi keuangan..</p>
             </div>
           </div>
           
@@ -243,8 +240,8 @@
 
         <div class="section-header">
           <h2>Local Coffe Team </h2>
-          <p>Consequatur libero assumenda est voluptatem est quidem illum et officia imilique qui vel architecto
-            accusamus fugit aut qui distinctio</p>
+          {{-- <p>Consequatur libero assumenda est voluptatem est quidem illum et officia imilique qui vel architecto
+            accusamus fugit aut qui distinctio</p> --}}
         </div>
 
         <div class="row gy-4">
@@ -259,7 +256,7 @@
           </div>
           <div class="col-lg-3 col-sm-6">
               <div class="team-member px-4 py-5 border shadow-on-hover text-center">
-                  <img src="./frontend/img/Agung.png" alt="">
+                  <img src="./local_coffe_edit/assets\img\gambar\ferrari.png" alt="">
                   <div class="team-member-content">
                       <h4 class="mb-2 mt-4">Ferrari Romano</h4>
                       <p class="mb-0">Developer</p>
@@ -312,7 +309,7 @@
                 <strong>Email:</strong> localcoffeteam@gmail.com<br>
               </p>
               <div class="social-links d-flex mt-3">
-                <a href="#" class="d-flex align-items-center justify-content-center"><i class="bi bi-github"></i></a>
+                <a href="https://github.com/ferrariromano/localcoffe" class="d-flex align-items-center justify-content-center"><i class="bi bi-github"></i></a>
               </div>
             </div>
           </div><!-- End footer info column-->
