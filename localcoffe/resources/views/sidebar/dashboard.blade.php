@@ -47,7 +47,7 @@
                 <li class="sidebar-item">
                     <a href="{{ route('change/password') }}" class='sidebar-link'>
                         <i class="bi bi-shield-lock"></i>
-                        <span>Chnage Password</span>
+                        <span>Ubah Password</span>
                     </a>
                 </li>
 
@@ -94,13 +94,13 @@
                             <a href="{{ route('form/view/detail') }}">View Detail</a>
                         </li>
                     </ul>
-                </li>
-                <li class="sidebar-item">
+                {{-- </li> --}}
+                {{-- <li class="sidebar-item">
                     <a href="{{ route('lock_screen') }}" class='sidebar-link'>
                         <i class="bi bi-lock-fill"></i>
                         <span>Lock Screen</span>
                     </a>
-                </li>
+                </li> --}}
                 <li class="sidebar-item">
                     <a href="{{ route('logout') }}" class='sidebar-link'>
                         <i class="bi bi-box-arrow-right"></i>

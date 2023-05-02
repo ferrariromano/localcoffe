@@ -114,7 +114,7 @@ class FormController extends Controller
     {
         $delete = Staff::find($id);
         $delete->delete();
-        Toastr::success('Data deleted successfully :)','Success');
+        Toastr::success('Data berhasil dihapus :)','Success');
         return redirect()->route('form/view/detail');
     }
 }

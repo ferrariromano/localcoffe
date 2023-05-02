@@ -34,7 +34,7 @@ class PhotosController extends Controller
            
             $fileModal->save();
     
-           return back()->with('success', 'File has successfully uploaded!');
+           return back()->with('success', 'Berkas telah berhasil diunggah!');
         }
       }
 }

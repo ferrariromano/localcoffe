@@ -47,7 +47,7 @@ class RegisterController extends Controller
             'role_name' => $request->role_name,
             'password'  => Hash::make($request->password),
         ]);
-        Toastr::success('Buat Akun Baru Sukses :)','Success');
+        Toastr::success('Buat Akun Baru Berhasil :)','Success');
         return redirect('login');
     }
 }

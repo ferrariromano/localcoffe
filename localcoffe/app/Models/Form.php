@@ -17,7 +17,7 @@ class Form extends Model
     'sex',
     'country',
     'phone',
-    'facebook_name',
-    'youtube_name'
+    // 'facebook_name',
+    // 'youtube_name'
    ];
 }

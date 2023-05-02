@@ -10,10 +10,10 @@
         </a>
     </header>
     <div class="page-heading">
-        <h3>Profile Statistics</h3>
+        <h3>Dashboard</h3>
     </div>
     {{-- message --}}
-    {!! Toastr::message() !!}
+    {{-- {!! Toastr::message() !!}
     <div class="page-content">
         <section class="row">
             <div class="col-12 col-lg-9">
@@ -227,7 +227,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 {{-- user profile modal --}}
                 <div class="card-body">
                     <!--Basic Modal -->
@@ -325,7 +325,7 @@
                 </div>
                 {{-- end user profile modal --}}
 
-                <div class="card">
+                {{-- <div class="card">
                     <div class="card-header">
                         <h4>Recent Messages</h4>
                     </div>
@@ -362,8 +362,8 @@
                                 Conversation</button>
                         </div>
                     </div>
-                </div>
-                <div class="card">
+                </div> --}}
+                {{-- <div class="card">
                     <div class="card-header">
                         <h4>Visitors Profile</h4>
                     </div>
@@ -373,7 +373,7 @@
                 </div>
             </div>
         </section>
-    </div>
+    </div> --}}
 
     <footer>
         <div class="footer clearfix mb-0 text-muted">

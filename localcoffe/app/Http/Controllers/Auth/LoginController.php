@@ -81,11 +81,11 @@ class LoginController extends Controller
             return redirect()->intended('home');
         }elseif (Auth::attempt(['email'=>$email,'password'=>$password,'status'=> null])) {
             DB::table('activity_logs')->insert($activityLog);
-            Toastr::success('Login Sukses :)','Success');
+            Toastr::success('Login Berhasil :)','Success');
             return redirect()->intended('home');
         }
         else{
-            Toastr::error('GAGAL, Salah USERNAME atau PASSWORD :)','Error');
+            Toastr::error('GAGAL, Coba cek USERNAME atau PASSWORD :)','Error');
             return redirect('login');
         }
 
@@ -111,7 +111,7 @@ class LoginController extends Controller
         ];
         DB::table('activity_logs')->insert($activityLog);
         Auth::logout();
-        Toastr::success('Logout Sukses :)','Success');
+        Toastr::success('Logout Berhasil :)','Success');
         return redirect('login');
     }
 

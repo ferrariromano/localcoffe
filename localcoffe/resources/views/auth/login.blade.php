@@ -41,19 +41,19 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="form-check form-check-lg d-flex align-items-end">
-                            <input class="form-check-input me-2" type="checkbox" value="remember_me" id="remember_me" name="remember_me">
-                            <label class="form-check-label text-gray-600" for="flexCheckDefault">
+                        {{-- <div class="form-check form-check-lg d-flex align-items-end">
+                            <input class="form-check-input me-2" type="checkbox" value="remember_me" id="remember_me" name="remember_me"> --}}
+                            {{-- <label class="form-check-label text-gray-600" for="flexCheckDefault">
                                 Ingat Saya
-                            </label>
-                        </div>
+                            </label> --}}
+                        {{-- </div> --}}
                         <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
                     </form>
                     <div class="text-center mt-5 text-lg fs-4">
                         <p class="text-gray-600">Belum Punya Akun? <a href="{{route('register')}}"
                                 class="font-bold">Daftar
-                                </a>.</p>
-                        <p><a class="font-bold" href="{{ route('forget-password') }}">Lupa password?</a>.</p>
+                                </a></p>
+                        <p><a class="font-bold" href="{{ route('forget-password') }}">Lupa password?</a></p>
                     </div>
                 </div>
             </div>

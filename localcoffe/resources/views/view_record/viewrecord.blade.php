@@ -14,7 +14,7 @@
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
                     <h3>View Record</h3>
-                    <p class="text-subtitle text-muted">staff information list</p>
+                    <p class="text-subtitle text-muted">Pekerja information list</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -31,7 +31,7 @@
         <section class="section">
             <div class="card">
                 <div class="card-header">
-                    Staff list
+                    Pekerja list
                 </div>
                 <div class="card-body">
                     <table class="table table-striped" id="table1">
@@ -68,7 +68,7 @@
                                         <a href="{{ url('form/view/detail/'.$item->id) }}">
                                             <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
                                         </a>    
-                                        <a href="{{ url('delete/'.$item->id) }}" onclick="return confirm('Are you sure to want to delete it?')"><span class="badge bg-danger"><i class="bi bi-trash"></i></span></a>
+                                        <a href="{{ url('delete/'.$item->id) }}" onclick="return confirm('AApakah Anda yakin ingin menghapusnya?')"><span class="badge bg-danger"><i class="bi bi-trash"></i></span></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -81,11 +81,11 @@
     <footer>
         <div class="footer clearfix mb-0 text-muted ">
             <div class="float-start">
-                <p>2021 &copy; Soeng Souy</p>
+                <p>2023 &copy; Local Coffe</p>
             </div>
             <div class="float-end">
                 <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
-                href="http://soengsouy.com">Soeng Souy</a></p>
+                href="http://localcoffe.com">Local Coffe</a></p>
             </div>
         </div>
     </footer>

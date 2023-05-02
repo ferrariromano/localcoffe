@@ -61,8 +61,8 @@
                                 <select class="form-select @error('role_name') is-invalid @enderror" name="role_name" id="role_name">
                                     <option selected disabled>Select Role Name</option>
                                     <option value="Admin">Admin</option>
-                                    <option value="Super Admin">Perkebunan</option>
-                                    <option value="Normal User">Pemilik Lahan</option>
+                                    <option value="Perkebunan">Perkebunan</option>
+                                    <option value="Pemilik Lahan">Pemilik Lahan</option>
                                 </select>
                                 <div class="form-control-icon">
                                     <i class="bi bi-exclude"></i>

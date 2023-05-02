@@ -216,7 +216,7 @@ class UserManagementController extends Controller
         ]);
    
         User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
-        Toastr::success('User change successfully :)','Success');
+        Toastr::success('User change Berhasil :)','Success');
         return redirect()->route('home');
     }
 }
