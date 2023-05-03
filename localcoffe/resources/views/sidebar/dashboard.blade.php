@@ -34,27 +34,27 @@
                                 <span>Role Name:</span>
                                 <span class="badge bg-info">Perkebunan</span>
                             @endif
-                            @if (Auth::user()->role_name=='Pemilik Lahan')
+                            @if (Auth::user()->role_name=='Pemilik Usaha')
                                 <span>Name: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
                                 <hr>
                                 <span>Role Name:</span>
-                                <span class="badge bg-warning">Pemilik Lahan</span>
+                                <span class="badge bg-warning">Pemilik Usaha</span>
                             @endif
                         </div>
                     </div>
                 </li>
 
-                <li class="sidebar-item">
+                {{-- <li class="sidebar-item">
                     <a href="{{ route('change/password') }}" class='sidebar-link'>
                         <i class="bi bi-shield-lock"></i>
                         <span>Ubah Password</span>
                     </a>
-                </li>
+                </li> --}}
 
-                @if (Auth::user()->role_name=='Admin')
+                @if (Auth::user()->role_name=='Pemilik Usaha')
                     <li class="sidebar-title">Page &amp; Controller</li>
                     <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
+                        {{-- <a href="#" class='sidebar-link'>
                             <i class="bi bi-hexagon-fill"></i>
                             <span>Maintenain</span>
                         </a>
@@ -69,7 +69,7 @@
                                 <a href="{{ route('activity/login/logout') }}">Activity Log</a>
                             </li>
                         </ul>
-                    </li>
+                    </li> --}}
                 @endif
                 
                 <li class="sidebar-title">Forms &amp; Tables</li>

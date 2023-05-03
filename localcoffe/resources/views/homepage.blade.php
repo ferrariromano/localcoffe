@@ -103,7 +103,7 @@
             <div class="content">
               <h3>CERITA KAMI.</h3>
               <p>Local Coffee adalah aplikasi sistem monitoring mengenai pencatatan dan pemasaran yang digunakan untuk membantu menunjang usaha yang berbasis website.
-                Pada aplikasi sistem ini dapat membantu para pemilik perkebunan kopi dan juga pemilik usaha kopi dalam memonitoring pemasaran dan pencatatan mereka..
+                Pada aplikasi sistem ini dapat membantu para pemilik perkebunan kopi dan juga pemilik usaha kopi dalam memonitoring pemasaran dan pencatatan mereka.
               <p>Dalam proses monitoring di pihak perkebunan, mereka dapat melakukan pencatatan dalam hal pengolahan kopi pasca panen hingga kopi dapat dipasarkan, sedangkan proses monitoring disisi pemilik usaha mereka dapat melakukan pencatatan stok olahan kopi yang mereka miliki. 
                 Selain itu, dengan adanya aplikasi sistem ini diharapkan dapat mempermudah mitra yang berkaitan dalam mencari perkebunan kopi yang terbaik dan juga dapat membantu mitra dalam administrasi keuangan..</p>
             </div>
@@ -247,7 +247,7 @@
         <div class="row gy-4">
           <div class="col-lg-3 col-sm-6">
               <div class="team-member px-4 py-5 border shadow-on-hover text-center">
-                  <img src="./frontend/img/Zaky.png" alt="">
+                  <img src="./local_coffe_edit/assets\img\gambar\ucup.png" alt="">
                   <div class="team-member-content">
                       <h4 class="mb-2 mt-4">Yusuf Imanuel</h4>
                       <p class="mb-0">Project Manager</p>
@@ -274,7 +274,7 @@
           </div>
           <div class="col-lg-3 col-sm-6">
               <div class="team-member px-4 py-5 border shadow-on-hover text-center">
-                  <img src="./frontend/img/Yusuf.png" alt="">
+                  <img src="./local_coffe_edit/assets\img\gambar\nafiz.png" alt="">
                   <div class="team-member-content">
                       <h4 class="mb-2 mt-4">Muhammad Nafiz Azalea </h4>
                       <p class="mb-0">Desainer</p>

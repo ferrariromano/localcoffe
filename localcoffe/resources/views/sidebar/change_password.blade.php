@@ -34,24 +34,24 @@
                                 <span>Role Name:</span>
                                 <span class="badge bg-info">Perkebunan</span>
                             @endif
-                            @if (Auth::user()->role_name=='Pemilik Lahan')
+                            @if (Auth::user()->role_name=='Pemilik Usaha')
                                 <span>Name: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
                                 <hr>
                                 <span>Role Name:</span>
-                                <span class="badge bg-warning">Pemilik Lahan</span>
+                                <span class="badge bg-warning">Pemilik Usaha</span>
                             @endif
                         </div>
                     </div>
                 </li>
 
-                <li class="sidebar-item active">
+                {{-- <li class="sidebar-item active">
                     <a href="{{ route('change/password') }}" class='sidebar-link'>
                         <i class="bi bi-shield-lock"></i>
                         <span>Ubah Password</span>
                     </a>
-                </li>
+                </li> --}}
 
-                @if (Auth::user()->role_name=='Admin')
+                {{-- @if (Auth::user()->role_name=='Admin')
                     <li class="sidebar-title">Page &amp; Controller</li>
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
@@ -94,7 +94,7 @@
                             <a href="{{ route('form/view/detail') }}">View Detail</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 <li class="sidebar-item">
                     <a href="{{ route('logout') }}" class='sidebar-link'>
                         <i class="bi bi-box-arrow-right"></i>

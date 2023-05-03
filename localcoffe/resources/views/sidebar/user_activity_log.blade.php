@@ -20,7 +20,7 @@
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li class="sidebar-item">
+                {{-- <li class="sidebar-item">
                     <div class="card-body">
                         <div class="badges">
                             @if (Auth::user()->role_name=='Admin')
@@ -35,11 +35,11 @@
                                 <span>Role Name:</span>
                                 <span class="badge bg-info">Perkebunan</span>
                             @endif
-                            @if (Auth::user()->role_name=='Pemilik Lahan')
+                            @if (Auth::user()->role_name=='Pemilik Usaha')
                                 <span>Name: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
                                 <hr>
                                 <span>Role Name:</span>
-                                <span class="badge bg-warning">Pemilik Lahan</span>
+                                <span class="badge bg-warning">Pemilik Usaha</span>
                             @endif
                         </div>
                     </div>
@@ -94,7 +94,7 @@
                             <a href="{{ route('form/view/detail') }}">View Detail</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 <li class="sidebar-item">
                     <a href="{{ route('logout') }}" class='sidebar-link'>
                         <i class="bi bi-box-arrow-right"></i>

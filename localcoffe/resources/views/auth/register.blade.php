@@ -45,7 +45,7 @@
                                     <option selected disabled>Pilih Role </option>
                                     <option value="Admin">Admin</option>
                                     <option value="Perkebunan">Perkebunan</option>
-                                    <option value="Pemilik Lahan">Pemilik Lahan</option>
+                                    <option value="Pemilik Usaha">Pemilik Usaha</option>
                                 </select>
                                 <div class="form-control-icon">
                                     <i class="bi bi-exclude"></i>
