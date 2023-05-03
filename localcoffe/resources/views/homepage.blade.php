@@ -283,7 +283,7 @@
           </div>
           <div class="col-lg-3 col-sm-6">
               <div class="team-member px-4 py-5 border shadow-on-hover text-center">
-                  <img src="./frontend/img/Yusuf.png" alt="">
+                  <img src="../local_coffe_edit/assets\img\gambar\sayid.png" alt="">
                   <div class="team-member-content">
                       <h4 class="mb-2 mt-4">Sayyid Yaasiin Almahdi</h4>
                       <p class="mb-0">Tester</p>

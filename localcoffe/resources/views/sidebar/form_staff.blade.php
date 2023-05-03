@@ -44,15 +44,15 @@
                         </div>
                     </div>
                 </li>
-                <li class="sidebar-item">
+                {{-- <li class="sidebar-item">
                     <a href="{{ route('change/password') }}" class='sidebar-link'>
                         <i class="bi bi-shield-lock"></i>
                         <span>Chnage Password</span>
                     </a>
-                </li>
+                </li> --}}
 
                 @if (Auth::user()->role_name=='Pemilik Usaha')
-                    <li class="sidebar-title">Page &amp; Controller</li>
+                    <li class="sidebar-title"> </li>
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-hexagon-fill"></i>
@@ -72,26 +72,26 @@
                     </li>
                 @endif
                
-                <li class="sidebar-title">Forms &amp; Tables</li>
+                <li class="sidebar-title"> </li>
                 <li class="sidebar-item  has-sub active">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-file-earmark-medical-fill"></i>
-                        <span>Form Elements</span>
+                        <span>Daftar Pekerja</span>
                     </a>
                     <ul class="submenu active">
                         <li class="submenu-item active">
-                            <a href="{{ route('form/staff/new') }}">Staff Input</a>
+                            <a href="{{ route('form/staff/new') }}">Menambah Pekerja</a>
                         </li>
                     </ul>
                 </li>
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-grid-1x2-fill"></i>
-                        <span>View Record</span>
+                        <span>List Pekerja</span>
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item">
-                            <a href="{{ route('form/view/detail') }}">View Detail</a>
+                            <a href="{{ route('form/view/detail') }}">Ubah Pekerja</a>
                         </li>
                     </ul>
                 </li>

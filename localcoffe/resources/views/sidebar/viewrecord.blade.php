@@ -34,15 +34,15 @@
                                 <span>Role Name:</span>
                                 <span class="badge bg-info">Perkebunan</span>
                             @endif --}}
-                            @if (Auth::user()->role_name=='Pemilik Usaha')
+                            {{-- @if (Auth::user()->role_name=='Pemilik Usaha')
                                 <span>Name: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
                                 <hr>
                                 <span>Role Name:</span>
                                 <span class="badge bg-warning">Pemilik Usaha</span>
                             @endif
-                        </div>
-                    </div>
-                </li>
+                        </div> --}}
+                    {{-- </div>
+                </li> --}}
                 {{-- <li class="sidebar-item">
                     <a href="{{ route('change/password') }}" class='sidebar-link'>
                         <i class="bi bi-shield-lock"></i>
@@ -50,7 +50,7 @@
                     </a>
                 </li> --}}
 
-                {{-- @if (Auth::user()->role_name=='Admin')
+                {{-- @if (Auth::user()->role_name=='Pemilik Usaha')
                     <li class="sidebar-title">Page &amp; Controller</li>
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>

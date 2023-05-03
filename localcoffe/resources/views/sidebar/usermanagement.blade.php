@@ -51,7 +51,7 @@
                     </a>
                 </li> --}}
                 
-                {{-- @if (Auth::user()->role_name=='Admin')
+                @if (Auth::user()->role_name=='Perkebunan')
                     <li class="sidebar-title">Page &amp; Controller</li>
                     <li class="sidebar-item  has-sub active">
                         <a href="#" class='sidebar-link'>
@@ -78,12 +78,12 @@
                     </a>
                 </li>
 
-                <li class="sidebar-title">Forms &amp; Tables</li>
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
+                {{-- <li class="sidebar-title">Forms &amp; Tables</li>
+                <li class="sidebar-item  has-sub"> --}}
+                    {{-- <a href="#" class='sidebar-link'>
                         <i class="bi bi-file-earmark-medical-fill"></i>
                         <span>Form Elements</span>
-                    </a>
+                    </a> --}}
                     <ul class="submenu">
                         <li class="submenu-item active">
                             <a href="{{ route('form/staff/new') }}">Staff Input</a>
@@ -99,7 +99,7 @@
                         <li class="submenu-item">
                             <a href="{{ route('form/view/detail') }}">View Detail</a>
                         </li>
-                    </ul> --}}
+                    </ul>
                     <li class="sidebar-item">
                         <a href="{{ route('logout') }}" class='sidebar-link'>
                             <i class="bi bi-box-arrow-right"></i>
