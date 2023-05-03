@@ -22,35 +22,35 @@
                 <li class="sidebar-item">
                     <div class="card-body">
                         <div class="badges">
-                            @if (Auth::user()->role_name=='Admin')
+                            {{-- @if (Auth::user()->role_name=='Admin')
                             <span>Name: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
                             <hr>
                             <span>Role Name:</span>
                             <span class="badge bg-success">Admin</span>
-                            @endif
-                            @if (Auth::user()->role_name=='Perkebunan')
+                            @endif --}}
+                            {{-- @if (Auth::user()->role_name=='Perkebunan')
                                 <span>Name: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
                                 <hr>
                                 <span>Role Name:</span>
                                 <span class="badge bg-info">Perkebunan</span>
-                            @endif
-                            @if (Auth::user()->role_name=='Pemilik Lahan')
+                            @endif --}}
+                            @if (Auth::user()->role_name=='Pemilik Usaha')
                                 <span>Name: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
                                 <hr>
                                 <span>Role Name:</span>
-                                <span class="badge bg-warning">Pemilik Lahan</span>
+                                <span class="badge bg-warning">Pemilik Usaha</span>
                             @endif
                         </div>
                     </div>
                 </li>
-                <li class="sidebar-item">
+                {{-- <li class="sidebar-item">
                     <a href="{{ route('change/password') }}" class='sidebar-link'>
                         <i class="bi bi-shield-lock"></i>
-                        <span>Chnage Password</span>
+                        <span>Ubah Password</span>
                     </a>
-                </li>
+                </li> --}}
 
-                @if (Auth::user()->role_name=='Admin')
+                {{-- @if (Auth::user()->role_name=='Admin')
                     <li class="sidebar-title">Page &amp; Controller</li>
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
@@ -69,9 +69,9 @@
                             </li>
                         </ul>
                     </li>
-                @endif
+                @endif --}}
                 
-                <li class="sidebar-title">Forms &amp; Tables</li>
+                {{-- <li class="sidebar-title">Forms &amp; Tables</li>
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-file-earmark-medical-fill"></i>
@@ -93,7 +93,7 @@
                             <a href="{{ route('form/view/detail') }}">View Detail</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
                 <li class="sidebar-item">
                     <a href="{{ route('logout') }}" class='sidebar-link'>
                         <i class="bi bi-box-arrow-right"></i>
