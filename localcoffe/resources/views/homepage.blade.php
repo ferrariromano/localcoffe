@@ -12,7 +12,7 @@
 
   <!-- Favicons -->
   <link href="./local_coffe_edit/assets/img/gambar\coffee-beans.png" rel="icon">
-  <link href="./local_coffe_edit/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="./local_coffe_edit/assets/img/gambar\coffee-beans.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -276,7 +276,7 @@
               <div class="team-member px-4 py-5 border shadow-on-hover text-center">
                   <img src="./local_coffe_edit/assets\img\gambar\nafiz.png" alt="">
                   <div class="team-member-content">
-                      <h4 class="mb-2 mt-4">Muhammad Nafiz Azalea </h4>
+                      <h4 class="mb-2 mt-4">Muhammad Nafiz</h4>
                       <p class="mb-0">Desainer</p>
                   </div>
               </div>
@@ -308,9 +308,9 @@
                 <!-- <strong>Phone:</strong> +1 5589 55488 55<br> -->
                 <strong>Email:</strong> localcoffeteam@gmail.com<br>
               </p>
-              <div class="social-links d-flex mt-3">
+              {{-- <div class="social-links d-flex mt-3">
                 <a href="https://github.com/ferrariromano/localcoffe" class="d-flex align-items-center justify-content-center"><i class="bi bi-github"></i></a>
-              </div>
+              </div> --}}
             </div>
           </div><!-- End footer info column-->
 

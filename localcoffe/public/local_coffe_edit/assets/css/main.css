@@ -16,6 +16,14 @@
   --font-secondary: "Work Sans", sans-serif;
 }
 
+/*Jarak Foto */
+.img-fluid {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  max-width: 100%;
+  height: auto;
+}
+
 /* Colors */
 :root {
   --color-default: #364d59;
