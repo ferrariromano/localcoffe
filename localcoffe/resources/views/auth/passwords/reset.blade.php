@@ -26,7 +26,7 @@
                     <form method="POST" action="/reset-password" class="md-float-material">
                         @csrf
                         <input type="hidden" name="token" value="{{ $token }}">
-                        
+
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="text" class="form-control form-control-lg @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="Enter Your Email">
                             <div class="form-control-icon">
@@ -38,7 +38,7 @@
                                 </span>
                             @enderror
                         </div>
-                        
+
                         <div class="form-group position-relative has-icon-left mb-4">
                             <input type="password" class="form-control form-control-lg @error('password') is-invalid @enderror" name="password" placeholder="Choose Password">
                             <div class="form-control-icon">

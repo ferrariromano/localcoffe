@@ -54,7 +54,7 @@
                 @if (Auth::user()->role_name=='Pemilik Usaha')
                     <li class="sidebar-title">Page &amp; Controller</li>
                     <li class="sidebar-item  has-sub">
-                        {{-- <a href="#" class='sidebar-link'>
+                        <a href="#" class='sidebar-link'>
                             <i class="bi bi-hexagon-fill"></i>
                             <span>Maintenain</span>
                         </a>
@@ -69,9 +69,9 @@
                                 <a href="{{ route('activity/login/logout') }}">Activity Log</a>
                             </li>
                         </ul>
-                    </li> --}}
+                    </li>
                 @endif
-                
+
                 <li class="sidebar-title"> </li>
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
@@ -94,13 +94,7 @@
                             <a href="{{ route('form/view/detail') }}">Ubah Pekerja</a>
                         </li>
                     </ul>
-                {{-- </li> --}}
-                {{-- <li class="sidebar-item">
-                    <a href="{{ route('lock_screen') }}" class='sidebar-link'>
-                        <i class="bi bi-lock-fill"></i>
-                        <span>Lock Screen</span>
-                    </a>
-                </li> --}}
+
                 <li class="sidebar-item">
                     <a href="{{ route('logout') }}" class='sidebar-link'>
                         <i class="bi bi-box-arrow-right"></i>

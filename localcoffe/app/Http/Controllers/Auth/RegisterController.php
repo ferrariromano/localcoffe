@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\User;
-use Brian2694\Toastr\Facades\Toastr;
 use Hash;
+use App\Models\User;
+use Illuminate\Http\Request;
+use App\Rules\GmailValidation;
+use App\Http\Controllers\Controller;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rules\Password;
+
 
 class RegisterController extends Controller
 {
@@ -20,9 +22,9 @@ class RegisterController extends Controller
     {
         $request->validate([
             'name'      => 'required|string|max:255',
-            'email'     => 'required|string|email|max:255|unique:users',
+            'email'     => ['required', 'email', new GmailValidation],
             'role_name' => 'required|string|max:255',
-            'password'  => 'required|string|min:8|confirmed',
+            'password'  => ['required', 'regex:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/'],
             'password_confirmation' => 'required',
         ]);
 
@@ -39,7 +41,7 @@ class RegisterController extends Controller
         //     'password_confirmation' => 'required',
         //     ],
         // ]);
-        
+
         User::create([
             'name'      => $request->name,
             'avatar'    => $request->image,

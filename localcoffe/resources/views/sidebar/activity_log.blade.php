@@ -50,8 +50,8 @@
                         <span>Ubah Password</span>
                     </a>
                 </li> --}}
-                
-                {{-- @if (Auth::user()->role_name=='Admin')
+
+                @if (Auth::user()->role_name=='Admin')
                     <li class="sidebar-title">Page &amp; Controller</li>
                     <li class="sidebar-item  has-sub active">
                         <a href="#" class='sidebar-link'>
@@ -71,7 +71,7 @@
                         </ul>
                     </li>
                 @endif
-                
+
                 <li class="sidebar-title">Forms &amp; Tables</li>
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
@@ -94,7 +94,7 @@
                             <a href="{{ route('form/view/detail') }}">View Detail</a>
                         </li>
                     </ul>
-                </li> --}}
+                </li>
                 <li class="sidebar-item">
                     <a href="{{ route('logout') }}" class='sidebar-link'>
                         <i class="bi bi-box-arrow-right"></i>
