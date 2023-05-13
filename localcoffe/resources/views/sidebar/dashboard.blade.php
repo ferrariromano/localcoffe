@@ -44,15 +44,10 @@
                     </div>
                 </li>
 
-                {{-- <li class="sidebar-item">
-                    <a href="{{ route('change/password') }}" class='sidebar-link'>
-                        <i class="bi bi-shield-lock"></i>
-                        <span>Ubah Password</span>
-                    </a>
-                </li> --}}
+
 
                 @if (Auth::user()->role_name=='Pemilik Usaha')
-                    <li class="sidebar-title">Page &amp; Controller</li>
+                    <li class="sidebar-title">gatau diisi apa</li>
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
                             <i class="bi bi-hexagon-fill"></i>
@@ -72,6 +67,11 @@
                     </li>
                 @endif
 
+
+
+
+                @if (Auth::user()->role_name=='Perkebunan')
+                <li class="sidebar-title"> </li>
                 <li class="sidebar-title"> </li>
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
@@ -81,19 +81,22 @@
                     <ul class="submenu">
                         <li class="submenu-item active">
                             <a href="{{ route('form/staff/new') }}">Menambah Pekerja</a>
+                            <a href="{{ route('form/view/detail') }}">List Pekerja</a>
                         </li>
                     </ul>
                 </li>
-                <li class="sidebar-item  has-sub">
+                @endif
+
+
+                {{-- <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
+                        <li class="submenu-item">
+                        </li>
                         <i class="bi bi-grid-1x2-fill"></i>
                         <span>List Pekerja</span>
                     </a>
                     <ul class="submenu">
-                        <li class="submenu-item">
-                            <a href="{{ route('form/view/detail') }}">Ubah Pekerja</a>
-                        </li>
-                    </ul>
+                    </ul> --}}
 
                 <li class="sidebar-item">
                     <a href="{{ route('logout') }}" class='sidebar-link'>

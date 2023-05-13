@@ -50,7 +50,7 @@
                         <span>Ubah Password</span>
                     </a>
                 </li> --}}
-                
+
                 @if (Auth::user()->role_name=='Perkebunan')
                     <li class="sidebar-title">Page &amp; Controller</li>
                     <li class="sidebar-item  has-sub active">

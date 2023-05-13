@@ -13,14 +13,14 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>List Pekerja</h3>
-                    <p class="text-subtitle text-muted">Pekerja information list</p>
+                    <h3>Ubah Pekerja</h3>
+                    <p class="text-subtitle text-muted">Ubah Pekerja Information List</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">View</li>
+                            <li class="breadcrumb-item active" aria-current="page">Ubah Pekerja</li>
                         </ol>
                     </nav>
                 </div>
@@ -31,7 +31,7 @@
         <section class="section">
             <div class="card">
                 <div class="card-header">
-                    Pekerja list
+                    Ubah Pekerja List
                 </div>
                 <div class="card-body">
                     <table class="table table-striped" id="table1">
@@ -39,15 +39,15 @@
                             <tr>
                                 <th>No</th>
                                 <th>ID</th>
-                                <th>Full Name</th>
-                                <th>Sex</th>
+                                <th>Nama Lengkap</th>
+                                <th>Gender</th>
                                 <th>Email Address</th>
-                                <th>Phone Number</th>
-                                <th>Position</th>
-                                <th>Department</th>
-                                <th>Salary</th>
-                                <th class="text-center">Modify</th>
-                            </tr>    
+                                <th>Nomor Telepon</th>
+                                <th>Posisi</th>
+                                <th>Alamat</th>
+                                <th>Gaji</th>
+                                <th class="text-center">Edit</th>
+                            </tr>
                         </thead>
                         <tbody>
                             @foreach ($data as $key => $item)
@@ -62,13 +62,13 @@
                                     <td class="phone_number">{{ $item->department }}</td>
                                     <td class="phone_number">{{ $item->salary }}</td>
                                     <td class="text-center">
-                                        <a href="{{ route('form/staff/new') }}">
+                                        {{-- <a href="{{ route('form/staff/new') }}">
                                             <span class="badge bg-info"><i class="bi bi-person-plus-fill"></i></span>
-                                        </a>
+                                        </a> --}}
                                         <a href="{{ url('form/view/detail/'.$item->id) }}">
                                             <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
-                                        </a>    
-                                        <a href="{{ url('delete/'.$item->id) }}" onclick="return confirm('AApakah Anda yakin ingin menghapusnya?')"><span class="badge bg-danger"><i class="bi bi-trash"></i></span></a>
+                                        </a>
+                                        <a href="{{ url('delete/'.$item->id) }}" onclick="return confirm('Apakah Anda yakin ingin menghapusnya?')"><span class="badge bg-danger"><i class="bi bi-trash"></i></span></a>
                                     </td>
                                 </tr>
                             @endforeach

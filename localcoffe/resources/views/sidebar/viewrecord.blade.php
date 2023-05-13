@@ -71,29 +71,30 @@
                     </li>
                 @endif
 
-                <li class="sidebar-title">Forms &amp; Tables</li>
+                {{-- <li class="sidebar-title">Forms &amp; Tables</li> --}}
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-file-earmark-medical-fill"></i>
-                        <span>Form Elements</span>
+                        <span>Daftar Pekerja</span>
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="{{ route('form/staff/new') }}">Staff Input</a>
+                            <a href="{{ route('form/staff/new') }}">Menambah Pekerja</a>
+                            <a href="{{ route('form/view/detail') }}">List Pekerja</a>
                         </li>
                     </ul>
                 </li>
-                <li class="sidebar-item  has-sub active">
+                {{-- <li class="sidebar-item  has-sub active">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-grid-1x2-fill"></i>
                         <span>View Record</span>
                     </a>
                     <ul class="submenu active">
                         <li class="submenu-item active">
-                            <a href="{{ route('form/view/detail') }}">View Detail</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
+
                 <li class="sidebar-item">
                     <a href="{{ route('logout') }}" class='sidebar-link'>
                         <i class="bi bi-box-arrow-right"></i>

@@ -23,18 +23,18 @@
                 <li class="sidebar-item">
                     <div class="card-body">
                         <div class="badges">
-                            {{-- @if (Auth::user()->role_name=='Admin')
+                            @if (Auth::user()->role_name=='Admin')
                             <span>Name: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
                             <hr>
                             <span>Role Name:</span>
                             <span class="badge bg-success">Admin</span>
-                            @endif --}}
-                            {{-- @if (Auth::user()->role_name=='Perkebunan')
+                            @endif
+                            @if (Auth::user()->role_name=='Perkebunan')
                                 <span>Name: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
                                 <hr>
                                 <span>Role Name:</span>
                                 <span class="badge bg-info">Perkebunan</span>
-                            @endif --}}
+                            @endif
                             @if (Auth::user()->role_name=='Pemilik Usaha')
                                 <span>Name: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
                                 <hr>
@@ -44,12 +44,6 @@
                         </div>
                     </div>
                 </li>
-                {{-- <li class="sidebar-item">
-                    <a href="{{ route('change/password') }}" class='sidebar-link'>
-                        <i class="bi bi-shield-lock"></i>
-                        <span>Chnage Password</span>
-                    </a>
-                </li> --}}
 
                 @if (Auth::user()->role_name=='Pemilik Usaha')
                     <li class="sidebar-title"> </li>
@@ -71,7 +65,7 @@
                         </ul>
                     </li>
                 @endif
-               
+
                 <li class="sidebar-title"> </li>
                 <li class="sidebar-item  has-sub active">
                     <a href="#" class='sidebar-link'>
@@ -81,20 +75,21 @@
                     <ul class="submenu active">
                         <li class="submenu-item active">
                             <a href="{{ route('form/staff/new') }}">Menambah Pekerja</a>
+                            <a href="{{ route('form/view/detail') }}">List Pekerja</a>
                         </li>
                     </ul>
                 </li>
-                <li class="sidebar-item  has-sub">
+                {{-- <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-grid-1x2-fill"></i>
                         <span>List Pekerja</span>
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item">
-                            <a href="{{ route('form/view/detail') }}">Ubah Pekerja</a>
                         </li>
                     </ul>
-                </li>
+                </li> --}}
+
                 <li class="sidebar-item">
                     <a href="{{ route('logout') }}" class='sidebar-link'>
                         <i class="bi bi-box-arrow-right"></i>

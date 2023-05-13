@@ -13,7 +13,7 @@
         <h3>Dashboard</h3>
     </div>
     {{-- message --}}
-    {!! Toastr::message() !!}
+    {{-- {!! Toastr::message() !!} --}}
     {{-- <div class="page-content">
         <section class="row">
             <div class="col-12 col-lg-9">
@@ -80,7 +80,7 @@
                                     </div>
                                     <div class="col-md-8">
                                         <h6 class="text-muted font-semibold">Saved Record</h6>
-                                        <h6 class="font-extrabold mb-0">{{ $staff }}</h6>
+                                        <h6 class="font-extrabold mb-0">{{ $pekerja }}</h6>
                                     </div>
                                 </div>
                             </div>
@@ -214,7 +214,7 @@
                     </div>
                 </div>
             </div> --}}
-            <div class="col-12 col-lg-3">
+            {{-- <div class="col-12 col-lg-3">
                 <div class="card" data-bs-toggle="modal" data-bs-target="#default">
                     <div class="card-body py-4 px-5">
                         <div class="d-flex align-items-center">
@@ -227,7 +227,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 {{-- user profile modal --}}
                 <div class="card-body">
                     <!--Basic Modal -->
@@ -249,7 +249,7 @@
                                             <div class="col-md-8">
                                                 <div class="form-group has-icon-left">
                                                     <div class="position-relative">
-                                                        <input type="text" class="form-control" name="fullName" value="{{ Auth::user()->name }}" readonly>
+                                                        <input type="text" class="form-control" name="namaLengkap" value="{{ Auth::user()->name }}" readonly>
                                                         <div class="form-control-icon">
                                                             <i class="bi bi-person"></i>
                                                         </div>
@@ -275,14 +275,14 @@
                                             <div class="col-md-8">
                                                 <div class="form-group has-icon-left">
                                                     <div class="position-relative">
-                                                        <input type="number" class="form-control" value="{{ Auth::user()->phone_number }}" readonly>
+                                                        <input type="number" class="form-control" value="{{ Auth::user()->nomor_telepon }}" readonly>
                                                         <div class="form-control-icon">
                                                             <i class="bi bi-phone"></i>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                
+
                                             <div class="col-md-4">
                                                 <label>Status</label>
                                             </div>
@@ -381,7 +381,7 @@
                 <p>2023 &copy; Local Coffe</p>
             </div>
             <div class="float-end">
-                <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
+                <p>Dibuat sepenuh  <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
                 href="http://localcoffe.com">Local Coffe</a></p>
             </div>
         </div>
