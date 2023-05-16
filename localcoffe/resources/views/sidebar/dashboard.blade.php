@@ -44,27 +44,64 @@
                     </div>
                 </li>
 
+                @if (Auth::user()->role_name=='Admin')
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-bag-fill"></i>
+                        <span>Pesanan</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="submenu-item active">
+                            <a href="{{ route('form/staff/new') }}">List Data Pesanan</a>
+                            <a href="{{ route('form/view/detail') }}"></a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+
+
 
 
                 @if (Auth::user()->role_name=='Pemilik Usaha')
-                    <li class="sidebar-title">gatau diisi apa</li>
                     <li class="sidebar-item  has-sub">
                         <a href="#" class='sidebar-link'>
-                            <i class="bi bi-hexagon-fill"></i>
-                            <span>Maintenain</span>
+                            <i class="bi bi-people-fill"></i>
+                            <span>Daftar Karyawan</span>
                         </a>
                         <ul class="submenu">
-                            <li class="submenu-item">
-                                <a href="{{ route('userManagement') }}">User Control</a>
-                            </li>
-                            <li class="submenu-item">
-                                <a href="{{ route('activity/log') }}">User Activity Log</a>
-                            </li>
-                            <li class="submenu-item">
-                                <a href="{{ route('activity/login/logout') }}">Activity Log</a>
+                            <li class="submenu-item active">
+                                <a href="{{ route('form/karyawan/new') }}">Menambah Karyawan</a>
+                                <a href="{{ route('form/view/detail') }}">List Karyawan</a>
                             </li>
                         </ul>
                     </li>
+
+                    <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-file-earmark-medical-fill"></i>
+                        <span>Daftar Produk</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="submenu-item active">
+                            <a href="{{ route('form/view/detail') }}">Daftar Harga Product</a>
+                            <a href="{{ route('form/view/detail') }}">Daftar Stock Product</a>
+                        </li>
+                    </ul>
+                </li>
+
+                 {{-- <li class="sidebar-title"> </li> --}}
+                 <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-wallet-fill"></i>
+                        <span>Transaksi</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="submenu-item active">
+                            <a href="{{ route('form/staff/new') }}">List Transaksi</a>
+                            <a href="{{ route('form/view/detail') }}"></a>
+                        </li>
+                    </ul>
+                </li>
                 @endif
 
 
@@ -72,10 +109,22 @@
 
                 @if (Auth::user()->role_name=='Perkebunan')
                 <li class="sidebar-title"> </li>
-                <li class="sidebar-title"> </li>
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-file-earmark-medical-fill"></i>
+                        <span>Daftar Produk</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="submenu-item active">
+                            <a href="{{ route('form/view/detail') }}">List Product</a>
+                        </li>
+                    </ul>
+                </li>
+
+                {{-- <li class="sidebar-title"> </li> --}}
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-people-fill"></i>
                         <span>Daftar Pekerja</span>
                     </a>
                     <ul class="submenu">
@@ -85,18 +134,50 @@
                         </li>
                     </ul>
                 </li>
-                @endif
 
-
-                {{-- <li class="sidebar-item  has-sub">
+                {{-- <li class="sidebar-title"> </li> --}}
+                <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
-                        <li class="submenu-item">
-                        </li>
-                        <i class="bi bi-grid-1x2-fill"></i>
-                        <span>List Pekerja</span>
+                        <i class="bi bi-calendar-check-fill"></i>
+                        <span>Jadwal</span>
                     </a>
                     <ul class="submenu">
-                    </ul> --}}
+                        <li class="submenu-item active">
+                            <a href="{{ route('form/staff/new') }}">List Jadwal Panen</a>
+                            <a href="{{ route('form/view/detail') }}">List Jadwal Pasca Panen</a>
+                        </li>
+                    </ul>
+                </li>
+
+
+                {{-- <li class="sidebar-title"> </li> --}}
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-bag-fill"></i>
+                        <span>Pesanan</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="submenu-item active">
+                            <a href="{{ route('form/staff/new') }}">List Data Pesanan</a>
+                            <a href="{{ route('form/view/detail') }}"></a>
+                        </li>
+                    </ul>
+                </li>
+
+                 {{-- <li class="sidebar-title"> </li> --}}
+                 <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-wallet-fill"></i>
+                        <span>Transaksi</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="submenu-item active">
+                            <a href="{{ route('form/staff/new') }}">List Transaksi</a>
+                            <a href="{{ route('form/view/detail') }}"></a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
 
                 <li class="sidebar-item">
                     <a href="{{ route('logout') }}" class='sidebar-link'>

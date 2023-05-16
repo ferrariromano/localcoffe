@@ -13,8 +13,7 @@
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
-
-                <li class="sidebar-item">
+                <li class="sidebar-item ">
                     <a href="{{ route('home') }}" class='sidebar-link'>
                         <i class="bi bi-house-fill"></i>
                         <span>Dashboard</span>
@@ -44,69 +43,57 @@
                         </div>
                     </div>
                 </li>
-                {{-- <li class="sidebar-item">
-                    <a href="{{ route('change/password') }}" class='sidebar-link'>
-                        <i class="bi bi-shield-lock"></i>
-                        <span>Ubah Password</span>
-                    </a>
-                </li> --}}
 
-                {{-- @if (Auth::user()->role_name=='Perkebunan')
-                    <li class="sidebar-title">Page &amp; Controller</li>
-                    <li class="sidebar-item  has-sub active">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-hexagon-fill"></i>
-                            <span>Maintenain</span>
-                        </a>
-                        <ul class="submenu active">
-                            <li class="submenu-item active">
-                                <a href="{{ route('userManagement') }}">User Control</a>
-                            </li>
-                            <li class="submenu-item">
-                                <a href="{{ route('activity/log') }}">User Activity Log</a>
-                            </li>
-                            <li class="submenu-item">
-                                <a href="{{ route('activity/login/logout') }}">Activity Log</a>
-                            </li>
-                        </ul>
-                    </li>
-                @endif --}}
 
-                {{-- <li class="sidebar-item">
-                    <a href="{{ route('change/password') }}" class='sidebar-link'>
-                        <i class="bi bi-shield-lock"></i>
-                        <span>Ubah Password</span>
-                    </a>
-                </li> --}}
-
-                {{-- <li class="sidebar-title">Forms &amp; Tables</li>
-                <li class="sidebar-item  has-sub"> --}}
-                    {{-- <a href="#" class='sidebar-link'>
+                {{-- <li class="sidebar-title">Forms &amp; Tables</li> --}}
+                @if (Auth::user()->role_name=='Pemilik Usaha')
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
                         <i class="bi bi-file-earmark-medical-fill"></i>
-                        <span>Form Elements</span>
-                    </a> --}}
-                    {{-- <ul class="submenu">
+                        <span>Daftar Karyawan</span>
+                    </a>
+                    <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="{{ route('form/staff/new') }}">Staff Input</a>
+                            <a href="{{ route('form/karyawan/new') }}">Menambah Karyawan</a>
+                            <a href="{{ route('form/view/detail/karyawan') }}">List Karyawan</a>
                         </li>
                     </ul>
                 </li>
+
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
-                        <i class="bi bi-grid-1x2-fill"></i>
-                        <span>View Record</span>
+                        <i class="bi bi-file-earmark-medical-fill"></i>
+                        <span>Daftar Produk</span>
                     </a>
                     <ul class="submenu">
-                        <li class="submenu-item">
-                            <a href="{{ route('form/view/detail') }}">View Detail</a>
+                        <li class="submenu-item active">
+                            <a href="{{ route('form/view/detail') }}">Daftar Harga Product</a>
+                            <a href="{{ route('form/view/detail') }}">Daftar Stock Product</a>
                         </li>
                     </ul>
-                    <li class="sidebar-item">
-                        <a href="{{ route('logout') }}" class='sidebar-link'>
-                            <i class="bi bi-box-arrow-right"></i>
-                            <span>Log Out</span>
-                        </a>
-                    </li> --}}
+                </li>
+
+                 {{-- <li class="sidebar-title"> </li> --}}
+                 <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-wallet-fill"></i>
+                        <span>Transaksi</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="submenu-item active">
+                            <a href="{{ route('form/staff/new') }}">List Transaksi</a>
+                            <a href="{{ route('form/view/detail') }}"></a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
+
+
+                <li class="sidebar-item">
+                    <a href="{{ route('logout') }}" class='sidebar-link'>
+                        <i class="bi bi-box-arrow-right"></i>
+                        <span>Log Out</span>
+                    </a>
                 </li>
             </ul>
         </div>

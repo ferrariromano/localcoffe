@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('menu')
-@extends('sidebar.viewrecord')
+@extends('sidebar.viewkaryawanrecord')
 @endsection
 @section('content')
 <div id="main">
@@ -13,14 +13,14 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Ubah Pekerja</h3>
-                    <p class="text-subtitle text-muted">Ubah Pekerja Information List</p>
+                    <h3>Ubah Karyawan</h3>
+                    <p class="text-subtitle text-muted">Ubah Karyawan Information List</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Ubah Pekerja List</li>
+                            <li class="breadcrumb-item active" aria-current="page">Ubah Karyawan List</li>
                         </ol>
                     </nav>
                 </div>
@@ -34,7 +34,7 @@
                 </div>
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form form-horizontal" action="{{ route('form/view/update') }}" method="POST">
+                        <form class="form form-horizontal" action="{{ route('form/view/update/karyawan') }}" method="POST">
                             @csrf
                             <input type="hidden" name="id" value="{{ $data[0]->id }}">
                             <div class="form-body">
@@ -146,7 +146,7 @@
                                     </div>
 
                                     <div class="col-md-4">
-                                        <label>Gaji</label>
+                                        <label>Gaj</label>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="form-group has-icon-left">
@@ -162,7 +162,7 @@
 
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
-                                        <a href="{{ route('form/view/detail') }}" class="btn btn-light-secondary me-1 mb-1">Kembali</a>
+                                        <a href="{{ route('form/view/detail/karyawan') }}" class="btn btn-light-secondary me-1 mb-1">Kembali</a>
                                     </div>
                                 </div>
                             </div>
