@@ -19,7 +19,7 @@
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Form Input Karyawan Pemilik Usaha</li>
+                        <li class="breadcrumb-item active" aria-current="page"> Form Input Karyawan Pemilik Usaha</li>
                     </ol>
                 </nav>
             </div>
@@ -32,11 +32,11 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Input Information</h4>
+                <h4 class="card-title">Tambahkan Karyawan</h4>
             </div>
             <div class="card-content">
                 <div class="card-body">
-                    <form class="form form-horizontal" action="{{ route('form/save') }}" method="POST">
+                    <form class="form form-horizontal" action="{{ route('karyawan/save') }}" method="POST">
                         @csrf
                         <div class="form-body">
                             <div class="row">

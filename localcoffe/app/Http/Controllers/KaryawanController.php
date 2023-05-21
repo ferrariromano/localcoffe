@@ -2,38 +2,60 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 use App\Models\Karyawan;
+use Illuminate\Routing\Controller;
+use Illuminate\Http\Request;
 use Brian2694\Toastr\Facades\Toastr;
+use Haruncpi\LaravelIdGenerator\IdGenerator;
 use DB;
 
-class FormKaryawanController extends Controller
+class KaryawanController extends Controller
 {
-    //
+    // /**
+    //  * Display a listing of the resource.
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
     public function index()
     {
-        return view('formkaryawan.viewkaryawan');
+        //
+        return view('formkaryawan.formkaryawan');
     }
 
-    // view record
+    // /**
+    //  * Show the form for creating a new resource.
+    //  *
+    //  * @return \Illuminate\Http\Response
+    //  */
     public function viewRecord()
     {
         $data = DB::table('karyawan')->get();
-        return view('viewkaryawan.lihatkaryawan',compact('data'));
+        return view('view_karyawan.viewrecord',compact('data'));
     }
 
-    // view detail
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Karyawan  $karyawan
+     * @return \Illuminate\Http\Response
+     */
     public function viewDetail($id)
     {
+        //
         $data = DB::table('karyawan')->where('id',$id)->get();
-        return view('viewkaryawan.lihatdetail',compact('data'));
-
+        return view('view_karyawan.viewdetail',compact('data'));
     }
 
-    // view update
+    // /**
+    //  * Show the form for editing the specified resource.
+    //  *
+    //  * @param  \App\Models\Karyawan  $karyawan
+    //  * @return \Illuminate\Http\Response
+    //  */
     public function viewUpdate(Request $request)
     {
+        //
         try{
             $id           = $request->id;
             $rec_id       = $request->rec_id;
@@ -58,18 +80,26 @@ class FormKaryawanController extends Controller
                 'salary'        => $salary,
             ];
             Karyawan::where('id',$request->id)->update($update);
-            Toastr::success('Data Berhasil di Update :)','Success');
-            return redirect()->route('form/view/detail/karyawan');
+            Toastr::success('Data updated successfully :)','Success');
+            return redirect()->route('karyawan/view/detail');
         }catch(\Exception $e){
 
             Toastr::error('Data updated fail :)','Error');
-            return redirect()->route('form/view/detail/karyawan');
+            return redirect()->route('karyawan/view/detail');
         }
     }
 
-    // save
+    // /**
+    //  * Update the specified resource in storage.
+    //  *
+    //  * @param  \App\Http\Requests\UpdateKaryawanRequest  $request
+    //  * @param  \App\Models\Karyawan  $karyawan
+    //  * @return \Illuminate\Http\Response
+    //  */
+
     public function saveRecord(Request $request)
     {
+        //
         $request->validate([
             'fullName'     => 'required|string|max:255',
             'sex'          => 'required',
@@ -98,22 +128,28 @@ class FormKaryawanController extends Controller
             $Karyawan->salary        = $salary;
             $Karyawan->save();
 
-            Toastr::success('Data Berhasil Ditambahkan :)','Success');
+            Toastr::success('Data added successfully :)','Success');
             return redirect()->back();
 
         }catch(\Exception $e){
 
-            Toastr::error('Data Gagal Ditambahkan :)','Error');
+            Toastr::error('Data added fail :)','Error');
             return redirect()->back();
         }
     }
 
-    // view delete
+    // /**
+    //  * Remove the specified resource from storage.
+    //  *
+    //  * @param  \App\Models\Karyawan  $karyawan
+    //  * @return \Illuminate\Http\Response
+    //  */
     public function viewDelete($id)
     {
+        //
         $delete = Karyawan::find($id);
         $delete->delete();
         Toastr::success('Data berhasil dihapus :)','Success');
-        return redirect()->route('form/view/detail/karyawan');
+        return redirect()->route('karyawan/view/detail');
     }
 }

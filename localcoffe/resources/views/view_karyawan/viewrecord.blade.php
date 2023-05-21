@@ -62,13 +62,11 @@
                                     <td class="phone_number">{{ $item->department }}</td>
                                     <td class="phone_number">{{ $item->salary }}</td>
                                     <td class="text-center">
-                                        {{-- <a href="{{ route('form/staff/new') }}">
-                                            <span class="badge bg-info"><i class="bi bi-person-plus-fill"></i></span>
-                                        </a> --}}
-                                        <a href="{{ url('form/view/detail/karyawan/'.$item->id) }}">
+
+                                        <a href="{{ url('karyawan/view/detail/'.$item->id) }}">
                                             <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
                                         </a>
-                                        <a href="{{ url('delete/'.$item->id) }}" onclick="return confirm('Apakah Anda yakin ingin menghapusnya?')"><span class="badge bg-danger"><i class="bi bi-trash"></i></span></a>
+                                        <a href="{{ url('karyawan/delete/'.$item->id) }}" onclick="return confirm('Apakah Anda yakin ingin menghapusnya?')"><span class="badge bg-danger"><i class="bi bi-trash"></i></span></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -84,7 +82,7 @@
                 <p>2023 &copy; Local Coffe</p>
             </div>
             <div class="float-end">
-                <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
+                <p>Make with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
                 href="http://localcoffe.com">Local Coffe</a></p>
             </div>
         </div>

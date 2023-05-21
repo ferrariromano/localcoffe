@@ -34,7 +34,7 @@
                 </div>
                 <div class="card-content">
                     <div class="card-body">
-                        <form class="form form-horizontal" action="{{ route('form/view/update/karyawan') }}" method="POST">
+                        <form class="form form-horizontal" action="{{ route('karyawan/view/update') }}" method="POST">
                             @csrf
                             <input type="hidden" name="id" value="{{ $data[0]->id }}">
                             <div class="form-body">
@@ -162,7 +162,7 @@
 
                                     <div class="col-12 d-flex justify-content-end">
                                         <button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
-                                        <a href="{{ route('form/view/detail/karyawan') }}" class="btn btn-light-secondary me-1 mb-1">Kembali</a>
+                                        <a href="{{ route('karyawan/view/detail') }}" class="btn btn-light-secondary me-1 mb-1">Kembali</a>
                                     </div>
                                 </div>
                             </div>

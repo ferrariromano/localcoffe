@@ -4,10 +4,10 @@ use App\Http\Controllers\LockScreen;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\FormKaryawanController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\UserManagementController;
@@ -94,9 +94,13 @@ Route::get('delete/{id}', [App\Http\Controllers\FormController::class, 'viewDele
 
 
 // ----------------------------- form karyawan ------------------------------//
-Route::get('form/karyawan/new', [App\Http\Controllers\FormKaryawanController::class, 'index'])->middleware('auth')->name('form/karyawan/new');
-Route::post('form/save', [App\Http\Controllers\FormKaryawanController::class, 'saveRecord'])->name('form/save');
-Route::get('form/view/detail/karyawan', [App\Http\Controllers\FormKaryawanController::class, 'viewRecord'])->middleware('auth')->name('form/view/detail/karyawan');
-Route::get('form/view/detail/karyawan{id}', [App\Http\Controllers\FormKaryawanController::class, 'viewDetail'])->middleware('auth');
-Route::post('form/view/update/karyawan', [App\Http\Controllers\FormKaryawanController::class, 'viewUpdate'])->name('form/view/update/karyawan');
-Route::get('delete/karyawan/{id}', [App\Http\Controllers\FormKaryawanController::class, 'viewDelete'])->middleware('auth');
+Route::get('karyawan/new', [App\Http\Controllers\KaryawanController::class, 'index'])->middleware('auth')->name('karyawan/new');
+Route::post('karyawan/save', [App\Http\Controllers\KaryawanController::class, 'saveRecord'])->name('karyawan/save');
+Route::get('karyawan/view/detail', [App\Http\Controllers\KaryawanController::class, 'viewUpdate'])->middleware('auth')->name('karyawan/view/detail');
+Route::get('karyawan/view/detail/{id}', [App\Http\Controllers\KaryawanController::class, 'viewDetail'])->middleware('auth');
+Route::post('karyawan/view/update', [App\Http\Controllers\KaryawanController::class, 'viewUpdate'])->name('karyawan/view/update');
+Route::get('karyawan/delete/{id}', [App\Http\Controllers\KaryawanController::class, 'viewDelete'])->middleware('auth');
+
+
+
+

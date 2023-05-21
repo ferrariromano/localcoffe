@@ -52,8 +52,8 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="{{ route('form/staff/new') }}">List Data Pesanan</a>
-                            <a href="{{ route('form/view/detail') }}"></a>
+                            <a href="{{ route('') }}">List Data Pesanan</a>
+                            <a href="{{ route('') }}"></a>
                         </li>
                     </ul>
                 </li>
@@ -70,8 +70,8 @@
                         </a>
                         <ul class="submenu">
                             <li class="submenu-item active">
-                                <a href="{{ route('form/karyawan/new') }}">Menambah Karyawan</a>
-                                <a href="{{ route('form/view/detail') }}">List Karyawan</a>
+                                <a href="{{ route('karyawan/new') }}">Menambah Karyawan</a>
+                                <a href="{{ route('karyawan/view/detail') }}">List Karyawan</a>
                             </li>
                         </ul>
                     </li>
@@ -83,8 +83,8 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="{{ route('form/view/detail') }}">Daftar Harga Product</a>
-                            <a href="{{ route('form/view/detail') }}">Daftar Stock Product</a>
+                            <a href="">Daftar Harga Product</a>
+                            <a href="">Daftar Stock Product</a>
                         </li>
                     </ul>
                 </li>
@@ -97,8 +97,8 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="{{ route('form/staff/new') }}">List Transaksi</a>
-                            <a href="{{ route('form/view/detail') }}"></a>
+                            <a href="">List Transaksi</a>
+                            <a href=""></a>
                         </li>
                     </ul>
                 </li>

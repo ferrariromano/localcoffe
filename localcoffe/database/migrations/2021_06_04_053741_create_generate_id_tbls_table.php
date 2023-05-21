@@ -7,29 +7,29 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateGenerateIdTblsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        DB::unprepared('
-                CREATE TRIGGER id_store BEFORE INSERT ON staff FOR EACH ROW
-                    BEGIN
-                        INSERT INTO sequence_tbls VALUES (NULL);
-                        SET NEW.rec_id = CONCAT("KHM_", LPAD(LAST_INSERT_ID(), 10, "0"));
-                    END
-        ');
-    }
+    // /**
+    //  * Run the migrations.
+    //  *
+    //  * @return void
+    //  */
+    // public function up()
+    // {
+    //     DB::unprepared('
+    //             CREATE TRIGGER id_store BEFORE INSERT ON staff FOR EACH ROW
+    //                 BEGIN
+    //                     INSERT INTO sequence_tbls VALUES (NULL);
+    //                     SET NEW.rec_id = CONCAT("KHM_", LPAD(LAST_INSERT_ID(), 10, "0"));
+    //                 END
+    //     ');
+    // }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-       DB::unprepared('DROP TRIGGER "id_store"');
-    }
+    // /**
+    //  * Reverse the migrations.
+    //  *
+    //  * @return void
+    //  */
+    // public function down()
+    // {
+    //    DB::unprepared('DROP TRIGGER "id_store"');
+    // }
 }
