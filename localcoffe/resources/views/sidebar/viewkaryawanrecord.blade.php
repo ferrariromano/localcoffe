@@ -49,7 +49,7 @@
                 @if (Auth::user()->role_name=='Pemilik Usaha')
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
-                        <i class="bi bi-file-earmark-medical-fill"></i>
+                        <i class="bi bi-people-fill"></i>
                         <span>Daftar Karyawan</span>
                     </a>
                     <ul class="submenu">
@@ -59,7 +59,7 @@
                         </li>
                     </ul>
                 </li>
-
+                {{-- <li class="sidebar-title"> </li> --}}
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-file-earmark-medical-fill"></i>
@@ -67,22 +67,20 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="">Daftar Harga Product</a>
-                            <a href="">Daftar Stock Product</a>
+                            <a href="{{ route('products/') }}">List Product</a>
                         </li>
                     </ul>
                 </li>
 
-                 {{-- <li class="sidebar-title"> </li> --}}
-                 <li class="sidebar-item  has-sub">
+                <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-wallet-fill"></i>
                         <span>Transaksi</span>
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="">List Transaksi</a>
-                            <a href=""></a>
+                            <a href="{{ route('form/staff/new') }}">List Transaksi</a>
+                            <a href="{{ route('form/view/detail') }}"></a>
                         </li>
                     </ul>
                 </li>

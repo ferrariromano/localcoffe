@@ -63,45 +63,43 @@
 
 
                 @if (Auth::user()->role_name=='Pemilik Usaha')
-                    <li class="sidebar-item  has-sub">
-                        <a href="#" class='sidebar-link'>
-                            <i class="bi bi-people-fill"></i>
-                            <span>Daftar Karyawan</span>
-                        </a>
-                        <ul class="submenu">
-                            <li class="submenu-item active">
-                                <a href="{{ route('karyawan/new') }}">Menambah Karyawan</a>
-                                <a href="{{ route('karyawan/view/detail') }}">List Karyawan</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-file-earmark-medical-fill"></i>
-                        <span>Daftar Produk</span>
-                    </a>
-                    <ul class="submenu">
-                        <li class="submenu-item active">
-                            <a href="">Daftar Harga Product</a>
-                            <a href="">Daftar Stock Product</a>
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-people-fill"></i>
+                                <span>Daftar Karyawan</span>
+                            </a>
+                            <ul class="submenu">
+                                <li class="submenu-item active">
+                                    <a href="{{ route('karyawan/new') }}">Menambah Karyawan</a>
+                                    <a href="{{ route('karyawan/view/detail') }}">List Karyawan</a>
+                                </li>
+                            </ul>
                         </li>
-                    </ul>
-                </li>
-
-                 {{-- <li class="sidebar-title"> </li> --}}
-                 <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-wallet-fill"></i>
-                        <span>Transaksi</span>
-                    </a>
-                    <ul class="submenu">
-                        <li class="submenu-item active">
-                            <a href="">List Transaksi</a>
-                            <a href=""></a>
+                        {{-- <li class="sidebar-title"> </li> --}}
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-file-earmark-medical-fill"></i>
+                                <span>Daftar Produk</span>
+                            </a>
+                            <ul class="submenu">
+                                <li class="submenu-item active">
+                                    <a href="{{ route('products/') }}">List Product</a>
+                                </li>
+                            </ul>
                         </li>
-                    </ul>
-                </li>
+
+                        <li class="sidebar-item  has-sub">
+                            <a href="#" class='sidebar-link'>
+                                <i class="bi bi-wallet-fill"></i>
+                                <span>Transaksi</span>
+                            </a>
+                            <ul class="submenu">
+                                <li class="submenu-item active">
+                                    <a href="{{ route('form/staff/new') }}">List Transaksi</a>
+                                    <a href="{{ route('form/view/detail') }}"></a>
+                                </li>
+                            </ul>
+                        </li>
                 @endif
 
 
@@ -116,12 +114,12 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="{{ route('form/view/detail') }}">List Product</a>
+                            <a href="{{ route('products') }}">List Product</a>
+                            <a href="{{ route('products/create') }}">Tambah Product</a>
                         </li>
                     </ul>
                 </li>
 
-                {{-- <li class="sidebar-title"> </li> --}}
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-people-fill"></i>
@@ -143,8 +141,8 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="{{ route('form/staff/new') }}">List Jadwal Panen</a>
-                            <a href="{{ route('form/view/detail') }}">List Jadwal Pasca Panen</a>
+                            <a href="">List Jadwal Panen</a>
+                            <a href="">List Jadwal Pasca Panen</a>
                         </li>
                     </ul>
                 </li>
@@ -158,8 +156,8 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="{{ route('form/staff/new') }}">List Data Pesanan</a>
-                            <a href="{{ route('form/view/detail') }}"></a>
+                            <a href="">List Data Pesanan</a>
+                            <a href=""></a>
                         </li>
                     </ul>
                 </li>
@@ -172,8 +170,8 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="{{ route('form/staff/new') }}">List Transaksi</a>
-                            <a href="{{ route('form/view/detail') }}"></a>
+                            <a href="">List Transaksi</a>
+                            <a href=""></a>
                         </li>
                     </ul>
                 </li>

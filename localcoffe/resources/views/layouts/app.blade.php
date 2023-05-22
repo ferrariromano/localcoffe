@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="{{ URL::to('assets/css/app.css') }}">
     <link rel="stylesheet" href="{{ URL::to('assets/css/pages/auth.css') }}">
     {{-- message toastr --}}
-    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css"> 
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
     <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
     <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
-    
+
 </head>
 <style>
     .form-group[class*=has-icon-].has-icon-left .form-select {

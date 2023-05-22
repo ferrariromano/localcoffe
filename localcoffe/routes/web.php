@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\KaryawanController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\Auth\LoginController;
@@ -12,6 +13,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\UserManagementController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+
 
 
 /*
@@ -100,6 +102,15 @@ Route::get('karyawan/view/detail', [App\Http\Controllers\KaryawanController::cla
 Route::get('karyawan/view/detail/{id}', [App\Http\Controllers\KaryawanController::class, 'viewDetail'])->middleware('auth');
 Route::post('karyawan/view/update', [App\Http\Controllers\KaryawanController::class, 'viewUpdate'])->name('karyawan/view/update');
 Route::get('karyawan/delete/{id}', [App\Http\Controllers\KaryawanController::class, 'viewDelete'])->middleware('auth');
+
+// ----------------------------- product ------------------------------//
+// Route::get('products', [App\Http\Controllers\ProductController::class, 'index'])->middleware('auth')->name('products');
+// Route::get('products/', [App\Http\Controllers\ProductController::class, 'index'])->middleware('auth')->name('products/');
+// Route::resource('products', ProductController::class);
+Route::get('products', [App\Http\Controllers\ProductController::class, 'index'])->middleware('auth')->name('products');
+Route::get('products/create', [App\Http\Controllers\ProductController::class, 'create'])->middleware('auth')->name('products/create');
+Route::post('products/store', [App\Http\Controllers\ProductController::class, 'store'])->middleware('auth')->name('products/store');
+
 
 
 

@@ -59,33 +59,31 @@
                         </li>
                     </ul>
                 </li>
+                {{-- <li class="sidebar-title"> </li> --}}
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-file-earmark-medical-fill"></i>
+                        <span>Daftar Produk</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="submenu-item active">
+                            <a href="{{ route('products/') }}">List Product</a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li class="sidebar-item  has-sub">
-                <a href="#" class='sidebar-link'>
-                    <i class="bi bi-file-earmark-medical-fill"></i>
-                    <span>Daftar Produk</span>
-                </a>
-                <ul class="submenu">
-                    <li class="submenu-item active">
-                        <a href="">Daftar Harga Product</a>
-                        <a href="">Daftar Stock Product</a>
-                    </li>
-                </ul>
-            </li>
-
-             {{-- <li class="sidebar-title"> </li> --}}
-             <li class="sidebar-item  has-sub">
-                <a href="#" class='sidebar-link'>
-                    <i class="bi bi-wallet-fill"></i>
-                    <span>Transaksi</span>
-                </a>
-                <ul class="submenu">
-                    <li class="submenu-item active">
-                        <a href="">List Transaksi</a>
-                        <a href=""></a>
-                    </li>
-                </ul>
-            </li>
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-wallet-fill"></i>
+                        <span>Transaksi</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="submenu-item active">
+                            <a href="{{ route('form/staff/new') }}">List Transaksi</a>
+                            <a href="{{ route('form/view/detail') }}"></a>
+                        </li>
+                    </ul>
+                </li>
             @endif
 
 
