@@ -141,8 +141,9 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="">List Jadwal Panen</a>
-                            <a href="">List Jadwal Pasca Panen</a>
+                            <a href="{{ route('panen') }}">List Jadwal Panen</a>
+                            <a href="{{ route('pascapanen') }}">List Jadwal  Pasca Panen</a>
+
                         </li>
                     </ul>
                 </li>

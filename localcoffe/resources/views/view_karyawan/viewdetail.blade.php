@@ -146,7 +146,7 @@
                                     </div>
 
                                     <div class="col-md-4">
-                                        <label>Gaj</label>
+                                        <label>Gaji</label>
                                     </div>
                                     <div class="col-md-8">
                                         <div class="form-group has-icon-left">

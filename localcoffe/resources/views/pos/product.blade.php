@@ -10,11 +10,88 @@
         </a>
     </header>
 
-    <div class="page-heading">
+    <div class="container">
+        <h1>Products</h1>
+
+        <a href="{{ route('products/create') }}" class="btn btn-primary">Add Product</a>
+
+        @if (session('success'))
+        <div class="alert alert-success mt-3">
+            {{ session('success') }}
+        </div>
+        @endif
+        {!! Toastr::message() !!}
+        <div class="card-body">
+        <table class="table table-striped" id="table1">
+        {{-- <table class="table mt-3"> --}}
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <th>Image</th>
+                    <th class="text-center" >Actions </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($products as $product)
+                    <tr>
+                        <td>{{ $product->id }}</td>
+                        <td>{{ $product->name }}</td>
+                        <td>{{ $product->description }}</td>
+                        <td>{{ $product->price }}</td>
+                        <td>
+                            <img src="{{ asset('images/'.$product->image) }}" alt="Product Image" class="img-thumbnail" width="100">
+                        </td>
+                        <td>
+                            <a href="{{ route('products/edit', $product->id) }}" class="btn btn-primary">Edit</a>
+                            <form action="{{ route('products/destroy', $product->id) }}" method="POST" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {{-- <div class="page-heading">
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Daftar Profuk</h3>
+                    <h3>Daftar Produk</h3>
                     <p class="text-subtitle text-muted">Daftar Produk list</p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
@@ -26,10 +103,10 @@
                     </nav>
                 </div>
             </div>
-        </div>
+        </div> --}}
 
         {{-- message --}}
-        {!! Toastr::message() !!}
+        {{-- {!! Toastr::message() !!}
         <section class="section">
             <div class="card">
                 <div class="card-header">
@@ -39,6 +116,7 @@
                     <table class="table table-striped" id="table1">
                         <thead>
                             <tr>
+                                <th>ID</th>
                                 <th>Nama</th>
                                 <th>Harga</th>
                                 <th>Deskripsi</th>
@@ -49,20 +127,35 @@
                         <tbody>
                             @foreach ($products as $product)
                                 <tr>
+                                    <td class="id">{{ $product->id }}</td>
                                     <td class="name">{{ $product->name }}</td>
                                     <td class="phone_number">{{ $product->price }}</td>
                                     <td class="description">{{ $product->description }}</td>
-                                    <td>
+                                    <td class="text-center">
                                         @if ($product->image)
-                                            <img src="{{ asset('images/' . $product->image) }}" alt="Gambar Produk">
+                                        <img src="{{ asset('images/' . $product->image) }}" alt="Gambar Produk" class="product-image">
                                         @endif
-                                    </td>
+
+
+                                        <a href="{{ route('products/edit', $product->id) }}" class="btn btn-primary">Edit</a>
+                                        <form action="{{ route('products/destroy', $product->id) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button> --}}
+
+
+
+                                            {{-- <a href="{{ url('products/edit'.$product->id) }}">
+                                                <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
+                                            </a>
+                                            <a href="{{ url('products/destroy'.$product->id) }}" onclick="return confirm('Apakah Anda yakin ingin menghapusnya?')"><span class="badge bg-danger"><i class="bi bi-trash"></i></span></a> --}}
+                                    {{-- </td>
                                 </tr>
                             @endforeach
                         </tbody>
-                    </table>
+                    </table> --}}
 
-    <a href="{{ route('products/create') }}">Tambah Produk</a>
+    {{-- <a href="{{ route('products/create') }}">Tambah Produk</a> --}}
 
 
 

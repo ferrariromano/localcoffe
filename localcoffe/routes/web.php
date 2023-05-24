@@ -6,6 +6,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\PanenController;
+use App\Http\Controllers\PascapanenController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\Auth\LoginController;
@@ -104,14 +106,41 @@ Route::post('karyawan/view/update', [App\Http\Controllers\KaryawanController::cl
 Route::get('karyawan/delete/{id}', [App\Http\Controllers\KaryawanController::class, 'viewDelete'])->middleware('auth');
 
 // ----------------------------- product ------------------------------//
-// Route::get('products', [App\Http\Controllers\ProductController::class, 'index'])->middleware('auth')->name('products');
-// Route::get('products/', [App\Http\Controllers\ProductController::class, 'index'])->middleware('auth')->name('products/');
-// Route::resource('products', ProductController::class);
+
 Route::get('products', [App\Http\Controllers\ProductController::class, 'index'])->middleware('auth')->name('products');
 Route::get('products/create', [App\Http\Controllers\ProductController::class, 'create'])->middleware('auth')->name('products/create');
 Route::post('products/store', [App\Http\Controllers\ProductController::class, 'store'])->middleware('auth')->name('products/store');
+Route::get('products/{id}/edit', [App\Http\Controllers\ProductController::class, 'edit'])->name('products/edit');
+Route::put('products/{id}', [App\Http\Controllers\ProductController::class, 'update'])->name('products/update');
+Route::delete('products/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('products/destroy');
+
+
+// ----------------------------- jadwalpanen ------------------------------//
+
+// Route::get('panen', [App\Http\Controllers\PanenController::class, 'index'])->middleware('auth')->name('panen');
+// Route::get('panen/create', [App\Http\Controllers\PanenController::class, 'create'])->middleware('auth')->name('panen/create');
+// Route::post('panen', [App\Http\Controllers\PanenController::class, 'store'])->middleware('auth')->name('panen/store');
+// Route::get('panen/{panen}/edit', [App\Http\Controllers\PanenController::class, 'edit'])->name('panen/edit');
+// Route::put('panen/{panen}', [App\Http\Controllers\PanenController::class, 'update'])->name('panen/update');
+// Route::delete('panen/{panen}', [App\Http\Controllers\PanenController::class, 'destroy'])->name('panen/destroy');
 
 
 
+// ----------------------------- jadwal ------------------------------//
+// Rute untuk Panen
+Route::get('panen', [App\Http\Controllers\PanenController::class, 'index'])->middleware('auth')->name('panen');
+Route::get('panen/create', [App\Http\Controllers\PanenController::class, 'create'])->middleware('auth')->name('panen/create');
+Route::post('panen', [App\Http\Controllers\PanenController::class, 'store'])->middleware('auth')->name('panen/store');
+Route::get('panen/{id}', [App\Http\Controllers\PanenController::class, 'show'])->name('panen/show');
+Route::get('panen/{id}/edit', [App\Http\Controllers\PanenController::class, 'edit'])->name('panen/edit');
+Route::put('panen/{id}', [App\Http\Controllers\PanenController::class, 'update'])->name('panen/update');
+Route::delete('panen/{id}', [App\Http\Controllers\PanenController::class, 'destroy'])->name('panen/destroy');
 
+// Rute untuk Pascapanen
+Route::get('pascapanen', [App\Http\Controllers\PascapanenController::class, 'index'])->name('pascapanen');
+Route::get('panen/{panenId}/pascapanen/create', [App\Http\Controllers\PascapanenController::class, 'create'])->name('pascapanen/create');
+Route::post('panen/{panenId}/pascapanen', [App\Http\Controllers\PascapanenController::class, 'store'])->name('pascapanen/store');
+Route::get('panen/{panenId}/pascapanen/{pascapanenId}/edit', [App\Http\Controllers\PascapanenController::class, 'edit'])->name('pascapanen/edit');
+Route::put('panen/{panenId}/pascapanen/{pascapanenId}', [App\Http\Controllers\PascapanenController::class, 'update'])->name('pascapanen/update');
+Route::delete('panen/{panenId}/pascapanen/{pascapanenId}', [App\Http\Controllers\PascapanenController::class, 'destroy'])->name('pascapanen/destroy');
 

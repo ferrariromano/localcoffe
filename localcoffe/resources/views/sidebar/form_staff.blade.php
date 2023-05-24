@@ -56,7 +56,8 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="{{ route('form/view/detail') }}">List Product</a>
+                            <a href="{{ route('products') }}">List Product</a>
+                            <a href="{{ route('products/create') }}">Tambah Product</a>
                         </li>
                     </ul>
                 </li>
@@ -77,14 +78,14 @@
 
                 {{-- <li class="sidebar-title"> </li> --}}
                 <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
+                    <<a href="#" class='sidebar-link'>
                         <i class="bi bi-calendar-check-fill"></i>
                         <span>Jadwal</span>
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="{{ route('form/staff/new') }}">List Jadwal Panen</a>
-                            <a href="{{ route('form/view/detail') }}">List Jadwal Pasca Panen</a>
+                            <a href="{{ route('panen') }}">List Jadwal Panen</a>
+                            <a href="">List Jadwal  Pasca Panen</a>
                         </li>
                     </ul>
                 </li>

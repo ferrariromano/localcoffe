@@ -10,37 +10,26 @@
         </a>
     </header>
 
-
     <div class="container">
-        <h1>Add Product</h1>
-
-        <form method="POST" action="{{ route('products/store') }}" enctype="multipart/form-data">
+        <h1>Edit Pascapanen</h1>
+        <form action="{{ route('pascapanen/update', [$panen, $pascapanen]) }}" method="POST">
             @csrf
-
+            @method('PUT')
             <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" name="name" id="name" class="form-control" required>
+                <label for="nama_produk">Nama Produk</label>
+                <input type="text" name="nama_produk" class="form-control" value="{{ $pascapanen->nama_produk }}" required>
             </div>
-
             <div class="form-group">
-                <label for="description">Description</label>
-                <textarea name="description" id="description" class="form-control" rows="5" required></textarea>
+                <label for="tanggal_kemasan">Tanggal Kemasan</label>
+                <input type="date" name="tanggal_kemasan" class="form-control" value="{{ $pascapanen->tanggal_kemasan }}" required>
             </div>
-
             <div class="form-group">
-                <label for="price">Price</label>
-                <input type="text" name="price" id="price" class="form-control" required>
+                <label for="jumlah_produk">Jumlah Produk</label>
+                <input type="number" name="jumlah_produk" class="form-control" value="{{ $pascapanen->jumlah_produk }}" required>
             </div>
-
-            <div class="form-group">
-                <label for="image">Image</label>
-                <input type="file" name="image" id="image" class="form-control-file" required>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Create</button>
+            <button type="submit" class="btn btn-primary">Perbarui</button>
         </form>
     </div>
-
 
 
 
