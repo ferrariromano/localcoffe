@@ -106,7 +106,6 @@
 
 
                 @if (Auth::user()->role_name=='Perkebunan')
-                <li class="sidebar-title"> </li>
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-file-earmark-medical-fill"></i>
@@ -133,7 +132,6 @@
                     </ul>
                 </li>
 
-                {{-- <li class="sidebar-title"> </li> --}}
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-calendar-check-fill"></i>
@@ -143,13 +141,11 @@
                         <li class="submenu-item active">
                             <a href="{{ route('panen') }}">List Jadwal Panen</a>
                             <a href="{{ route('pascapanen') }}">List Jadwal  Pasca Panen</a>
-
                         </li>
                     </ul>
                 </li>
 
 
-                {{-- <li class="sidebar-title"> </li> --}}
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-bag-fill"></i>
@@ -158,12 +154,10 @@
                     <ul class="submenu">
                         <li class="submenu-item active">
                             <a href="">List Data Pesanan</a>
-                            <a href=""></a>
                         </li>
                     </ul>
                 </li>
 
-                 {{-- <li class="sidebar-title"> </li> --}}
                  <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-wallet-fill"></i>
@@ -172,7 +166,6 @@
                     <ul class="submenu">
                         <li class="submenu-item active">
                             <a href="">List Transaksi</a>
-                            <a href=""></a>
                         </li>
                     </ul>
                 </li>

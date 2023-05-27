@@ -47,7 +47,7 @@
 
                 {{-- <li class="sidebar-title">Forms &amp; Tables</li> --}}
                 @if (Auth::user()->role_name=='Perkebunan')
-                <li class="sidebar-title"> </li>
+                {{-- <li class="sidebar-title"> </li> --}}
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
                         <i class="bi bi-file-earmark-medical-fill"></i>
