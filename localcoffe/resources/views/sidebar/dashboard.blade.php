@@ -83,7 +83,7 @@
                             </a>
                             <ul class="submenu">
                                 <li class="submenu-item active">
-                                    <a href="{{ route('products/') }}">List Product</a>
+                                    <a href="{{ route('products') }}">List Product</a>
                                 </li>
                             </ul>
                         </li>
