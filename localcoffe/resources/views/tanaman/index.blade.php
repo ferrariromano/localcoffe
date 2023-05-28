@@ -10,28 +10,31 @@
         </a>
     </header>
 
-    <div class="container">
-        <h1>Data Pascapanen</h1>
-        <a href="{{ route('pascapanen/create', $panen->id) }}" class="btn btn-primary">Tambah Pascapanen</a>
+    {!! Toastr::message() !!}
 
+
+
+    <div class="container">
+        <h1>Daftar Tanaman</h1>
+        <a href="{{ route('tanaman.create') }}" class="btn btn-primary">Tambah Tanaman</a>
         <table class="table mt-3">
             <thead>
                 <tr>
-                    <th>Nama Produk</th>
-                    <th>Tanggal Kemasan</th>
-                    <!-- Tambahkan kolom lainnya jika diperlukan -->
+                    <th>Nama</th>
+                    <th>Jenis</th>
+                    <th>Deskripsi</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($panen->pascapanen as $pascapanen)
+                @foreach($tanaman as $t)
                     <tr>
-                        <td>{{ $pascapanen->nama_produk }}</td>
-                        <td>{{ $pascapanen->tanggal_kemasan }}</td>
-                        <!-- Tampilkan kolom lainnya jika diperlukan -->
+                        <td>{{ $t->nama }}</td>
+                        <td>{{ $t->jenis }}</td>
+                        <td>{{ $t->deskripsi }}</td>
                         <td>
-                            <a href="{{ route('pascapanen/edit', [$panen->id, $pascapanen->id]) }}" class="btn btn-success">Edit</a>
-                            <form action="{{ route('pascapanen/destroy', [$panen->id, $pascapanen->id]) }}" method="POST" style="display: inline-block;">
+                            <a href="{{ route('tanaman.edit', $t->id) }}" class="btn btn-primary">Edit</a>
+                            <form action="{{ route('tanaman.destroy', $t->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Hapus</button>
@@ -42,6 +45,7 @@
             </tbody>
         </table>
     </div>
+
 
 
 

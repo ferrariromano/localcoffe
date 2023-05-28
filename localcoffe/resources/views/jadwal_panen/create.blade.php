@@ -10,27 +10,31 @@
         </a>
     </header>
 
+    {!! Toastr::message() !!}
+
     <div class="container">
-        <h1>Edit Pascapanen</h1>
-        <form action="{{ route('pascapanen/update', [$panen, $pascapanen]) }}" method="POST">
+        <h1>Tambah Jadwal Panen</h1>
+        <form method="POST" action="{{ route('jadwal_panen.store') }}">
             @csrf
-            @method('PUT')
             <div class="form-group">
-                <label for="nama_produk">Nama Produk</label>
-                <input type="text" name="nama_produk" class="form-control" value="{{ $pascapanen->nama_produk }}" required>
+                <label for="tanaman_id">Tanaman:</label>
+                <select id="tanaman_id" name="tanaman_id" class="form-control" required>
+                    @foreach($tanaman as $t)
+                        <option value="{{ $t->id }}">{{ $t->nama }}</option>
+                    @endforeach
+                </select>
             </div>
             <div class="form-group">
-                <label for="tanggal_kemasan">Tanggal Kemasan</label>
-                <input type="date" name="tanggal_kemasan" class="form-control" value="{{ $pascapanen->tanggal_kemasan }}" required>
+                <label for="tanggal">Tanggal:</label>
+                <input type="date" id="tanggal" name="tanggal" class="form-control" required>
             </div>
             <div class="form-group">
-                <label for="jumlah_produk">Jumlah Produk</label>
-                <input type="number" name="jumlah_produk" class="form-control" value="{{ $pascapanen->jumlah_produk }}" required>
+                <label for="deskripsi">Deskripsi:</label>
+                <textarea id="deskripsi" name="deskripsi" class="form-control" required></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">Perbarui</button>
+            <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
     </div>
-
 
 
     <footer>

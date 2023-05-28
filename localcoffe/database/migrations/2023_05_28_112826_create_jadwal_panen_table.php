@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreatePascapanensTable extends Migration
+class CreateJadwalPanenTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreatePascapanensTable extends Migration
      */
     public function up()
     {
-        Schema::create('pascapanens', function (Blueprint $table) {
+        Schema::create('jadwal_panen', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('panen_id');
-            $table->string('nama_produk');
-            $table->date('tanggal_kemasan');
+            $table->unsignedBigInteger('tanaman_id');
+            $table->date('tanggal');
+            $table->string('deskripsi');
             $table->timestamps();
-            $table->foreign('panen_id')->references('id')->on('panens')->onDelete('cascade');
+
+            $table->foreign('tanaman_id')->references('id')->on('tanaman')->onDelete('cascade');
         });
     }
 
@@ -30,6 +31,6 @@ class CreatePascapanensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('pascapanens');
+        Schema::dropIfExists('jadwal_panen');
     }
 }

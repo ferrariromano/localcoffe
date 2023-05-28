@@ -139,8 +139,9 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="{{ route('panen') }}">List Jadwal Panen</a>
-                            <a href="{{ route('pascapanen') }}">List Jadwal  Pasca Panen</a>
+                            <a href="{{ route('jadwal_panen.index') }}">List Jadwal Panen</a>
+                            <a href="{{ route('jadwal_pascapanen.index') }}">List Jadwal  Pasca Panen</a>
+                            <a href="{{ route('tanaman.index') }}">Tanaman</a>
                         </li>
                     </ul>
                 </li>

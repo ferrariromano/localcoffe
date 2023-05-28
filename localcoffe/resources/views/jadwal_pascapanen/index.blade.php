@@ -9,37 +9,31 @@
             <i class="bi bi-justify fs-3"></i>
         </a>
     </header>
-    <div class="container">
-        <h1>Data Panen</h1>
-        <a href="{{ route('panen/create') }}" class="btn btn-primary">Tambah Panen</a>
 
-        <table class="table mt-3">
+    {!! Toastr::message() !!}
+
+
+    <div class="container">
+        <h1>Jadwal Pascapanen</h1>
+        <a href="{{ route('jadwal_pascapanen.create') }}" class="btn btn-primary">Tambah Jadwal Pascapanen</a>
+        <table class="table table-striped mt-3">
             <thead>
                 <tr>
-                    <th>Nama Tanaman</th>
-                    <th>Tanggal Panen</th>
-                    <th>Jumlah Panen</th>
-                    <th>Pascapanen</th>
+                    <th>Tanaman</th>
+                    <th>Tanggal</th>
+                    <th>Deskripsi</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($panen as $item)
+                @foreach($jadwalPascapanen as $jadwal)
                     <tr>
-                        <td>{{ $item->nama_tanaman }}</td>
-                        <td>{{ $item->tanggal_panen }}</td>
-                        <td>{{ $item->jumlah_panen }}</td>
+                        <td>{{ $jadwal->tanaman->nama }}</td>
+                        <td>{{ $jadwal->tanggal }}</td>
+                        <td>{{ $jadwal->deskripsi }}</td>
                         <td>
-                            <ul>
-                                @foreach ($item->pascapanen as $pascapanen)
-                                    <li>{{ $pascapanen->nama_produk }}</li>
-                                @endforeach
-                            </ul>
-                        </td>
-                        <td>
-                            <a href="{{ route('panen/show', $item->id) }}" class="btn btn-primary">Detail</a>
-                            <a href="{{ route('panen/edit', $item->id) }}" class="btn btn-success">Edit</a>
-                            <form action="{{ route('panen/destroy', $item->id) }}" method="POST" style="display: inline-block;">
+                            <a href="{{ route('jadwal_pascapanen.edit', $jadwal->id) }}" class="btn btn-primary">Edit</a>
+                            <form action="{{ route('jadwal_pascapanen.destroy', $jadwal->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Hapus</button>

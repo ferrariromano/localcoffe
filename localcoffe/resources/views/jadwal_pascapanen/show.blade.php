@@ -9,6 +9,9 @@
             <i class="bi bi-justify fs-3"></i>
         </a>
     </header>
+
+    {!! Toastr::message() !!}
+
     <div class="container">
         <h1>Detail Panen</h1>
 
@@ -40,8 +43,6 @@
             <p>Tidak ada data pascapanen yang terkait.</p>
         @endif
     </div>
-
-
 
 
 

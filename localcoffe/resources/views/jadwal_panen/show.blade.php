@@ -10,6 +10,7 @@
         </a>
     </header>
 
+    {!! Toastr::message() !!}
     <div class="container">
         <h1>Detail Panen</h1>
         <p>Nama Tanaman: {{ $panen->nama_tanaman }}</p>

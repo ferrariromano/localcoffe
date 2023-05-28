@@ -6,8 +6,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\KaryawanController;
 use App\Http\Controllers\ProductController;
-use App\Http\Controllers\PanenController;
-use App\Http\Controllers\PascapanenController;
+use App\Http\Controllers\TanamanController;
+use App\Http\Controllers\JadwalPanenController;
+use App\Http\Controllers\JadwalPascapanenController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\Auth\LoginController;
@@ -127,20 +128,25 @@ Route::delete('products/{id}', [App\Http\Controllers\ProductController::class, '
 
 
 // ----------------------------- jadwal ------------------------------//
-// Rute untuk Panen
-Route::get('panen', [App\Http\Controllers\PanenController::class, 'index'])->middleware('auth')->name('panen');
-Route::get('panen/create', [App\Http\Controllers\PanenController::class, 'create'])->middleware('auth')->name('panen/create');
-Route::post('panen', [App\Http\Controllers\PanenController::class, 'store'])->middleware('auth')->name('panen/store');
-Route::get('panen/{id}', [App\Http\Controllers\PanenController::class, 'show'])->name('panen/show');
-Route::get('panen/{id}/edit', [App\Http\Controllers\PanenController::class, 'edit'])->name('panen/edit');
-Route::put('panen/{id}', [App\Http\Controllers\PanenController::class, 'update'])->name('panen/update');
-Route::delete('panen/{id}', [App\Http\Controllers\PanenController::class, 'destroy'])->name('panen/destroy');
+Route::get('/tanaman', [App\Http\Controllers\TanamanController::class, 'index'])->middleware('auth')->name('tanaman.index');
+Route::get('/tanaman/create', [App\Http\Controllers\TanamanController::class, 'create'])->middleware('auth')->name('tanaman.create');
+Route::post('/tanaman', [App\Http\Controllers\TanamanController::class, 'store'])->middleware('auth')->name('tanaman.store');
+Route::get('/tanaman/{id}/edit', [App\Http\Controllers\TanamanController::class, 'edit'])->name('tanaman.edit');
+Route::put('/tanaman/{id}', [App\Http\Controllers\TanamanController::class, 'update'])->name('tanaman.update');
+Route::delete('/tanaman/{id}', [App\Http\Controllers\TanamanController::class, 'destroy'])->name('tanaman.destroy');
 
-// Rute untuk Pascapanen
-Route::get('pascapanen', [App\Http\Controllers\PascapanenController::class, 'index'])->name('pascapanen');
-Route::get('panen/{panenId}/pascapanen/create', [App\Http\Controllers\PascapanenController::class, 'create'])->name('pascapanen/create');
-Route::post('panen/{panenId}/pascapanen', [App\Http\Controllers\PascapanenController::class, 'store'])->name('pascapanen/store');
-Route::get('panen/{panenId}/pascapanen/{pascapanenId}/edit', [App\Http\Controllers\PascapanenController::class, 'edit'])->name('pascapanen/edit');
-Route::put('panen/{panenId}/pascapanen/{pascapanenId}', [App\Http\Controllers\PascapanenController::class, 'update'])->name('pascapanen/update');
-Route::delete('panen/{panenId}/pascapanen/{pascapanenId}', [App\Http\Controllers\PascapanenController::class, 'destroy'])->name('pascapanen/destroy');
+Route::get('/jadwal_panen', [App\Http\Controllers\JadwalPanenController::class, 'index'])->middleware('auth')->name('jadwal_panen.index');
+Route::get('/jadwal_panen/create', [App\Http\Controllers\JadwalPanenController::class, 'create'])->middleware('auth')->name('jadwal_panen.create');
+Route::post('/jadwal_panen', [App\Http\Controllers\JadwalPanenController::class, 'store'])->middleware('auth')->name('jadwal_panen.store');
+Route::get('/jadwal_panen/{id}/edit', [App\Http\Controllers\JadwalPanenController::class, 'edit'])->name('jadwal_panen.edit');
+Route::put('/jadwal_panen/{id}', [App\Http\Controllers\JadwalPanenController::class, 'update'])->name('jadwal_panen.update');
+Route::delete('/jadwal_panen/{id}', [App\Http\Controllers\JadwalPanenController::class, 'destroy'])->name('jadwal_panen.destroy');
+
+Route::get('/jadwal_pascapanen', [App\Http\Controllers\JadwalPascapanenController::class, 'index'])->middleware('auth')->name('jadwal_pascapanen.index');
+Route::get('/jadwal_pascapanen/create', [App\Http\Controllers\JadwalPascapanenController::class, 'create'])->middleware('auth')->name('jadwal_pascapanen.create');
+Route::post('/jadwal_pascapanen', [App\Http\Controllers\JadwalPascapanenController::class, 'store'])->middleware('auth')->name('jadwal_pascapanen.store');
+Route::get('/jadwal_pascapanen/{id}/edit', [App\Http\Controllers\JadwalPascapanenController::class, 'edit'])->name('jadwal_pascapanen.edit');
+Route::put('/jadwal_pascapanen/{id}', [App\Http\Controllers\JadwalPascapanenController::class, 'update'])->name('jadwal_pascapanen.update');
+Route::delete('/jadwal_pascapanen/{id}', [App\Http\Controllers\JadwalPascapanenController::class, 'destroy'])->name('jadwal_pascapanen.destroy');
+
 
