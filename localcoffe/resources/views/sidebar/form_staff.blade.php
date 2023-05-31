@@ -56,8 +56,8 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="{{ route('products') }}">List Product</a>
-                            <a href="{{ route('products/create') }}">Tambah Product</a>
+                            <a href="{{ route('products.index') }}">List Product</a>
+                            <a href="{{ route('products.create') }}">Tambah Product</a>
                         </li>
                     </ul>
                 </li>
@@ -118,6 +118,35 @@
                 </li>
                 @endif
 
+
+
+
+                @if (Auth::user()->role_name=='Pemilik Usaha')
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-people-fill"></i>
+                        <span>Daftar Karyawan</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="submenu-item active">
+                            <a href="{{ route('karyawan.index') }}">Menambah Karyawan</a>
+                            {{-- <a href="{{ route('karyawan.view-record') }}">List Karyawan</a> --}}
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="sidebar-item  has-sub">
+                    <a href="#" class='sidebar-link'>
+                        <i class="bi bi-wallet-fill"></i>
+                        <span>Transaksi</span>
+                    </a>
+                    <ul class="submenu">
+                        <li class="submenu-item active">
+                            <a href="{{ route('products.index') }}">List Produk</a>
+                        </li>
+                    </ul>
+                </li>
+                @endif
 
                 <li class="sidebar-item">
                     <a href="{{ route('logout') }}" class='sidebar-link'>

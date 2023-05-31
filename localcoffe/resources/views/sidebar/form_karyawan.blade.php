@@ -59,18 +59,6 @@
                         </li>
                     </ul>
                 </li>
-                {{-- <li class="sidebar-title"> </li> --}}
-                <li class="sidebar-item  has-sub">
-                    <a href="#" class='sidebar-link'>
-                        <i class="bi bi-file-earmark-medical-fill"></i>
-                        <span>Daftar Produk</span>
-                    </a>
-                    <ul class="submenu">
-                        <li class="submenu-item active">
-                            <a href="{{ route('products') }}">List Product</a>
-                        </li>
-                    </ul>
-                </li>
 
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
@@ -79,8 +67,7 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="{{ route('form/staff/new') }}">List Transaksi</a>
-                            <a href="{{ route('form/view/detail') }}"></a>
+                            <a href="{{ route('products.index') }}">List Produk</a>
                         </li>
                     </ul>
                 </li>

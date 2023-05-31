@@ -9,6 +9,8 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\TanamanController;
 use App\Http\Controllers\JadwalPanenController;
 use App\Http\Controllers\JadwalPascapanenController;
+use App\Http\Controllers\OrderController;
+
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\Auth\LoginController;
@@ -109,25 +111,43 @@ Route::delete('/karyawan/{id}', [App\Http\Controllers\KaryawanController::class,
 
 
 
-
-
-
-
-// Route::get('/karyawan', [App\Http\Controllers\KaryawanController::class, 'index'])->name('karyawan.index');
-// Route::post('/karyawan/save-record', [App\Http\Controllers\KaryawanController::class, 'saveRecord'])->name('karyawan.save-record');
-// Route::get('/karyawan/view-record', [App\Http\Controllers\KaryawanController::class, 'viewRecord'])->name('karyawan.view-record');
-// Route::get('/karyawan/view-detail/{id}', [App\Http\Controllers\KaryawanController::class, 'viewDetail'])->name('karyawan.view-detail');
-// Route::post('/karyawan/view-update', [App\Http\Controllers\KaryawanController::class, 'viewUpdate'])->name('karyawan.view-update');
-// Route::get('/karyawan/view-delete/{id}', [App\Http\Controllers\KaryawanController::class, 'viewDelete'])->name('karyawan.view-delete');
-
 // ----------------------------- product ------------------------------//
 
-Route::get('products', [App\Http\Controllers\ProductController::class, 'index'])->middleware('auth')->name('products');
-Route::get('products/create', [App\Http\Controllers\ProductController::class, 'create'])->middleware('auth')->name('products/create');
-Route::post('products/store', [App\Http\Controllers\ProductController::class, 'store'])->middleware('auth')->name('products/store');
-Route::get('products/{id}/edit', [App\Http\Controllers\ProductController::class, 'edit'])->name('products/edit');
-Route::put('products/{id}', [App\Http\Controllers\ProductController::class, 'update'])->name('products/update');
-Route::delete('products/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('products/destroy');
+// Route::get('products', [App\Http\Controllers\ProductController::class, 'index'])->middleware('auth')->name('products');
+// Route::get('products/create', [App\Http\Controllers\ProductController::class, 'create'])->middleware('auth')->name('products/create');
+// Route::post('products/store', [App\Http\Controllers\ProductController::class, 'store'])->middleware('auth')->name('products/store');
+// Route::get('products/{id}/edit', [App\Http\Controllers\ProductController::class, 'edit'])->name('products/edit');
+// Route::put('products/{id}', [App\Http\Controllers\ProductController::class, 'update'])->name('products/update');
+// Route::delete('products/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('products/destroy');
+
+// Route::group(['middleware' => ['auth']], function () {
+//     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    // Routing untuk produk
+// Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+// Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+// Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+// Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+// Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+// });
+
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+// Routing untuk produk
+Route::get('/products', [ProductController::class, 'index'])->name('products.index');
+Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
+Route::post('/products', [ProductController::class, 'store'])->name('products.store');
+Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
+Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
+
+// Routing untuk order
+Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
+
+// Routing untuk Edit Product di sidebar
+Route::get('/products/{product}/edit', [ProductController::class, 'edit'])
+    ->name('sidebar.products.edit')
+    ->where('product', '[0-9]+');
 
 
 // ----------------------------- jadwalpanen ------------------------------//
@@ -163,4 +183,12 @@ Route::get('/jadwal_pascapanen/{id}/edit', [App\Http\Controllers\JadwalPascapane
 Route::put('/jadwal_pascapanen/{id}', [App\Http\Controllers\JadwalPascapanenController::class, 'update'])->name('jadwal_pascapanen.update');
 Route::delete('/jadwal_pascapanen/{id}', [App\Http\Controllers\JadwalPascapanenController::class, 'destroy'])->name('jadwal_pascapanen.destroy');
 
+// ----------------------------- orders ------------------------------//
 
+Route::resource('orders', OrderController::class)->only(['index', 'store', 'update','show']);
+Route::resource('products', ProductController::class);
+Route::get('/checkout/{product}', [OrderController::class, 'create'])->name('orders.create');
+Route::resource('orders', OrderController::class);
+
+Route::get('/checkout/{product}', [OrderController::class, 'create'])->name('orders.create');
+Route::get('/orders/create', 'OrderController@create')->name('orders.create');
