@@ -99,12 +99,26 @@ Route::get('delete/{id}', [App\Http\Controllers\FormController::class, 'viewDele
 
 
 // ----------------------------- form karyawan ------------------------------//
-Route::get('karyawan/new', [App\Http\Controllers\KaryawanController::class, 'index'])->middleware('auth')->name('karyawan/new');
-Route::post('karyawan/save', [App\Http\Controllers\KaryawanController::class, 'saveRecord'])->name('karyawan/save');
-Route::get('karyawan/view/detail', [App\Http\Controllers\KaryawanController::class, 'viewUpdate'])->middleware('auth')->name('karyawan/view/detail');
-Route::get('karyawan/view/detail/{id}', [App\Http\Controllers\KaryawanController::class, 'viewDetail'])->middleware('auth');
-Route::post('karyawan/view/update', [App\Http\Controllers\KaryawanController::class, 'viewUpdate'])->name('karyawan/view/update');
-Route::get('karyawan/delete/{id}', [App\Http\Controllers\KaryawanController::class, 'viewDelete'])->middleware('auth');
+Route::get('/karyawan', [App\Http\Controllers\KaryawanController::class, 'index'])->name('karyawan.index');
+Route::get('/karyawan/create', [App\Http\Controllers\KaryawanController::class, 'create'])->name('karyawan.create');
+Route::post('/karyawan', [App\Http\Controllers\KaryawanController::class, 'store'])->name('karyawan.store');
+Route::get('/karyawan/{id}', [App\Http\Controllers\KaryawanController::class, 'show'])->name('karyawan.show');
+Route::get('/karyawan/{id}/edit', [App\Http\Controllers\KaryawanController::class, 'edit'])->name('karyawan.edit');
+Route::put('/karyawan/{id}', [App\Http\Controllers\KaryawanController::class, 'update'])->name('karyawan.update');
+Route::delete('/karyawan/{id}', [App\Http\Controllers\KaryawanController::class, 'destroy'])->name('karyawan.destroy');
+
+
+
+
+
+
+
+// Route::get('/karyawan', [App\Http\Controllers\KaryawanController::class, 'index'])->name('karyawan.index');
+// Route::post('/karyawan/save-record', [App\Http\Controllers\KaryawanController::class, 'saveRecord'])->name('karyawan.save-record');
+// Route::get('/karyawan/view-record', [App\Http\Controllers\KaryawanController::class, 'viewRecord'])->name('karyawan.view-record');
+// Route::get('/karyawan/view-detail/{id}', [App\Http\Controllers\KaryawanController::class, 'viewDetail'])->name('karyawan.view-detail');
+// Route::post('/karyawan/view-update', [App\Http\Controllers\KaryawanController::class, 'viewUpdate'])->name('karyawan.view-update');
+// Route::get('/karyawan/view-delete/{id}', [App\Http\Controllers\KaryawanController::class, 'viewDelete'])->name('karyawan.view-delete');
 
 // ----------------------------- product ------------------------------//
 

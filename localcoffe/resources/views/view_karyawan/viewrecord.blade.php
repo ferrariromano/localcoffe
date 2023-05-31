@@ -28,54 +28,48 @@
         </div>
         {{-- message --}}
         {!! Toastr::message() !!}
-        <section class="section">
-            <div class="card">
-                <div class="card-header">
-                    Ubah Karyawan List
-                </div>
-                <div class="card-body">
-                    <table class="table table-striped" id="table1">
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>ID</th>
-                                <th>Nama Lengkap</th>
-                                <th>Gender</th>
-                                <th>Email Address</th>
-                                <th>Nomor Telepon</th>
-                                <th>Posisi</th>
-                                <th>Alamat</th>
-                                <th>Gaji</th>
-                                <th class="text-center">Edit</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($data as $key => $item)
-                                <tr>
-                                    <td class="id">{{ ++$key }}</td>
-                                    <td class="name">{{ $item->rec_id }}</td>
-                                    <td class="name">{{ $item->full_name }}</td>
-                                    <td class="name">{{ $item->sex }}</td>
-                                    <td class="email">{{ $item->email_address }}</td>
-                                    <td class="phone_number">{{ $item->phone_number }}</td>
-                                    <td class="phone_number">{{ $item->position }}</td>
-                                    <td class="phone_number">{{ $item->department }}</td>
-                                    <td class="phone_number">{{ $item->salary }}</td>
-                                    <td class="text-center">
+        <div class="container">
+            <h1>List of Employees</h1>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Full Name</th>
+                        <th>Sex</th>
+                        <th>Email Address</th>
+                        <th>Phone Number</th>
+                        <th>Position</th>
+                        <th>Department</th>
+                        <th>Salary</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($data as $row)
+                        <tr>
+                            <td>{{ $row->id }}</td>
+                            <td>{{ $row->full_name }}</td>
+                            <td>{{ $row->sex }}</td>
+                            <td>{{ $row->email_address }}</td>
+                            <td>{{ $row->phone_number }}</td>
+                            <td>{{ $row->position }}</td>
+                            <td>{{ $row->department }}</td>
+                            <td>{{ $row->salary }}</td>
+                            <td>
+                                <a href="{{ route('karyawan.view-detail', $row->id) }}">View Detail</a>
+                                <form action="{{ route('karyawan.view-delete', ['id' => $row->id]) }}" method="post" style="display:inline-block">
+                                    @csrf
+                                    @method('DELETE')
+                                    <a href="{{ route('karyawan.view-delete', $row->id) }}" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this employee?')">Delete</a>
+                                </form>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
 
-                                        <a href="{{ url('karyawan/view/detail/'.$item->id) }}">
-                                            <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
-                                        </a>
-                                        <a href="{{ url('karyawan/delete/'.$item->id) }}" onclick="return confirm('Apakah Anda yakin ingin menghapusnya?')"><span class="badge bg-danger"><i class="bi bi-trash"></i></span></a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </section>
-    </div>
+
     <footer>
         <div class="footer clearfix mb-0 text-muted ">
             <div class="float-start">

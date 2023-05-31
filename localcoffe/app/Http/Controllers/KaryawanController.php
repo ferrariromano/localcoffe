@@ -11,145 +11,73 @@ use DB;
 
 class KaryawanController extends Controller
 {
-    // /**
-    //  * Display a listing of the resource.
-    //  *
-    //  * @return \Illuminate\Http\Response
-    //  */
+
     public function index()
     {
-        //
-        return view('formkaryawan.formkaryawan');
-    }
-
-    // /**
-    //  * Show the form for creating a new resource.
-    //  *
-    //  * @return \Illuminate\Http\Response
-    //  */
-    public function viewRecord()
-    {
-        $data = DB::table('karyawan')->get();
-        return view('view_karyawan.viewrecord',compact('data'));
+        $karyawan = Karyawan::all();
+        return view('karyawan.index', compact('karyawan'));
     }
 
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Karyawan  $karyawan
-     * @return \Illuminate\Http\Response
-     */
-    public function viewDetail($id)
+    public function create()
     {
-        //
-        $data = DB::table('karyawan')->where('id',$id)->get();
-        return view('view_karyawan.viewdetail',compact('data'));
+        return view('karyawan.create');
     }
 
-    // /**
-    //  * Show the form for editing the specified resource.
-    //  *
-    //  * @param  \App\Models\Karyawan  $karyawan
-    //  * @return \Illuminate\Http\Response
-    //  */
-    public function viewUpdate(Request $request)
+
+    public function store(Request $request)
     {
-        //
-        try{
-            $id           = $request->id;
-            $rec_id       = $request->rec_id;
-            $fullName     = $request->fullName;
-            $sex          = $request->sex;
-            $emailAddress = $request->emailAddress;
-            $phone_number = $request->phone_number;
-            $position     = $request->position;
-            $department   = $request->department;
-            $salary       = $request->salary;
-
-            $update = [
-
-                'id'            => $id,
-                'rec_id'        => $rec_id,
-                'full_name'     => $fullName,
-                'sex'           => $sex,
-                'email_address' => $emailAddress,
-                'phone_number'  => $phone_number,
-                'position'      => $position,
-                'department'    => $department,
-                'salary'        => $salary,
-            ];
-            Karyawan::where('id',$request->id)->update($update);
-            Toastr::success('Data updated successfully :)','Success');
-            return redirect()->route('karyawan/view/detail');
-        }catch(\Exception $e){
-
-            Toastr::error('Data updated fail :)','Error');
-            return redirect()->route('karyawan/view/detail');
-        }
-    }
-
-    // /**
-    //  * Update the specified resource in storage.
-    //  *
-    //  * @param  \App\Http\Requests\UpdateKaryawanRequest  $request
-    //  * @param  \App\Models\Karyawan  $karyawan
-    //  * @return \Illuminate\Http\Response
-    //  */
-
-    public function saveRecord(Request $request)
-    {
-        //
         $request->validate([
-            'fullName'     => 'required|string|max:255',
-            'sex'          => 'required',
-            'emailAddress' => 'required|string|email|max:255',
-            'phone_number' => 'required|numeric|min:9',
-            'position'     => 'required|string|max:255',
-            'department'   => 'required|string|max:255',
-            'salary'       => 'required|string|max:255',
+            'nama_lengkap' => 'required',
+            'kelamin' => 'required',
+            'email' => 'required|email|unique:karyawan',
+            'posisi' => 'required',
+            'alamat' => 'required',
+            'gaji' => 'required|numeric',
         ]);
-        try{
-            $fullName     = $request->fullName;
-            $sex          = $request->sex;
-            $emailAddress = $request->emailAddress;
-            $phone_number = $request->phone_number;
-            $position     = $request->position;
-            $department   = $request->department;
-            $salary       = $request->salary;
 
-            $Karyawan = new Karyawan();
-            $Karyawan->full_name     = $fullName;
-            $Karyawan->sex           = $sex;
-            $Karyawan->email_address = $emailAddress;
-            $Karyawan->phone_number  = $phone_number;
-            $Karyawan->position      = $position;
-            $Karyawan->department    = $department;
-            $Karyawan->salary        = $salary;
-            $Karyawan->save();
+        Karyawan::create($request->all());
 
-            Toastr::success('Data added successfully :)','Success');
-            return redirect()->back();
-
-        }catch(\Exception $e){
-
-            Toastr::error('Data added fail :)','Error');
-            return redirect()->back();
-        }
+        return redirect()->route('karyawan.index')->with('success', 'Karyawan created successfully.');
     }
 
-    // /**
-    //  * Remove the specified resource from storage.
-    //  *
-    //  * @param  \App\Models\Karyawan  $karyawan
-    //  * @return \Illuminate\Http\Response
-    //  */
-    public function viewDelete($id)
+
+    public function show($id)
     {
-        //
-        $delete = Karyawan::find($id);
-        $delete->delete();
-        Toastr::success('Data berhasil dihapus :)','Success');
-        return redirect()->route('karyawan/view/detail');
+        $karyawan = Karyawan::findOrFail($id);
+        return view('karyawan.show', compact('karyawan'));
+    }
+
+
+    public function edit($id)
+    {
+        $karyawan = Karyawan::findOrFail($id);
+
+        return view('karyawan.edit', compact('karyawan'));
+    }
+
+
+    public function update(Request $request, $id)
+    {
+        $karyawan = Karyawan::findOrFail($id);
+
+        $karyawan->nama_lengkap = $request->input('nama_lengkap');
+        $karyawan->kelamin = $request->input('kelamin');
+        $karyawan->email = $request->input('email');
+        $karyawan->posisi = $request->input('posisi');
+        $karyawan->alamat = $request->input('alamat');
+        $karyawan->gaji = $request->input('gaji');
+
+        $karyawan->save();
+
+        return redirect()->route('karyawan.index')->with('success', 'Data karyawan berhasil diperbarui');
+    }
+
+    public function destroy($id)
+    {
+        $karyawan = Karyawan::findOrFail($id);
+        $karyawan->delete();
+
+        return redirect()->route('karyawan.index')->with('success', 'Data karyawan berhasil dihapus');
     }
 }

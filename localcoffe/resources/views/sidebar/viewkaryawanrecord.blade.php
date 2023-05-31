@@ -54,8 +54,8 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="{{ route('karyawan/new') }}">Menambah Karyawan</a>
-                            <a href="{{ route('karyawan/view/detail') }}">List Karyawan</a>
+                            <a href="{{ route('karyawan.index') }}">Menambah Karyawan</a>
+                            <a href="{{ route('karyawan.view-record') }}">List Karyawan</a>
                         </li>
                     </ul>
                 </li>
@@ -67,7 +67,8 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="{{ route('products/') }}">List Product</a>
+                            <a href="{{ route('products') }}">List Product</a>
+                            <a href="{{ route('products/create') }}">Tambah Product</a>
                         </li>
                     </ul>
                 </li>

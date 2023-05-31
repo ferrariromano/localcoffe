@@ -29,133 +29,44 @@
     {{-- message --}}
     {!! Toastr::message() !!}
 
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Tambahkan Karyawan</h4>
+    <div class="container">
+        <h1>Add New Employee</h1>
+        <form action="{{ route('karyawan.save-record') }}" method="post">
+            @csrf
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" class="form-control" name="fullName" id="fullName" required>
             </div>
-            <div class="card-content">
-                <div class="card-body">
-                    <form class="form form-horizontal" action="{{ route('karyawan/save') }}" method="POST">
-                        @csrf
-                        <div class="form-body">
-                            <div class="row">
-                                <div class="col-md-4">
-                                    <label>Nama Lengkap</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="form-group has-icon-left">
-                                        <div class="position-relative">
-                                            <input type="text" class="form-control @error('fullName') is-invalid @enderror" value="{{ old('fullName') }}"
-                                                placeholder="Masukkan Nama Lengkap" id="first-name-icon" name="fullName">
-                                            <div class="form-control-icon">
-                                                <i class="bi bi-person-check-fill"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <label>Gender</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="sex" value="Male" id="male">
-                                        <label class="form-check-label" for="male">Laki-laki</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="sex" value="Female" id="male">
-                                        <label class="form-check-label" for="male">Perempuan</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="sex" value="Other" id="male">
-                                        <label class="form-check-label" for="male">Other</label>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <label>Email Address</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="form-group has-icon-left">
-                                        <div class="position-relative">
-                                            <input type="email" class="form-control @error('emailAddress') is-invalid @enderror" value="{{ old('emailAddress') }}"
-                                                placeholder="Masukkan email" id="first-name-icon" name="emailAddress">
-                                            <div class="form-control-icon">
-                                                <i class="bi bi-envelope"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <label>Nomor Telepon</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="form-group has-icon-left">
-                                        <div class="position-relative">
-                                            <input type="number" class="form-control @error('phone_number') is-invalid @enderror" value="{{ old('phone_number') }}"
-                                                placeholder="Masukkan Nomer Telepon" name="phone_number">
-                                            <div class="form-control-icon">
-                                                <i class="bi bi-phone"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <label>Posisi</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="form-group has-icon-left">
-                                        <div class="position-relative">
-                                            <input type="text" class="form-control @error('position') is-invalid @enderror" value="{{ old('position') }}"
-                                                placeholder="Masukkan Posisi" name="position">
-                                            <div class="form-control-icon">
-                                                <i class="bi bi-person-badge-fill"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-4">
-                                    <label>Alamat</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="form-group has-icon-left">
-                                        <div class="position-relative">
-                                            <input type="text" class="form-control @error('department') is-invalid @enderror" value="{{ old('department') }}"
-                                                placeholder="Masukkan Alamat" name="department">
-                                            <div class="form-control-icon">
-                                                <i class="bi bi-shop-window"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-md-4">
-                                    <label>Gaji</label>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="form-group has-icon-left">
-                                        <div class="position-relative">
-                                            <input type="text" class="form-control @error('salary') is-invalid @enderror" value="{{ old('salary') }}"
-                                                placeholder="Masukkan Gaji" name="salary">
-                                            <div class="form-control-icon">
-                                                <i class="bi bi-envelope-fill"></i>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-12 d-flex justify-content-end">
-                                    <button type="submit" class="btn btn-primary me-1 mb-1">Simpan</button>
-                                    <button type="reset" class="btn btn-light-secondary me-1 mb-1">Batal</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+            <div class="form-group">
+                <label for="sex">Sex</label>
+                <select class="form-control" name="sex" id="sex" required>
+                    <option value="">Select Sex</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
             </div>
-        </div>
+            <div class="form-group">
+                <label for="emailAddress">Email Address</label>
+                <input type="email" class="form-control" name="emailAddress" id="emailAddress" required>
+            </div>
+            <div class="form-group">
+                <label for="phone_number">Phone Number</label>
+                <input type="tel" class="form-control" name="phone_number" id="phone_number" required>
+            </div>
+            <div class="form-group">
+                <label for="position">Position</label>
+                <input type="text" class="form-control" name="position" id="position" required>
+            </div>
+            <div class="form-group">
+                <label for="department">Department</label>
+                <input type="text" class="form-control" name="department" id="department" required>
+            </div>
+            <div class="form-group">
+                <label for="salary">Salary</label>
+                <input type="text" class="form-control" name="salary" id="salary" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Save</button>
+        </form>
     </div>
 
     <footer>
