@@ -154,7 +154,7 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="{{ route('orders.index') }}">List Transaksi</a>
+                            <a href="">List Transaksi</a>
                         </li>
                     </ul>
                 </li>
