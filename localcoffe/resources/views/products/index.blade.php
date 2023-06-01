@@ -10,23 +10,6 @@
         </a>
     </header>
 
-    <div class="container">
-        <h1>Daftar Produk</h1>
-        <div class="row">
-            @foreach ($products as $product)
-            <div class="col-md-4 mb-3">
-                <div class="card">
-                    <img src="{{ asset('images/products/' . $product->image) }}" alt="{{ $product->name }}" class="card-img-top">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $product->name }}</h5>
-                        <p class="card-text">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
-                        <a href="{{ route('orders.create', $product) }}" class="btn btn-primary">Beli</a>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
 
 
     <footer>

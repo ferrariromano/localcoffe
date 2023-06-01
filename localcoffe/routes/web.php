@@ -132,8 +132,6 @@ Route::delete('/karyawan/{id}', [App\Http\Controllers\KaryawanController::class,
 // });
 
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
 // Routing untuk produk
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
@@ -141,13 +139,8 @@ Route::post('/products', [ProductController::class, 'store'])->name('products.st
 Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
 
-// Routing untuk order
-Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
 
-// Routing untuk Edit Product di sidebar
-Route::get('/products/{product}/edit', [ProductController::class, 'edit'])
-    ->name('sidebar.products.edit')
-    ->where('product', '[0-9]+');
+
 
 
 // ----------------------------- jadwalpanen ------------------------------//
@@ -183,12 +176,6 @@ Route::get('/jadwal_pascapanen/{id}/edit', [App\Http\Controllers\JadwalPascapane
 Route::put('/jadwal_pascapanen/{id}', [App\Http\Controllers\JadwalPascapanenController::class, 'update'])->name('jadwal_pascapanen.update');
 Route::delete('/jadwal_pascapanen/{id}', [App\Http\Controllers\JadwalPascapanenController::class, 'destroy'])->name('jadwal_pascapanen.destroy');
 
-// ----------------------------- orders ------------------------------//
+// -----------------------------  ------------------------------//
 
-Route::resource('orders', OrderController::class)->only(['index', 'store', 'update','show']);
-Route::resource('products', ProductController::class);
-Route::get('/checkout/{product}', [OrderController::class, 'create'])->name('orders.create');
-Route::resource('orders', OrderController::class);
 
-Route::get('/checkout/{product}', [OrderController::class, 'create'])->name('orders.create');
-Route::get('/orders/create', 'OrderController@create')->name('orders.create');

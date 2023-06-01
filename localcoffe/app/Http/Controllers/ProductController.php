@@ -15,6 +15,13 @@ class ProductController extends Controller
         return view('products.index', compact('products'));
     }
 
+    public function beli(Product $product)
+    {
+        $products = Product::all();
+        return view('products.beli', compact('products'));
+    }
+
+
     public function create()
     {
         return view('products.create');
