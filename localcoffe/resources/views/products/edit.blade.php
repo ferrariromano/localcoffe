@@ -13,40 +13,51 @@
 
 
     <div class="container">
-    <h1>Ubah Produk</h1>
-    <form action="{{ route('products.update', $product) }}" method="post" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
-        <div class="form-group">
-            <label for="name">Nama:</label>
-            <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $product->name) }}">
-            @error('name')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
-        <div class="form-group">
-            <label for="price">Harga:</label>
-            <input type="number" name="price" id="price" class="form-control @error('price') is-invalid @enderror" value="{{ old('price', $product->price) }}">
-            @error('price')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
-        <div class="form-group">
-            <label for="description">Deskripsi:</label>
-            <textarea name="description" id="description" rows="5" class="form-control">{{ old('description', $product->description) }}</textarea>
-        </div>
-        <div class="form-group">
-            <p>Gambar saat ini:</p>
-            <img src="{{ asset('images/products/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid mb-3" style="max-height: 200px;">
-            <label for="image">Ubah gambar:</label>
-            <input type="file" name="image" id="image" class="form-control-file @error('image') is-invalid @enderror">
-            @error('image')
-                <div class="invalid-feedback">{{ $message }}</div>
-            @enderror
-        </div>
-        <button type="submit" class="btn btn-primary">Simpan</button>
-    </form>
-</div>
+        <h1>Edit Produk - {{ $product->name }}</h1>
+
+        <form action="{{ route('products.update', $product) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
+
+            <div class="form-group">
+                <label for="name">Nama Produk</label>
+                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name', $product->name) }}" required>
+
+                @error('name')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label for="price">Harga</label>
+                <input type="number" name="price" id="price" class="form-control @error('price') is-invalid @enderror" value="{{ old('price', $product->price) }}" required>
+
+                @error('price')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label for="description">Deskripsi</label>
+                <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror">{{ old('description', $product->description) }}</textarea>
+
+                @error('description')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div class="form-group">
+                <label for="image">Gambar</label>
+                <input type="file" name="image" id="image" class="form-control-file @error('image') is-invalid @enderror">
+
+                @error('image')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <button type="submit" class="btn btn-primary">Simpan</button>
+        </form>
+    </div>
 
 
 

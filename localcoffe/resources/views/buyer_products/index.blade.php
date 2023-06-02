@@ -10,25 +10,26 @@
         </a>
     </header>
 
-    <div class="container">
-        <h1>Beli Produk</h1>
 
-        <div class="row">
-            @foreach ($products as $product)
-                <div class="col-md-4 mb-3">
-                    <div class="card">
-                        <img src="{{ asset('images/products/' . $product->image) }}" alt="{{ $product->name }}" class="card-img-top">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ $product->name }}</h5>
-                            <p class="card-text">{{ $product->description }}</p>
-                            <p class="card-text">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
-                            <a href="#" class="btn btn-primary">Beli</a>
-                        </div>
+    <div class="container">
+    <h2>Daftar Produk Untuk Pembeli</h2>
+
+    <div class="row">
+        @foreach ($products as $product)
+            <div class="col-md-4">
+                <div class="card">
+                    <img src="{{ asset('images/products/' . $product->image) }}" alt="{{ $product->name }}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $product->name }}</h5>
+                        <p class="card-text">{{ $product->description }}</p>
+                        <p class="card-text">Harga: {{ $product->price }}</p>
+                        <a href="" class="btn btn-primary">Tambah ke Keranjang</a>
                     </div>
                 </div>
-            @endforeach
-        </div>
+            </div>
+        @endforeach
     </div>
+</div>
 
 
     <footer>

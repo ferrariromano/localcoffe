@@ -11,16 +11,22 @@
     </header>
 
     <div class="container">
+        <h1>{{ $product->name }}</h1>
+
         <div class="row">
-            <div class="col-md-4">
-                <img src="{{ asset('images/products/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid">
+            <div class="col-md-4 mb-3">
+                @if ($product->image)
+                    <img src="{{ asset('images/products/' . $product->image) }}" alt="{{ $product->name }}" class="w-100">
+                @else
+                    <span class="text-muted">No Image</span>
+                @endif
             </div>
             <div class="col-md-8">
-                <h1>{{ $product->name }}</h1>
-                <p class="lead">Rp {{ number_format($product->price, 0, ',', '.') }}</p>
                 <p>{{ $product->description }}</p>
+                <p>Harga: Rp {{ number_format($product->price, 0, ',', '.') }}</p>
+
                 <a href="{{ route('products.edit', $product) }}" class="btn btn-primary">Edit</a>
-                <form action="{{ route('products.destroy', $product) }}" method="post" class="d-inline">
+                <form action="{{ route('products.destroy', $product) }}" method="POST" class="d-inline">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger" onclick="return confirm('Anda yakin ingin menghapus produk ini?')">Hapus</button>

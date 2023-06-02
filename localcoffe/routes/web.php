@@ -10,6 +10,7 @@ use App\Http\Controllers\TanamanController;
 use App\Http\Controllers\JadwalPanenController;
 use App\Http\Controllers\JadwalPascapanenController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\BuyerProductController;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PhotosController;
@@ -112,32 +113,17 @@ Route::delete('/karyawan/{id}', [App\Http\Controllers\KaryawanController::class,
 
 
 // ----------------------------- product ------------------------------//
+Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products.index');
+Route::get('/products/beli/{id}', [App\Http\Controllers\ProductController::class, 'beli'])->name('products.beli');
+Route::get('/products/create', [App\Http\Controllers\ProductController::class, 'create'])->name('products.create');
+Route::post('/products', [App\Http\Controllers\ProductController::class, 'store'])->name('products.store');
+Route::get('/products/{product}', [App\Http\Controllers\ProductController::class, 'show'])->name('products.show');
+Route::get('/products/{product}/edit', [App\Http\Controllers\ProductController::class, 'edit'])->name('products.edit');
+Route::put('/products/{product}', [App\Http\Controllers\ProductController::class, 'update'])->name('products.update');
+Route::delete('/products/{product}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('products.destroy');
 
-// Route::get('products', [App\Http\Controllers\ProductController::class, 'index'])->middleware('auth')->name('products');
-// Route::get('products/create', [App\Http\Controllers\ProductController::class, 'create'])->middleware('auth')->name('products/create');
-// Route::post('products/store', [App\Http\Controllers\ProductController::class, 'store'])->middleware('auth')->name('products/store');
-// Route::get('products/{id}/edit', [App\Http\Controllers\ProductController::class, 'edit'])->name('products/edit');
-// Route::put('products/{id}', [App\Http\Controllers\ProductController::class, 'update'])->name('products/update');
-// Route::delete('products/{id}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('products/destroy');
+Route::get('/buyer/products', [App\Http\Controllers\BuyerProductController::class,'index'])->name('buyer.products.index');
 
-// Route::group(['middleware' => ['auth']], function () {
-//     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
-    // Routing untuk produk
-// Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-// Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
-// Route::post('/products', [ProductController::class, 'store'])->name('products.store');
-// Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
-// Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
-// });
-
-
-// Routing untuk produk
-Route::get('/products', [ProductController::class, 'index'])->name('products.index');
-Route::get('/products/create', [ProductController::class, 'create'])->name('products.create');
-Route::post('/products', [ProductController::class, 'store'])->name('products.store');
-Route::get('/products/{product}/edit', [ProductController::class, 'edit'])->name('products.edit');
-Route::put('/products/{product}', [ProductController::class, 'update'])->name('products.update');
 
 
 
@@ -176,6 +162,15 @@ Route::get('/jadwal_pascapanen/{id}/edit', [App\Http\Controllers\JadwalPascapane
 Route::put('/jadwal_pascapanen/{id}', [App\Http\Controllers\JadwalPascapanenController::class, 'update'])->name('jadwal_pascapanen.update');
 Route::delete('/jadwal_pascapanen/{id}', [App\Http\Controllers\JadwalPascapanenController::class, 'destroy'])->name('jadwal_pascapanen.destroy');
 
-// -----------------------------  ------------------------------//
+// ----------------------------- cart ------------------------------//
 
 
+Route::get('/cart', [App\Http\Controllers\CartController::class,'index'])->name('cart.index');
+Route::post('/cart/{product_id}',  [App\Http\Controllers\CartController::class,'add'])->name('cart.add');
+Route::delete('/cart/{product_id}', [App\Http\Controllers\CartController::class,'remove'])->name('cart.remove');
+
+Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
+Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
+
+Route::get('/payment/{order}', 'PaymentController@index')->name('payment.index');
+Route::post('/payment/{order}', 'PaymentController@store')->name('payment.store');

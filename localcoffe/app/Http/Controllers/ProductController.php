@@ -2,29 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Product;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 
 class ProductController extends Controller
 {
-   public function index()
+    public function index()
     {
         $products = Product::all();
-
-        return view('products.index', compact('products'));
+        $product = null; // Tambahkan ini untuk menginisialisasi variabel $product
+        return view('products.index', compact('products', 'product'));
     }
-
-    public function beli(Product $product)
-    {
-        $products = Product::all();
-        return view('products.beli', compact('products'));
-    }
-
 
     public function create()
     {
-        return view('products.create');
+        $product = null; // Tambahkan ini untuk menginisialisasi variabel $product
+        return view('products.create', compact('product'));
     }
 
     public function store(Request $request)
@@ -95,6 +90,11 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success', 'Produk berhasil dihapus.');
     }
 
+    public function beli($id)
+    {
+        $product = Product::findOrFail($id);
+        return view('products.beli', compact('product'));
+    }
 
 
 }

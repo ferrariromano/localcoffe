@@ -12,34 +12,47 @@
 
 
     <div class="container">
-        <h1>Tambah Produk Baru</h1>
-        <form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data">
+        <h1>Tambah Produk</h1>
+
+        <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+
             <div class="form-group">
-                <label for="name">Nama:</label>
-                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
+                <label for="name">Nama Produk</label>
+                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}" required>
+
                 @error('name')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
+
             <div class="form-group">
-                <label for="price">Harga:</label>
-                <input type="number" name="price" id="price" class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}">
+                <label for="price">Harga</label>
+                <input type="number" name="price" id="price" class="form-control @error('price') is-invalid @enderror" value="{{ old('price') }}" required>
+
                 @error('price')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
+
             <div class="form-group">
-                <label for="description">Deskripsi:</label>
-                <textarea name="description" id="description" rows="5" class="form-control">{{ old('description') }}</textarea>
+                <label for="description">Deskripsi</label>
+                <textarea name="description" id="description" class="form-control @error('description') is-invalid @enderror">{{ old('description') }}</textarea>
+
+                @error('description')
+                    <div class="invalid-feedback">{{ $message }}</div>
+                @enderror
             </div>
+
             <div class="form-group">
-                <label for="image">Gambar:</label>
+                <label for="image">Gambar</label>
                 <input type="file" name="image" id="image" class="form-control-file @error('image') is-invalid @enderror">
+
                 @error('image')
                     <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
+
             <button type="submit" class="btn btn-primary">Simpan</button>
         </form>
     </div>
