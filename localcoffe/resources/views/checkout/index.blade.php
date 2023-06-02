@@ -13,20 +13,19 @@
 
     <div class="container">
         <h2>Checkout</h2>
+
         <form action="{{ route('checkout.store') }}" method="POST">
             @csrf
             <div class="form-group">
-                <label for="address">Alamat</label>
-                <textarea name="address" id="address" class="form-control" required></textarea>
+                <label for="payment_method">Metode Pembayaran</label>
+                <select name="payment_method" id="payment_method" class="form-control">
+                    <option value="bank_transfer">Bank Transfer</option>
+                    <option value="ewallet">E-Wallet</option>
+                </select>
             </div>
-            <div class="form-group">
-                <label for="phone">Nomor Telepon</label>
-                <input type="text" name="phone" id="phone" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Lanjutkan ke Pembayaran</button>
+            <button type="submit" class="btn btn-primary">Pembayaran</button>
         </form>
     </div>
-
 
     <footer>
         <div class="footer clearfix mb-0 text-muted">

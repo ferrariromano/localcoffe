@@ -24,13 +24,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($cart as $product_id => $item)
+                    @foreach ($cart as $productId => $item)
                         <tr>
                             <td>{{ $item['name'] }}</td>
                             <td>{{ $item['price'] }}</td>
                             <td>{{ $item['quantity'] }}</td>
                             <td>
-                                <form action="{{ route('cart.remove', ['product_id' => $product_id]) }}" method="POST">
+                                <form action="{{ route('cart.remove', $productId) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Hapus</button>
@@ -40,7 +40,7 @@
                     @endforeach
                 </tbody>
             </table>
-            <a href="{{ route('checkout.index') }}" class="btn btn-primary">Lanjutkan ke Checkout</a>
+            <a href="{{ route('checkout.index') }}" class="btn btn-primary">Checkout</a>
         @else
             <p>Keranjang belanja kosong.</p>
         @endif

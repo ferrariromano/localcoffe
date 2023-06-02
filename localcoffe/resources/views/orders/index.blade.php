@@ -11,45 +11,31 @@
     </header>
 
     <div class="container">
-        <h1>Daftar Pesanan</h1>
-        <table class="table table-striped">
+        <h2>Pesanan Saya</h2>
+
+        <table class="table table-bordered">
             <thead>
                 <tr>
-                    <th>No.</th>
-                    <th>Pembeli</th>
-                    <th>Tanggal Pesan</th>
-                    <th>Produk</th>
-                    <th>Jumlah</th>
-                    <th>Total Harga</th>
+                    <th>ID Pesanan</th>
                     <th>Status</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($orders as $key => $order)
-                <tr>
-                    <td>{{ $key + 1 }}</td>
-                    <td>{{ $order->buyer_name }}</td>
-                    <td>{{ $order->created_at->format('d/m/Y H:i:s') }}</td>
-                    <td>{{ $order->product->name }}</td>
-                    <td>{{ $order->quantity }}</td>
-                    <td>Rp {{ number_format($order->total_price, 0, ',', '.') }}</td>
-                    <td>
-                        @if ($order->status == 'Belum Dibayar')
-                            <span class="badge badge-danger">{{ $order->status }}</span>
-                        @elseif ($order->status == 'Dalam Proses')
-                            <span class="badge badge-warning">{{ $order->status }}</span>
-                        @else
-                            <span class="badge badge-success">{{ $order->status }}</span>
-                        @endif
-                    </td>
-                    <td>
-                        @if ($order->status == 'Belum Dibayar')
-                            <a href="{{ route('orders.edit', $order) }}" class="btn btn-primary">Ubah Status</a>
-                        @endif
-                        <a href="{{ route('orders.show', $order) }}" class="btn btn-info">Detail Pesanan</a>
-                    </td>
-                </tr>
+                @foreach ($orders as $order)
+                    <tr>
+                        <td>{{ $order->id }}</td>
+                        <td>{{ $order->status }}</td>
+                        <td>
+                            @if($order->status === 'pending')
+                                <form action="{{ route('orders.confirm', $order) }}" method="POST">
+                                    @csrf
+                                    @method('PATCH')
+                                    <button type="submit" class="btn btn-success">Konfirmasi Pesanan</button>
+                                </form>
+                            @endif
+                        </td>
+                    </tr>
                 @endforeach
             </tbody>
         </table>

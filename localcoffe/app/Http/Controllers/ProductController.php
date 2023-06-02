@@ -90,11 +90,5 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success', 'Produk berhasil dihapus.');
     }
 
-    public function beli($id)
-    {
-        $product = Product::findOrFail($id);
-        return view('products.beli', compact('product'));
-    }
-
 
 }

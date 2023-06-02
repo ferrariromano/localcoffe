@@ -101,7 +101,7 @@
                     <ul class="submenu">
                         <li class="submenu-item active">
                             <a href="{{ route('products.index') }}">List Product</a>
-                            <a href="{{ route('products.create') }}">Tambah Product</a>
+                            {{-- <a href="{{ route('products.create') }}">Tambah Product</a> --}}
                             {{-- <a href="{{ route('products.edit') }}">Ubah Product</a> --}}
                         </li>
                     </ul>

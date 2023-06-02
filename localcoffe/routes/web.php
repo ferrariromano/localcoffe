@@ -11,6 +11,8 @@ use App\Http\Controllers\JadwalPanenController;
 use App\Http\Controllers\JadwalPascapanenController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\BuyerProductController;
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\CheckoutController;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PhotosController;
@@ -166,11 +168,25 @@ Route::delete('/jadwal_pascapanen/{id}', [App\Http\Controllers\JadwalPascapanenC
 
 
 Route::get('/cart', [App\Http\Controllers\CartController::class,'index'])->name('cart.index');
-Route::post('/cart/{product_id}',  [App\Http\Controllers\CartController::class,'add'])->name('cart.add');
+Route::post('/cart/{product_id}',  [App\Http\Controllers\CartController::class,'addToCart'])->name('cart.add');
 Route::delete('/cart/{product_id}', [App\Http\Controllers\CartController::class,'remove'])->name('cart.remove');
 
-Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
-Route::post('/checkout', 'CheckoutController@store')->name('checkout.store');
+Route::get('/checkout', [App\Http\Controllers\CheckoutController::class,'index'])->name('checkout.index');
+Route::post('/checkout', [App\Http\Controllers\CheckoutController::class,'store'])->name('checkout.store');
 
-Route::get('/payment/{order}', 'PaymentController@index')->name('payment.index');
-Route::post('/payment/{order}', 'PaymentController@store')->name('payment.store');
+Route::get('/payment/{order}', [App\Http\Controllers\PaymentController::class,'index'])->name('payment.index');
+Route::post('/payment/{order}', [App\Http\Controllers\PaymentController::class,'store'])->name('payment.store');
+
+
+Route::get('/cart', [App\Http\Controllers\CartController::class,'index'])->name('cart.index');
+Route::post('/cart/{product}', [App\Http\Controllers\CartController::class,'addToCart'])->name('cart.add');
+Route::delete('/cart/{product}',  [App\Http\Controllers\CartController::class,'removeFromCart'])->name('cart.remove');
+
+// Route::get('/checkout', [App\Http\Controllers\CartController::class,'index'])->name('checkout.index');
+// Route::post('/checkout', [App\Http\Controllers\CartController::class,'store'])->name('checkout.store');
+
+Route::get('/orders', [App\Http\Controllers\CartController::class,'index'])->name('orders.index');
+Route::patch('/orders/{order}/confirm', [App\Http\Controllers\CartController::class,'confirm'])->name('orders.confirm');
+
+
+Route::post('/orders/{order}/items', [App\Http\Controllers\OrderItemController::class, 'store'])->name('order_items.store');

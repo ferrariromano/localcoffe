@@ -23,7 +23,10 @@
                         <h5 class="card-title">{{ $product->name }}</h5>
                         <p class="card-text">{{ $product->description }}</p>
                         <p class="card-text">Harga: {{ $product->price }}</p>
-                        <a href="" class="btn btn-primary">Tambah ke Keranjang</a>
+                        <<form action="{{ route('cart.add', $product->id) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn btn-primary">Tambah ke Keranjang</button>
+                        </form>
                     </div>
                 </div>
             </div>
