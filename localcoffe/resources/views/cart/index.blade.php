@@ -11,41 +11,51 @@
     </header>
 
     <div class="container">
-        <h2>Keranjang Belanja</h2>
-
+        <h1>Keranjang Belanja</h1>
         @if (count($cart) > 0)
-            <table class="table table-bordered">
+            <table class="table table-bordered mt-3">
                 <thead>
                     <tr>
-                        <th>Nama Produk</th>
+                        <th>Produk</th>
                         <th>Harga</th>
                         <th>Jumlah</th>
+                        <th>Subtotal</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($cart as $productId => $item)
+                    @foreach ($products as $product)
                         <tr>
-                            <td>{{ $item['name'] }}</td>
-                            <td>{{ $item['price'] }}</td>
-                            <td>{{ $item['quantity'] }}</td>
-                            <td>
-                                <form action="{{ route('cart.remove', $productId) }}" method="POST">
+                            <td>{{ $product->name }}</td>
+                            <td>Rp {{ number_format($product->price, 0, ',', '.') }}</td>
+                            <td>{{ $cart[$product->id]['quantity'] }}</td>
+                            <td>Rp {{ number_format($product->price * $cart[$product->id]['quantity'], 0, ',', '.') }}</td>
+                            {{-- <td>
+                                <form action="{{ route('cart.remove', $product->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Hapus</button>
+                                    <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                                 </form>
-                            </td>
+                            </td> --}}
                         </tr>
                     @endforeach
+                    <tr>
+                        <td colspan="3" class="text-right">Biaya Layanan:</td>
+                        <td colspan="2">Rp {{ number_format($shippingCost, 0, ',', '.') }}</td>
+                    </tr>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="3">Total Belanja:</th>
+                        <td colspan="2">Rp {{ number_format($total + $shippingCost, 0, ',', '.') }}</td>
+                    </tr>
+                </tfoot>
             </table>
             <a href="{{ route('checkout.index') }}" class="btn btn-primary">Checkout</a>
         @else
             <p>Keranjang belanja kosong.</p>
         @endif
     </div>
-
 
 
     <footer>

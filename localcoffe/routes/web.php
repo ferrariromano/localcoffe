@@ -14,6 +14,7 @@ use App\Http\Controllers\BuyerProductController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 
+
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PhotosController;
 use App\Http\Controllers\Auth\LoginController;
@@ -114,7 +115,7 @@ Route::delete('/karyawan/{id}', [App\Http\Controllers\KaryawanController::class,
 
 
 
-// ----------------------------- product ------------------------------//
+// // ----------------------------- product ------------------------------//
 Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products.index');
 Route::get('/products/beli/{id}', [App\Http\Controllers\ProductController::class, 'beli'])->name('products.beli');
 Route::get('/products/create', [App\Http\Controllers\ProductController::class, 'create'])->name('products.create');
@@ -129,20 +130,7 @@ Route::get('/buyer/products', [App\Http\Controllers\BuyerProductController::clas
 
 
 
-
-
-// ----------------------------- jadwalpanen ------------------------------//
-
-// Route::get('panen', [App\Http\Controllers\PanenController::class, 'index'])->middleware('auth')->name('panen');
-// Route::get('panen/create', [App\Http\Controllers\PanenController::class, 'create'])->middleware('auth')->name('panen/create');
-// Route::post('panen', [App\Http\Controllers\PanenController::class, 'store'])->middleware('auth')->name('panen/store');
-// Route::get('panen/{panen}/edit', [App\Http\Controllers\PanenController::class, 'edit'])->name('panen/edit');
-// Route::put('panen/{panen}', [App\Http\Controllers\PanenController::class, 'update'])->name('panen/update');
-// Route::delete('panen/{panen}', [App\Http\Controllers\PanenController::class, 'destroy'])->name('panen/destroy');
-
-
-
-// ----------------------------- jadwal ------------------------------//
+// // ----------------------------- jadwal ------------------------------//
 Route::get('/tanaman', [App\Http\Controllers\TanamanController::class, 'index'])->middleware('auth')->name('tanaman.index');
 Route::get('/tanaman/create', [App\Http\Controllers\TanamanController::class, 'create'])->middleware('auth')->name('tanaman.create');
 Route::post('/tanaman', [App\Http\Controllers\TanamanController::class, 'store'])->middleware('auth')->name('tanaman.store');
@@ -164,29 +152,27 @@ Route::get('/jadwal_pascapanen/{id}/edit', [App\Http\Controllers\JadwalPascapane
 Route::put('/jadwal_pascapanen/{id}', [App\Http\Controllers\JadwalPascapanenController::class, 'update'])->name('jadwal_pascapanen.update');
 Route::delete('/jadwal_pascapanen/{id}', [App\Http\Controllers\JadwalPascapanenController::class, 'destroy'])->name('jadwal_pascapanen.destroy');
 
-// ----------------------------- cart ------------------------------//
+// // ----------------------------- cart ------------------------------//
 
 
-Route::get('/cart', [App\Http\Controllers\CartController::class,'index'])->name('cart.index');
-Route::post('/cart/{product_id}',  [App\Http\Controllers\CartController::class,'addToCart'])->name('cart.add');
-Route::delete('/cart/{product_id}', [App\Http\Controllers\CartController::class,'remove'])->name('cart.remove');
-
-Route::get('/checkout', [App\Http\Controllers\CheckoutController::class,'index'])->name('checkout.index');
-Route::post('/checkout', [App\Http\Controllers\CheckoutController::class,'store'])->name('checkout.store');
-
-Route::get('/payment/{order}', [App\Http\Controllers\PaymentController::class,'index'])->name('payment.index');
-Route::post('/payment/{order}', [App\Http\Controllers\PaymentController::class,'store'])->name('payment.store');
+Route::get('/checkout', [App\Http\Controllers\CheckoutController::class, 'index'])->middleware('auth')->name('checkout.index');
+Route::post('/checkout/store', [App\Http\Controllers\CheckoutController::class, 'store'])->middleware('auth')->name('checkout.store');
+Route::get('/checkout/create', [App\Http\Controllers\CheckoutController::class, 'create'])->middleware('auth')->name('checkout.create');
+Route::post('/checkout/create', [App\Http\Controllers\CheckoutController::class, 'create'])->name('checkout.create');
+Route::get('/orders/show/{order}', [App\Http\Controllers\CheckoutController::class, 'show'])->name('orders.show');
 
 
-Route::get('/cart', [App\Http\Controllers\CartController::class,'index'])->name('cart.index');
-Route::post('/cart/{product}', [App\Http\Controllers\CartController::class,'addToCart'])->name('cart.add');
-Route::delete('/cart/{product}',  [App\Http\Controllers\CartController::class,'removeFromCart'])->name('cart.remove');
-
-// Route::get('/checkout', [App\Http\Controllers\CartController::class,'index'])->name('checkout.index');
-// Route::post('/checkout', [App\Http\Controllers\CartController::class,'store'])->name('checkout.store');
-
-Route::get('/orders', [App\Http\Controllers\CartController::class,'index'])->name('orders.index');
-Route::patch('/orders/{order}/confirm', [App\Http\Controllers\CartController::class,'confirm'])->name('orders.confirm');
 
 
-Route::post('/orders/{order}/items', [App\Http\Controllers\OrderItemController::class, 'store'])->name('order_items.store');
+Route::post('/orders/{order}/items', [App\Http\Controllers\OrderItemController::class, 'store'])->middleware('auth')->name('order_items.store');
+
+
+Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->middleware('auth')->name('cart.index');
+Route::post('/cart/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('cart.add');
+Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->middleware('auth')->name('cart.index');
+Route::post('/cart/add/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('cart.add');
+Route::delete('/cart/remove/{id}', [App\Http\Controllers\CartController::class, 'remove'])->name('cart.remove');
+
+
+Route::get('/orders', [App\Http\Controllers\OrderController::class, 'index'])->middleware('auth')->name('orders.index');
+Route::put('/orders/{order}/confirm', [App\Http\Controllers\OrderController::class, 'confirm'])->name('orders.confirm');

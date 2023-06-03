@@ -90,5 +90,8 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success', 'Produk berhasil dihapus.');
     }
 
-
+        public function checkout(Product $product)
+    {
+        return view('products.checkout', compact('product'));
+    }
 }

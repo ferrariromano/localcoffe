@@ -52,14 +52,19 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="{{ route('') }}">List Data Pesanan</a>
-                            <a href="{{ route('') }}"></a>
+                            <a href="">List Data Pesanan</a>
+                            <a href=""></a>
                         </li>
                     </ul>
                 </li>
                 @endif
 
-
+                {{-- <li class="sidebar-item">
+                    <a href="{{ route('change/password') }}" class='sidebar-link'>
+                        <i class="bi bi-shield-lock"></i>
+                        <span>Chnage Password</span>
+                    </a>
+                </li> --}}
 
 
                 @if (Auth::user()->role_name=='Pemilik Usaha')

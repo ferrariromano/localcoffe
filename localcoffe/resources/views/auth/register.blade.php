@@ -43,7 +43,7 @@
                             <fieldset class="form-group">
                                 <select class="form-select @error('role_name') is-invalid @enderror" name="role_name" id="role_name">
                                     <option selected disabled>Pilih Role</option>
-                                    {{-- <option value="Admin">Admin</option> --}}
+                                    <option value="Admin">Admin</option>
                                     <option value="Perkebunan">Perkebunan</option>
                                     <option value="Pemilik Usaha">Pemilik Usaha</option>
                                 </select>
@@ -72,7 +72,7 @@
                             </span>
                             @enderror
                           </div>
-                          
+
                           <div class="form-group position-relative has-icon-left mb-4">
                             <input type="password" class="form-control form-control-lg" name="password_confirmation" placeholder="Ulangi password">
                             <div class="form-control-icon">
@@ -82,7 +82,7 @@
                               <i class="bi bi-eye"></i>
                             </button>
                           </div>
-                          
+
                           <script>
                             const togglePasswordBtns = document.querySelectorAll('.toggle-password');
                             togglePasswordBtns.forEach(btn => {
