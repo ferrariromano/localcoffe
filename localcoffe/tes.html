@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Pesanan</title>
+
+    <!-- Menambahkan CSS Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h3>Daftar Pesanan</h3>
+        <div class="form-group">
+            <label for="filter_tanggal">Filter Tanggal:</label>
+            <input type="date" class="form-control" id="filter_tanggal" name="filter_tanggal" onchange="filterPesanan()">
+        </div>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>ID Pesanan</th>
+                    <th>Nama Pelanggan</th>
+                    <th>ID Produk</th>
+                    <th>Jumlah</th>
+                    <th>Total Harga</th>
+                    <th>Metode Pembayaran</th>
+                    <th>Status</th>
+                    <th>Tanggal Dibuat</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>#12345</td>
+                    <td>Pelanggan 1</td>
+                    <td>P001</td>
+                    <td>2</td>
+                    <td>Rp. 100.000,-</td>
+                    <td>Transfer Bank</td>
+                    <td>Menunggu Pembayaran</td>
+                    <td>2023-10-01</td>
+
+                </tr>
+                <tr>
+                    <td>#12346</td>
+                    <td>Pelanggan 2</td>
+                    <td>P002</td>
+                    <td>1</td>
+                    <td>Rp. 50.000,-</td>
+                    <td>E-Wallet</td>
+                    <td>Diproses</td>
+                    <td>2023-10-02</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Menambahkan JavaScript Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        function filterPesanan() {
+            // Logika untuk melakukan filter berdasarkan hari/tanggal
+            alert('Filter berdasarkan tanggal');
+        }
+    </script>
+</body>
+</html>

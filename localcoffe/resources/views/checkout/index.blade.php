@@ -81,7 +81,7 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Buat Pesanan</button>
+            <button type="submit" class="btn btn-primary">Lanjutkan</button>
         </form>
     </div>
 
