@@ -13,8 +13,8 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>User Management Control</h3>
-                    <p class="text-subtitle text-muted">For user to check they list</p>
+                    <h3>User Control</h3>
+                    <p class="text-subtitle text-muted"></p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -31,21 +31,21 @@
         <section class="section">
             <div class="card">
                 <div class="card-header">
-                    User Datatable
+                    User Data
                 </div>
                 <div class="card-body">
                     <table class="table table-striped" id="table1">
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Full Name</th>
+                                <th>Nama Lengkap</th>
                                 <th>Profile</th>
                                 <th>Email Address</th>
-                                <th>Phone Number</th>
+                                <th>Nomor Telepon</th>
                                 <th>Status</th>
-                                <th>Role Name</th>
-                                <th class="text-center">Modify</th>
-                            </tr>    
+                                <th>Role Nama</th>
+                                <th class="text-center">Ubah</th>
+                            </tr>
                         </thead>
                         <tbody>
                             @foreach ($data as $key => $item)
@@ -78,13 +78,13 @@
                                     <td class="role_name"><span  class=" badge bg-warning">{{ $item->role_name }}</span></td>
                                     @endif
                                     <td class="text-center">
-                                        <a href="{{ route('user/add/new') }}">
+                                        {{-- <a href="{{ route('user/add/new') }}">
                                             <span class="badge bg-info"><i class="bi bi-person-plus-fill"></i></span>
-                                        </a>
+                                        </a> --}}
                                         <a href="{{ url('view/detail/'.$item->id) }}">
                                             <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
-                                        </a>  
-                                        <a href="{{ url('delete_user/'.$item->id) }}" onclick="return confirm('Are you sure to want to delete it?')"><span class="badge bg-danger"><i class="bi bi-trash"></i></span></a>
+                                        </a>
+                                        {{-- <a href="{{ url('delete_user/'.$item->id) }}" onclick="return confirm('Are you sure to want to delete it?')"><span class="badge bg-danger"><i class="bi bi-trash"></i></span></a> --}}
                                     </td>
                                 </tr>
                             @endforeach
