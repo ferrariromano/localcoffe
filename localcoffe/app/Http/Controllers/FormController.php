@@ -60,11 +60,11 @@ class FormController extends Controller
                 'salary'        => $salary,
             ];
             Staff::where('id',$request->id)->update($update);
-            Toastr::success('Data updated successfully :)','Success');
+            Toastr::success('Data berhasil diperbarui :)','Success');
             return redirect()->route('form/view/detail');
         }catch(\Exception $e){
 
-            Toastr::error('Data updated fail :)','Error');
+            Toastr::error('Pembaruan data gagal :)','Error');
             return redirect()->route('form/view/detail');
         }
     }
@@ -79,7 +79,7 @@ class FormController extends Controller
             'phone_number' => 'required|numeric|min:9',
             'position'     => 'required|string|max:255',
             'department'   => 'required|string|max:255',
-            'salary'       => 'required|string|max:255',
+            'salary'       => 'required|numeric',
         ]);
         try{
             $fullName     = $request->fullName;
@@ -100,12 +100,12 @@ class FormController extends Controller
             $Staff->salary        = $salary;
             $Staff->save();
 
-            Toastr::success('Data added successfully :)','Success');
+            Toastr::success('Data berhasil ditambahkan:)','Success');
             return redirect()->back();
 
         }catch(\Exception $e){
 
-            Toastr::error('Data added fail :)','Error');
+            Toastr::error('Penambahan data gagal :)','Error');
             return redirect()->back();
         }
     }

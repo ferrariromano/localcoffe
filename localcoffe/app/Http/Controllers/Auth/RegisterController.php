@@ -21,12 +21,13 @@ class RegisterController extends Controller
     public function storeUser(Request $request)
     {
         $request->validate([
-            'name'      => 'required|string|max:255',
+            'name'      => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z\s]+$/'],
             'email'     => ['required', 'email', new GmailValidation],
             'role_name' => 'required|string|max:255',
             'password'  => ['required', 'regex:/^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/'],
             'password_confirmation' => 'required',
         ]);
+
 
         // $request->validate([
         //     'name' => 'required|string|max:255',
