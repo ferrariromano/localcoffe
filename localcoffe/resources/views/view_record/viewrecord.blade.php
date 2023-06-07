@@ -46,7 +46,7 @@
                                 <th>Posisi</th>
                                 <th>Alamat</th>
                                 <th>Gaji</th>
-                                <th class="text-center">Edit</th>
+                                <th class="text-center">Ubah</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -68,7 +68,7 @@
                                         <a href="{{ url('form/view/detail/'.$item->id) }}">
                                             <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
                                         </a>
-                                        <a href="{{ url('delete/'.$item->id) }}" onclick="return confirm('Apakah Anda yakin ingin menghapusnya?')"><span class="badge bg-danger"><i class="bi bi-trash"></i></span></a>
+                                        {{-- <a href="{{ url('delete/'.$item->id) }}" onclick="return confirm('Apakah Anda yakin ingin menghapusnya?')"><span class="badge bg-danger"><i class="bi bi-trash"></i></span></a> --}}
                                     </td>
                                 </tr>
                             @endforeach

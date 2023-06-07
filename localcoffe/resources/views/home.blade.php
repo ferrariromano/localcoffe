@@ -28,66 +28,49 @@
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">Activity Log</h6>
-                                        <h6 class="font-extrabold mb-0">{{ $activity_logs }}</h6>
+                                        <h6 class="text-muted font-semibold">Jadwal Panen</h6>
+                                    @if(count($jadwal_panen) > 0)
+                                        @foreach($jadwal_panen as $panen)
+                                        {{-- <h6 class="font-extrabold mb-0">{{ $jadwal_panen }}</h6> --}}
+                                            <li><span class="font-extrabold mb-0">{{ $panen->tanggal }}</span> - {{ $panen->deskripsi }}</li>
+                                        @endforeach
+                                    @else
+                                        <p>Tidak ada jadwal panen pada hari H-1.</p>
+                                    @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 col-lg-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body px-3 py-4-5">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="stats-icon blue">
-                                            <i class="iconly-boldProfile"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">User Activity log</h6>
-                                        <h6 class="font-extrabold mb-0">{{ $user_activity_logs }}</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
                     <div class="col-6 col-lg-3 col-md-6">
                         <div class="card">
                             <div class="card-body px-3 py-4-5">
                                 <div class="row">
                                     <div class="col-md-4">
                                         <div class="stats-icon green">
-                                            <i class="iconly-boldAdd-User"></i>
+                                            <i class="iconly-boldShow"></i>
                                         </div>
                                     </div>
                                     <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">User Total</h6>
-                                        <h6 class="font-extrabold mb-0">{{ $users }}</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-6 col-lg-3 col-md-6">
-                        <div class="card">
-                            <div class="card-body px-3 py-4-5">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="stats-icon red">
-                                            <i class="iconly-boldBookmark"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <h6 class="text-muted font-semibold">Saved Record</h6>
-                                        <h6 class="font-extrabold mb-0"></h6>
+                                        <h6 class="text-muted font-semibold">Jadwal Pascapanen</h6>
+                                    @if(count($jadwal_pascapanen) > 0)
+                                        @foreach($jadwal_pascapanen as $pascapanen)
+                                        {{-- <h6 class="font-extrabold mb-0">{{ $jadwal_panen }}</h6> --}}
+                                            <li><span class="font-extrabold mb-0">{{ $pascapanen->tanggal }}</span> - {{ $pascapanen->deskripsi }}</li>
+                                        @endforeach
+                                    @else
+                                        <p>Tidak ada jadwal panen pada hari H-1.</p>
+                                    @endif
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="row">
+
+
+                {{-- <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
@@ -213,8 +196,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-12 col-lg-3">
+            </div> --}}
+            {{-- <div class="col-12 col-lg-3">
                 <div class="card" data-bs-toggle="modal" data-bs-target="#default">
                     <div class="card-body py-4 px-5">
                         <div class="d-flex align-items-center">
@@ -227,7 +210,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 {{-- user profile modal  --}}
                 <div class="card-body">
                     <!--Basic Modal -->

@@ -19,25 +19,18 @@ class UserManagementController extends Controller
     public function index()
     {
         if (Auth::user()->role_name == 'Admin') {
-            $data = DB::table('users')->where('role_name', 'Admin')->get();
+            $data = DB::table('users')
+                        ->where('role_name', 'Admin')
+                        ->get();
             return view('usermanagement.user_control', compact('data'));
-        } else {
-            return redirect()->route('home');
-        }
-
-        if (Auth::user()->role_name == 'Perkebunan') {
-            $data = DB::table('users')->where('role_name', 'Perkebunan')->get();
+        } elseif (Auth::user()->role_name == 'Perkebunan' || Auth::user()->role_name == 'Pemilik Usaha') {
+            $data = DB::table('users')
+                        ->whereIn('role_name', ['Perkebunan', 'Pemilik Usaha'])
+                        ->get();
             return view('usermanagement.user_control', compact('data'));
-        } else {
-            return redirect()->route('home');
         }
-
-        if (Auth::user()->role_name == 'Pemilik Usaha') {
-            $data = DB::table('users')->where('role_name', 'Pemilik Usaha')->get();
-            return view('usermanagement.user_control', compact('data'));
-        } else {
-            return redirect()->route('home');
-        }
+        // Jika role_name tidak terdaftar, maka redirect ke home dashboard
+        return redirect()->route('home');
     }
     // view detail
     public function viewDetail($id)

@@ -13,8 +13,7 @@
         <div class="sidebar-menu">
             <ul class="menu">
                 <li class="sidebar-title">Menu</li>
-
-                <li class="sidebar-item">
+                <li class="sidebar-item active">
                     <a href="{{ route('home') }}" class='sidebar-link'>
                         <i class="bi bi-house-fill"></i>
                         <span>Dashboard</span>
@@ -29,21 +28,22 @@
                             <span>Role Name:</span>
                             <span class="badge bg-success">Admin</span>
                             @endif
-                            @if (Auth::user()->role_name=='Super Admin')
+                            @if (Auth::user()->role_name=='Perkebunan')
                                 <span>Name: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
                                 <hr>
                                 <span>Role Name:</span>
-                                <span class="badge bg-info">Super Admin</span>
+                                <span class="badge bg-info">Perkebunan</span>
                             @endif
-                            @if (Auth::user()->role_name=='Normal User')
+                            @if (Auth::user()->role_name=='Pemilik Usaha')
                                 <span>Name: <span class="fw-bolder">{{ Auth::user()->name }}</span></span>
                                 <hr>
                                 <span>Role Name:</span>
-                                <span class="badge bg-warning">User Normal</span>
+                                <span class="badge bg-warning">Pemilik Usaha</span>
                             @endif
                         </div>
                     </div>
                 </li>
+
                 @if (Auth::user()->role_name=='Admin')
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
@@ -52,7 +52,7 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="{{ route('activity/log') }}">Ubah Profile</a>
+                            <a href="{{ route('userManagement') }}">Ubah Profile</a>
                             <a href=""></a>
                         </li>
                     </ul>
