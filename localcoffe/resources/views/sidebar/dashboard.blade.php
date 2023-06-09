@@ -66,7 +66,6 @@
                     <ul class="submenu">
                         <li class="submenu-item active">
                             <a href="">List Data Pesanan</a>
-                            <a href=""></a>
                         </li>
                     </ul>
                 </li>
@@ -88,7 +87,7 @@
                             </a>
                             <ul class="submenu">
                                 <li class="submenu-item active">
-                                    <a href="{{ route('activity/log') }}">Ubah Profile</a>
+                                    <a href="{{ route('userManagement') }}">Ubah Profile</a>
                                     <a href=""></a>
                                 </li>
                             </ul>
@@ -101,8 +100,8 @@
                             </a>
                             <ul class="submenu">
                                 <li class="submenu-item active">
-                                    <a href="{{ route('karyawan.index') }}">Menambah Karyawan</a>
-                                    {{-- <a href="{{ route('karyawan.view-record') }}">List Karyawan</a> --}}
+                                    <a href="{{ route('karyawan.create') }}">Menambah Karyawan</a>
+                                    <a href="{{ route('karyawan.index') }}">List Karyawan</a>
                                 </li>
                             </ul>
                         </li>
@@ -131,7 +130,7 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="{{ route('activity/log') }}">Ubah Profile</a>
+                            <a href="{{ route('userManagement') }}">Ubah Profile</a>
                             <a href=""></a>
                         </li>
                     </ul>

@@ -34,11 +34,11 @@
                         <td>{{ $t->deskripsi }}</td>
                         <td>
                             <a href="{{ route('tanaman.edit', $t->id) }}" class="btn btn-primary">Edit</a>
-                            <form action="{{ route('tanaman.destroy', $t->id) }}" method="POST">
+                            {{-- <form action="{{ route('tanaman.destroy', $t->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-danger">Hapus</button>
-                            </form>
+                            </form> --}}
                         </td>
                     </tr>
                 @endforeach

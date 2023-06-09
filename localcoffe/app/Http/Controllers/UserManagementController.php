@@ -23,12 +23,20 @@ class UserManagementController extends Controller
                         ->where('role_name', 'Admin')
                         ->get();
             return view('usermanagement.user_control', compact('data'));
-        } elseif (Auth::user()->role_name == 'Perkebunan' || Auth::user()->role_name == 'Pemilik Usaha') {
+        }
+        elseif (Auth::user()->role_name == 'Perkebunan') {
             $data = DB::table('users')
-                        ->whereIn('role_name', ['Perkebunan', 'Pemilik Usaha'])
+                        ->where('role_name', 'Perkebunan')
                         ->get();
             return view('usermanagement.user_control', compact('data'));
         }
+        elseif (Auth::user()->role_name == 'Pemilik Usaha') {
+            $data = DB::table('users')
+                        ->where('role_name', 'Pemilik Usaha')
+                        ->get();
+            return view('usermanagement.user_control', compact('data'));
+        }
+
         // Jika role_name tidak terdaftar, maka redirect ke home dashboard
         return redirect()->route('home');
     }
@@ -36,6 +44,20 @@ class UserManagementController extends Controller
     public function viewDetail($id)
     {
         if (Auth::user()->role_name=='Admin')
+        {
+            $data = DB::table('users')->where('id',$id)->get();
+            $roleName = DB::table('role_type_users')->get();
+            $userStatus = DB::table('user_types')->get();
+            return view('usermanagement.view_users',compact('data','roleName','userStatus'));
+        }
+        elseif (Auth::user()->role_name=='Perkebunan')
+        {
+            $data = DB::table('users')->where('id',$id)->get();
+            $roleName = DB::table('role_type_users')->get();
+            $userStatus = DB::table('user_types')->get();
+            return view('usermanagement.view_users',compact('data','roleName','userStatus'));
+        }
+        elseif (Auth::user()->role_name=='Pemilik Usaha')
         {
             $data = DB::table('users')->where('id',$id)->get();
             $roleName = DB::table('role_type_users')->get();

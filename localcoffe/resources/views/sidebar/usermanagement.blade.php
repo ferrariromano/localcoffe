@@ -88,7 +88,7 @@
                             </a>
                             <ul class="submenu">
                                 <li class="submenu-item active">
-                                    <a href="{{ route('activity/log') }}">Ubah Profile</a>
+                                    <a href="{{ route('userManagement') }}">Ubah Profile</a>
                                     <a href=""></a>
                                 </li>
                             </ul>

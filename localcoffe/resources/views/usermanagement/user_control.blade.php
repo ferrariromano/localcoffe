@@ -74,7 +74,7 @@
                                     @if($item->role_name =='Perkebunan')
                                     <td class="role_name"><span  class="badge bg-info">{{ $item->role_name }}</span></td>
                                     @endif
-                                    @if($item->role_name =='Pemilik Lahan')
+                                    @if($item->role_name =='Pemilik Usaha')
                                     <td class="role_name"><span  class=" badge bg-warning">{{ $item->role_name }}</span></td>
                                     @endif
                                     <td class="text-center">

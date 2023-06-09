@@ -30,13 +30,13 @@
                             <td>Rp {{ number_format($product->price, 0, ',', '.') }}</td>
                             <td>{{ $cart[$product->id]['quantity'] }}</td>
                             <td>Rp {{ number_format($product->price * $cart[$product->id]['quantity'], 0, ',', '.') }}</td>
-                            {{-- <td>
+                            <td>
                                 <form action="{{ route('cart.remove', $product->id) }}" method="POST">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
                                 </form>
-                            </td> --}}
+                            </td>
                         </tr>
                     @endforeach
                     <tr>

@@ -12,6 +12,9 @@
     <div class="page-heading">
         <h3>Dashboard</h3>
     </div>
+
+    @if (Auth::user()->role_name=='Perkebunan')
+
     {{-- message --}}
     {!! Toastr::message() !!}
     <div class="page-content">
@@ -31,7 +34,6 @@
                                         <h6 class="text-muted font-semibold">Jadwal Panen</h6>
                                     @if(count($jadwal_panen) > 0)
                                         @foreach($jadwal_panen as $panen)
-                                        {{-- <h6 class="font-extrabold mb-0">{{ $jadwal_panen }}</h6> --}}
                                             <li><span class="font-extrabold mb-0">{{ $panen->tanggal }}</span> - {{ $panen->deskripsi }}</li>
                                         @endforeach
                                     @else
@@ -56,7 +58,6 @@
                                         <h6 class="text-muted font-semibold">Jadwal Pascapanen</h6>
                                     @if(count($jadwal_pascapanen) > 0)
                                         @foreach($jadwal_pascapanen as $pascapanen)
-                                        {{-- <h6 class="font-extrabold mb-0">{{ $jadwal_panen }}</h6> --}}
                                             <li><span class="font-extrabold mb-0">{{ $pascapanen->tanggal }}</span> - {{ $pascapanen->deskripsi }}</li>
                                         @endforeach
                                     @else
@@ -68,7 +69,7 @@
                         </div>
                     </div>
                 </div>
-
+    @endif
 
                 {{-- <div class="row">
                     <div class="col-12">

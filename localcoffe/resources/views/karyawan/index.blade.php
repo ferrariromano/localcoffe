@@ -32,7 +32,7 @@
                 <div class="card">
 
                     <div class="card-body">
-                        <a href="{{ route('karyawan.create') }}" class="btn btn-primary mb-3">Tambah Karyawan</a>
+                        {{-- <a href="{{ route('karyawan.create') }}" class="btn btn-primary mb-3">Tambah Karyawan</a> --}}
 
                         <table class="table">
                             <thead>
@@ -60,11 +60,11 @@
                                         <td>
                                             <a href="{{ route('karyawan.show', $karyawan->id) }}" class="btn btn-sm btn-info">Detail</a>
                                             <a href="{{ route('karyawan.edit', $karyawan->id) }}" class="btn btn-sm btn-primary">Edit</a>
-                                            <form action="{{ route('karyawan.destroy', $karyawan->id) }}" method="POST" class="d-inline">
+                                            {{-- <form action="{{ route('karyawan.destroy', $karyawan->id) }}" method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Apakah Anda yakin ingin menghapus karyawan ini?')">Hapus</button>
-                                            </form>
+                                            </form> --}}
                                         </td>
                                     </tr>
                                 @endforeach
