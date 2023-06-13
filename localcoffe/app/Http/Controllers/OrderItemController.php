@@ -1,34 +1,56 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\OrderItem;
-use Illuminate\Support\Facades\Validator;
+use App\Models\Order;
+use App\Models\Product;
 
+use App\Models\OrderItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class OrderItemController extends Controller
 {
     //
-    public function store(Request $request)
+    public function store(Request $request, Order $order)
     {
-        // Validasi data form
-        $validator = Validator::make($request->all(), [
-            'product_id' => 'required|integer|exists:products,id',
-            'quantity' => 'required|integer|min:1',
-            'order_id' => 'required|exists:orders,id'
+        $product = Product::findOrFail($request->product_id);
+
+        $item = new OrderItem([
+            'product_id' => $product->id,
+            'quantity' => $request->quantity,
+            'subtotal' => $product->price * $request->quantity
         ]);
 
-        if ($validator->fails()) {
-            return redirect()->back()->withErrors($validator)->withInput();
-        }
+        $order->orderItems()->save($item);
 
-        // Simpan data item pesanan ke dalam database
-        $item = new OrderItem();
-        $item->order_id = 1; // Gantilah dengan ID pesanan yang valid
-        $item->product_id = 1; // Gantilah dengan ID produk yang valid
-        $item->quantity = 7;
+        $order->subtotal += $item->subtotal;
+        $order->grand_total = $order->subtotal + $order->shipping_cost;
+        $order->save();
+
+        return redirect()->back()->with('success', 'Successfully added item to cart!');
+    }
+
+    public function update(Request $request, Order $order, OrderItem $item)
+    {
+        $item->quantity = $request->quantity;
+        $item->subtotal = $item->product->price * $request->quantity;
         $item->save();
 
-        return redirect()->route('orders.show', ['order' => $request->input('order_id')])->with('success', 'Item pesanan berhasil ditambahkan');
+        $order->subtotal = $order->orderItems()->sum('subtotal');
+        $order->grand_total = $order->subtotal + $order->shipping_cost;
+        $order->save();
+
+        return redirect()->back()->with('success', 'Cart item updated successfully!');
+    }
+
+    public function destroy(Order $order, OrderItem $item)
+    {
+        $item->delete();
+
+        $order->subtotal = $order->orderItems()->sum('subtotal');
+        $order->grand_total = $order->subtotal + $order->shipping_cost;
+        $order->save();
+
+        return redirect()->back()->with('success', 'Cart item deleted successfully!');
     }
 }
