@@ -9,12 +9,29 @@
             <i class="bi bi-justify fs-3"></i>
         </a>
     </header>
+    <div class="page-title">
+        <div class="row">
+            <div class="col-12 col-md-6 order-md-1 order-last">
+                <h3>Daftar Karyawan Pemilik Usaha</h3>
+            </div>
+            <div class="col-12 col-md-6 order-md-2 order-first">
+                <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
+                        <li class="breadcrumb-item active" aria-current="page"> Form Input Karyawan Pemilik Usaha</li>
+                    </ol>
+                </nav>
+            </div>
+        </div>
+    </div>
+
+    {{-- message --}}
+    {!! Toastr::message() !!}
 
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Tambah Karyawan</div>
 
                     <div class="card-body">
                         <form action="{{ route('karyawan.store') }}" method="POST">
@@ -22,7 +39,7 @@
 
                             <div class="form-group">
                                 <label for="nama_lengkap">Nama Lengkap</label>
-                                <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" required>
+                                <input type="text" class="form-control" id="nama_lengkap" name="nama_lengkap" placeholder="Masukkan nama lengkap" required>
                             </div>
 
                             <div class="form-group">
@@ -39,22 +56,22 @@
 
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" name="email" required>
+                                <input type="email" class="form-control" id="email" name="email" placeholder="Masukkan email" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="posisi">Posisi</label>
-                                <input type="text" class="form-control" id="posisi" name="posisi" required>
+                                <input type="text" class="form-control" id="posisi" name="posisi" placeholder="Masukkan posisi" required>
                             </div>
 
                             <div class="form-group">
                                 <label for="alamat">Alamat</label>
-                                <textarea class="form-control" id="alamat" name="alamat" rows="3" required></textarea>
+                                <textarea class="form-control" id="alamat" name="alamat" rows="3" placeholder="Masukkan alamat" required></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label for="gaji">Gaji</label>
-                                <input type="number" class="form-control" id="gaji" name="gaji" required>
+                                <input type="number" class="form-control" id="gaji" name="gaji" placeholder="Masukkan gaji" required>
                             </div>
 
                             <button type="submit" class="btn btn-primary">Simpan</button>
@@ -73,7 +90,7 @@
                 <p>2023 &copy; Local Coffe</p>
             </div>
             <div class="float-end">
-                <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
+                <p>Dibuat sepenuh <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
                 href="http://localcoffe.com">Local Coffe</a></p>
             </div>
         </div>

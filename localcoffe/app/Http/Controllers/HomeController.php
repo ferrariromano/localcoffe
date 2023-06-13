@@ -31,10 +31,10 @@ class HomeController extends Controller
         $user_activity_logs = DB::table('user_activity_logs')->count();
         $activity_logs = DB::table('activity_logs')->count();
         // Tampilkan jadwal panen yang akan datang pada saat hari H-1
-        $jadwal_panen = DB::table('jadwal_panen') ->select('tanggal', 'deskripsi')->whereDate('tanggal', '=', date('Y-m-d', strtotime('+1 day')))->get();
-        $jadwal_pascapanen = DB::table('jadwal_pascapanen') ->select('tanggal', 'deskripsi')->whereDate('tanggal', '=', date('Y-m-d', strtotime('+1 day')))->get();
+        // $jadwal_panen = DB::table('jadwal_panen') ->select('tanggal', 'deskripsi')->whereDate('tanggal', '=', date('Y-m-d', strtotime('+1 day')))->get();
+        // $jadwal_pascapanen = DB::table('jadwal_pascapanen') ->select('tanggal', 'deskripsi')->whereDate('tanggal', '=', date('Y-m-d', strtotime('+1 day')))->get();
 
-        return view('home',compact('staff','users','user_activity_logs','activity_logs','jadwal_panen','jadwal_pascapanen'));
+        return view('home',compact('staff','users','user_activity_logs','activity_logs'));
         // 'jadwal_panen','jadwal_pascapanen'
     }
 }

@@ -13,7 +13,6 @@
         <div class="row">
             <div class="col-12 col-md-6 order-md-1 order-last">
                 <h3>Daftar Pekerja Perkebunan</h3>
-                <p class="text-subtitle text-muted">Form Input</p>
             </div>
             <div class="col-12 col-md-6 order-md-2 order-first">
                 <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
@@ -32,7 +31,6 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Input Information</h4>
             </div>
             <div class="card-content">
                 <div class="card-body">
@@ -125,7 +123,7 @@
                                             <input type="text" class="form-control @error('department') is-invalid @enderror" value="{{ old('department') }}"
                                                 placeholder="Masukkan Alamat" name="department">
                                             <div class="form-control-icon">
-                                                <i class="bi bi-shop-window"></i>
+                                                <i class="bi bi-house-fill"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -137,10 +135,10 @@
                                 <div class="col-md-8">
                                     <div class="form-group has-icon-left">
                                         <div class="position-relative">
-                                            <input type="text" class="form-control @error('salary') is-invalid @enderror" value="{{ old('salary') }}"
+                                            <input type="number" class="form-control @error('salary') is-invalid @enderror" value="{{ old('salary') }}"
                                                 placeholder="Masukkan Gaji" name="salary">
                                             <div class="form-control-icon">
-                                                <i class="bi bi-envelope-fill"></i>
+                                                <i class="bi bi-cash-stack"></i>
                                             </div>
                                         </div>
                                     </div>
@@ -164,7 +162,7 @@
                 <p>2023 &copy; Local Coffe</p>
             </div>
             <div class="float-end">
-                <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
+                <p>Dibuat sepenuh <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
                 href="http://localcoffe.com">Local Coffe</a></p>
             </div>
         </div>

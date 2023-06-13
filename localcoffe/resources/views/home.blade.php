@@ -32,13 +32,13 @@
                                     </div>
                                     <div class="col-md-8">
                                         <h6 class="text-muted font-semibold">Jadwal Panen</h6>
-                                    @if(count($jadwal_panen) > 0)
+                                    {{-- @if(count($jadwal_panen) > 0)
                                         @foreach($jadwal_panen as $panen)
                                             <li><span class="font-extrabold mb-0">{{ $panen->tanggal }}</span> - {{ $panen->deskripsi }}</li>
                                         @endforeach
                                     @else
                                         <p>Tidak ada jadwal panen pada hari H-1.</p>
-                                    @endif
+                                    @endif --}}
                                     </div>
                                 </div>
                             </div>
@@ -56,13 +56,13 @@
                                     </div>
                                     <div class="col-md-8">
                                         <h6 class="text-muted font-semibold">Jadwal Pascapanen</h6>
-                                    @if(count($jadwal_pascapanen) > 0)
+                                    {{-- @if(count($jadwal_pascapanen) > 0)
                                         @foreach($jadwal_pascapanen as $pascapanen)
                                             <li><span class="font-extrabold mb-0">{{ $pascapanen->tanggal }}</span> - {{ $pascapanen->deskripsi }}</li>
                                         @endforeach
                                     @else
                                         <p>Tidak ada jadwal panen pada hari H-1.</p>
-                                    @endif
+                                    @endif --}}
                                     </div>
                                 </div>
                             </div>

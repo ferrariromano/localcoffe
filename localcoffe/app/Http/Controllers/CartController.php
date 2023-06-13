@@ -3,88 +3,59 @@
 namespace App\Http\Controllers;
 use App\Models\Product;
 
+use App\Models\CartItem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class CartController extends Controller
 {
     //
-        public function index()
+    public function index()
     {
-        $cart = session()->get('cart', []);
-        $productIds = array_keys($cart);
-        $products = Product::whereIn('id', $productIds)->get();
-        $total = 0;
+        $userCart = Auth::user()->cart()->with('product')->get();
+        $subtotal = $userCart->sum(function ($item) {
+            return $item->product->price * $item->quantity;
+        });
 
-        foreach ($products as $product) {
-            $quantity = $cart[$product->id]['quantity'];
-            $subtotal = $product->price * $quantity;
-            $total += $subtotal;
-        }
-
-        // Biaya pengiriman sebesar Rp10.000
-        $shippingCost = 10000;
-
-        return view('cart.index', compact('cart', 'products', 'total', 'shippingCost'));
+        return view('cart.index', compact('userCart', 'subtotal'));
     }
-
 
     public function store(Request $request)
     {
-        // Validasi data yang diterima dari form
         $validatedData = $request->validate([
             'product_id' => 'required|exists:products,id',
-            'quantity' => 'required|integer|min:1'
+            'quantity' => 'required|integer|min:1',
         ]);
 
-        // Tambahkan produk ke keranjang belanja
-        $cart = session()->get('cart', []);
+        $cartItem = Auth::user()->cart()->where('product_id', $validatedData['product_id'])->first();
 
-        if (isset($cart[$validatedData['product_id']])) {
-            $cart[$validatedData['product_id']]['quantity'] += $validatedData['quantity'];
+        if ($cartItem) {
+            $cartItem->increment('quantity', $validatedData['quantity']);
         } else {
-            $product = Product::find($validatedData['product_id']);
-            $cart[$validatedData['product_id']] = [
-                'name' => $product->name,
-                'price' => $product->price,
-                'quantity' => $validatedData['quantity']
-            ];
+            $cartItem = new CartItem($validatedData);
+            $cartItem->user_id = Auth::id();
+            $cartItem->save();
         }
 
-        session()->put('cart', $cart);
-
-        return redirect()->route('cart.index')->with('success', 'Produk berhasil ditambahkan ke keranjang belanja.');
-    }
-    public function add(Request $request, $id)
-    {
-        $product = Product::findOrFail($id);
-
-        $cart = session()->get('cart', []);
-
-        if (isset($cart[$id])) {
-            $cart[$id]['quantity']++;
-        } else {
-            $cart[$id] = [
-                'name' => $product->name,
-                'price' => $product->price,
-                'quantity' => 1
-            ];
-        }
-
-        session()->put('cart', $cart);
-
-        return redirect()->route('cart.index')->with('success', 'Produk berhasil ditambahkan ke keranjang belanja');
+        return redirect()->back()->with('success', 'Produk berhasil ditambahkan ke keranjang.');
     }
 
-
-    public function remove($id)
+    public function update(Request $request, CartItem $cartItem)
     {
-        $cart = session()->get('cart', []);
+        $validatedData = $request->validate([
+            'quantity' => 'required|integer|min:1',
+        ]);
 
-        if (isset($cart[$id])) {
-            unset($cart[$id]);
-            session()->put('cart', $cart);
-        }
+        $cartItem->update($validatedData);
 
-        return redirect()->route('cart.index')->with('success', 'Produk berhasil dihapus dari keranjang belanja');
+        return redirect()->back()->with('success', 'Keranjang berhasil diupdate.');
+    }
+
+    public function destroy(CartItem $cartItem)
+    {
+        $cartItem->delete();
+
+        return redirect()->back()->with('success', 'Produk berhasil dihapus dari keranjang.');
     }
 }

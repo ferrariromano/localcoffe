@@ -115,7 +115,7 @@ Route::delete('/karyawan/{id}', [App\Http\Controllers\KaryawanController::class,
 
 
 
-// // ----------------------------- product ------------------------------//
+// ----------------------------- product ------------------------------//
 Route::get('/products', [App\Http\Controllers\ProductController::class, 'index'])->name('products.index');
 Route::get('/products/beli/{id}', [App\Http\Controllers\ProductController::class, 'beli'])->name('products.beli');
 Route::get('/products/create', [App\Http\Controllers\ProductController::class, 'create'])->name('products.create');
@@ -124,6 +124,7 @@ Route::get('/products/{product}', [App\Http\Controllers\ProductController::class
 Route::get('/products/{product}/edit', [App\Http\Controllers\ProductController::class, 'edit'])->name('products.edit');
 Route::put('/products/{product}', [App\Http\Controllers\ProductController::class, 'update'])->name('products.update');
 Route::delete('/products/{product}', [App\Http\Controllers\ProductController::class, 'destroy'])->name('products.destroy');
+Route::get('/products/{product}/checkout', [App\Http\Controllers\ProductController::class, 'checkout'])->name('products.checkout');
 
 Route::get('/buyer/products', [App\Http\Controllers\BuyerProductController::class,'index'])->name('buyer.products.index');
 
@@ -164,15 +165,30 @@ Route::get('/orders/show/{order}', [App\Http\Controllers\CheckoutController::cla
 
 
 
+Route::get('/orders/{order}', [App\Http\Controllers\OrderController::class, 'show'])->name('orders.show');
 Route::post('/orders/{order}/items', [App\Http\Controllers\OrderItemController::class, 'store'])->middleware('auth')->name('order_items.store');
 
 
 Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->middleware('auth')->name('cart.index');
+Route::patch('/cart/{cartItem}', [App\Http\Controllers\CartController::class, 'update'])->name('cart.update');
+
 Route::post('/cart/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('cart.add');
 Route::get('/cart', [App\Http\Controllers\CartController::class, 'index'])->middleware('auth')->name('cart.index');
-Route::post('/cart/add/{id}', [App\Http\Controllers\CartController::class, 'add'])->name('cart.add');
+Route::post('/cart', [App\Http\Controllers\CartController::class, 'store'])->name('cart.store');
+Route::delete('/cart/{cartItem}', [App\Http\Controllers\CartController::class, 'destroy'])->name('cart.destroy');
+
 Route::delete('/cart/remove/{id}', [App\Http\Controllers\CartController::class, 'remove'])->name('cart.remove');
 
 
 Route::get('/orders', [App\Http\Controllers\OrderController::class, 'index'])->middleware('auth')->name('orders.index');
 Route::put('/orders/{order}/confirm', [App\Http\Controllers\OrderController::class, 'confirm'])->name('orders.confirm');
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/orders', [App\Http\Controllers\OrderController::class, 'index'])->name('orders.index');
+    Route::get('/orders/{order}', [App\Http\Controllers\OrderController::class, 'show'])->name('orders.show');
+    Route::put('/orders/{order}', [App\Http\Controllers\OrderController::class, 'update'])->name('orders.update');
+    Route::get('/orders/{order}/payment', [App\Http\Controllers\OrderController::class, 'showPaymentForm'])->name('orders.payment');
+    Route::post('/orders', [App\Http\Controllers\OrderController::class, 'store'])->name('orders.store');
+
+});

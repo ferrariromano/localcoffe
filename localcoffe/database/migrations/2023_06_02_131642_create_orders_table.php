@@ -15,12 +15,12 @@ class CreateOrdersTable extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->constrained(); // relasi ke tabel users
-            $table->string('status');
-            $table->bigInteger('total_price');
-            $table->integer('additional_fee')->default(0);
-            $table->string('payment_method')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->integer('total_price');
+            $table->enum('status', ['pending', 'processing', 'shipped', 'delivered', 'cancelled'])->default('pending');
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

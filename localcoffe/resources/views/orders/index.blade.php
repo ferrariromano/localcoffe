@@ -10,44 +10,43 @@
         </a>
     </header>
 
-    <div class="container">
-        <h2>Pesanan Saya</h2>
+    <h1 class="mb-4">Daftar Pesanan</h1>
 
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th>ID Pesanan</th>
-                    <th>Status</th>
-                    <th>Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($orders as $order)
+    @if ($orders->isEmpty())
+        <p>Tidak ada pesanan yang ditemukan.</p>
+    @else
+        <div class="table-responsive mb-4">
+            <table class="table table-bordered table-hover">
+                <thead>
                     <tr>
-                        <td>{{ $order->id }}</td>
-                        <td>{{ $order->status }}</td>
-                        <td>
-                            @if($order->status === 'pending')
-                                <form action="{{ route('orders.confirm', $order) }}" method="POST">
-                                    @csrf
-                                    @method('PATCH')
-                                    <button type="submit" class="btn btn-success">Konfirmasi Pesanan</button>
-                                </form>
-                            @endif
-                        </td>
+                        <th>No. Order</th>
+                        <th>Tanggal Pesan</th>
+                        <th>Total Harga</th>
+                        <th>Status</th>
+                        <th>Aksi</th>
                     </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-
+                </thead>
+                <tbody>
+                    @foreach ($orders as $order)
+                        <tr>
+                            <td>{{ $order->id }}</td>
+                            <td>{{ $order->created_at->format('d M Y H:i') }}</td>
+                            <td>Rp{{ number_format($order->total_price, 0, ',', '.') }}</td>
+                            <td>{{ ucfirst($order->status) }}</td>
+                            <td><a href="{{ route('orders.show', $order) }}" class="btn btn-primary btn-sm">Lihat Detail</a></td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    @endif
     <footer>
         <div class="footer clearfix mb-0 text-muted">
             <div class="float-start">
                 <p>2023 &copy; Local Coffe</p>
             </div>
             <div class="float-end">
-                <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
+                <p>Dibuat sepenuh <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
                 href="http://localcoffe.com">Local Coffe</a></p>
             </div>
         </div>

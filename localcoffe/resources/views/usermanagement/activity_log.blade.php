@@ -40,7 +40,7 @@
                                 <th>Email</th>
                                 <th>Description</th>
                                 <th>Date Time</th>
-                            </tr>    
+                            </tr>
                         </thead>
                         <tbody>
                             @foreach ($activityLog as $key => $item)
@@ -64,7 +64,7 @@
                 <p>2023 &copy; local Coffe</p>
             </div>
             <div class="float-end">
-                <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
+                <p>Dibuat sepenuh <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
                 href="http://localcoffe.com">Local Coffe</a></p>
             </div>
         </div>

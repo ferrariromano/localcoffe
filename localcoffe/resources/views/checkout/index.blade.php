@@ -13,75 +13,96 @@
 
     <div class="container">
         <h1>Checkout</h1>
-        <table class="table table-bordered mt-3">
-            <thead>
-                <tr>
-                    <th>Produk</th>
-                    <th>Harga</th>
-                    <th>Jumlah</th>
-                    <th>Subtotal</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($products as $product)
-                    <tr>
-                        <td>{{ $product->name }}</td>
-                        <td>Rp {{ number_format($product->price, 0, ',', '.') }}</td>
-                        <td>{{ $cart[$product->id]['quantity'] }}</td>
-                        <td>Rp {{ number_format($product->price * $cart[$product->id]['quantity'], 0, ',', '.') }}</td>
-                    </tr>
-                @endforeach
-                <tr>
-                    <td colspan="3" class="text-right">Biaya Pengiriman:</td>
-                    <td>Rp {{ number_format($shippingCost, 0, ',', '.') }}</td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th colspan="3">Total Pembayaran:</th>
-                    <td>Rp {{ number_format($grandTotal, 0, ',', '.') }}</td>
-                </tr>
-            </tfoot>
-        </table>
-        <form action="{{ route('checkout.store') }}" method="POST">
+
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+
+        <form action="{{ route('checkout.store') }}" method="post">
             @csrf
             <div class="row">
-                <div class="col-md-6">
-                    <h2>Informasi Pemesan</h2>
-                    <div class="form-group">
-                        <label for="name">Nama Lengkap</label>
-                        <input type="text" class="form-control" id="name" name="name" value="{{ old('name') }}" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Alamat Email</label>
-                        <input type="email" class="form-control" id="email" name="email" value="{{ old('email') }}" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="phone">Nomor Telepon</label>
-                        <input type="text" class="form-control" id="phone" name="phone" value="{{ old('phone') }}" required>
+                <div class="col-md-8 mb-3">
+                    <div class="card">
+                        <div class="card-header">Informasi Pengiriman</div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label for="name">Nama Penerima</label>
+                                <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror" value="{{ old('name') }}">
+                                @error('name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="phone_number">Nomor Telepon</label>
+                                <input type="text" name="phone_number" id="phone_number" class="form-control @error('phone_number') is-invalid @enderror" value="{{ old('phone_number') }}">
+                                @error('phone_number')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Alamat Lengkap</label>
+                                <textarea name="address" id="address" rows="3" class="form-control @error('address') is-invalid @enderror">{{ old('address') }}</textarea>
+                                @error('address')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="city">Kota/Kabupaten</label>
+                                <input type="text" name="city" id="city" class="form-control @error('city') is-invalid @enderror" value="{{ old('city') }}">
+                                @error('city')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="postal_code">Kode Pos</label>
+                                <input type="text" name="postal_code" id="postal_code" class="form-control @error('postal_code') is-invalid @enderror" value="{{ old('postal_code') }}">
+                                @error('postal_code')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label for="notes">Catatan Tambahan</label>
+                                <textarea name="notes" id="notes" rows="3" class="form-control @error('notes') is-invalid @enderror">{{ old('notes') }}</textarea>
+                                @error('notes')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <h2>Informasi Pengiriman</h2>
-                    <div class="form-group">
-                        <label for="address">Alamat Lengkap</label>
-                        <textarea class="form-control" name="address" id="address" rows="3" required>{{ old('address') }}</textarea>
-                    </div>
-                    <div class="form-group">
-                        <label for="city">Kota/Kabupaten</label>
-                        <input type="text" class="form-control" id="city" name="city" value="{{ old('city') }}" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="province">Provinsi</label>
-                        <input type="text" class="form-control" id="province" name="province" value="{{ old('province') }}" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="postal_code">Kode Pos</label>
-                        <input type="text" class="form-control" id="postal_code" name="postal_code" value="{{ old('postal_code') }}" required>
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <div class="card-header">Ringkasan Pesanan</div>
+                        <div class="card-body">
+                            <table class="table table-striped">
+                                <tbody>
+                                    @foreach ($userCart as $item)
+                                        <tr>
+                                            <td>{{ $item->product->name }} x {{ $item->quantity }}</td>
+                                            <td>Rp {{ number_format($item->product->price * $item->quantity, 0, ',', '.') }}</td>
+                                        </tr>
+                                    @endforeach
+                                    <tr>
+                                        <th>Subtotal</th>
+                                        <td>Rp {{ number_format($subtotal, 0, ',', '.') }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Biaya Pengiriman</th>
+                                        <td>Rp {{ number_format($shippingCost, 0, ',', '.') }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Total Harga</th>
+                                        <td>Rp {{ number_format($grandTotal, 0, ',', '.') }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button type="submit" class="btn btn-success btn-block">Lanjut ke Pembayaran</button>
+                        </div>
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn btn-primary">Lanjutkan</button>
         </form>
     </div>
 

@@ -25,14 +25,14 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>Ubah Manajemen Pengguna</h3>
+                    <h3>Ubah Profile</h3>
                     <p class="text-subtitle text-muted"></p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Ubah Manajemen Pengguna</li>
+                            <li class="breadcrumb-item active" aria-current="page">Ubah Profile</li>
                         </ol>
                     </nav>
                 </div>
@@ -65,7 +65,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    {{-- <div class="col-md-4">
                                         <label>Photo</label>
                                     </div>
                                     <div class="col-md-8">
@@ -79,7 +79,7 @@
                                                 <input type="hidden" name="hidden_image" value="{{ $data[0]->avatar }}">
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
                                     <div class="col-md-4">
                                         <label>Email Address</label>
@@ -110,7 +110,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-4">
+                                    {{-- <div class="col-md-4">
                                         <label>Status</label>
                                     </div>
                                     <div class="col-md-8">
@@ -129,7 +129,7 @@
                                                 </div>
                                             </fieldset>
                                         </div>
-                                    </div>
+                                    </div> --}}
 
 
                                     <div class="col-md-4">
@@ -147,7 +147,7 @@
                                                     @endforeach
                                                 </select>
                                                 <div class="form-control-icon">
-                                                    <i class="bi bi-bag-check"></i>
+                                                    <i class="bi bi-person-check"></i>
                                                 </div>
                                             </fieldset>
                                         </div>
@@ -157,7 +157,7 @@
                                         <button type="submit"
                                             class="btn btn-primary me-1 mb-1">Update</button>
                                         <a  href="{{ route('userManagement') }}"
-                                            class="btn btn-light-secondary me-1 mb-1">Back</a>
+                                            class="btn btn-light-secondary me-1 mb-1">Kembali</a>
                                     </div>
                                 </div>
                             </div>
@@ -173,7 +173,7 @@
                 <p>2023 &copy; Local Coffe</p>
             </div>
             <div class="float-end">
-                <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
+                <p>Dibuat sepenuh <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
                 href="http://localcoffe.com">Local Coffe</a></p>
             </div>
         </div>

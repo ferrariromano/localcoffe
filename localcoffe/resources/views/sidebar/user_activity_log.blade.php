@@ -66,18 +66,10 @@
                     <ul class="submenu">
                         <li class="submenu-item active">
                             <a href="">List Data Pesanan</a>
-                            <a href=""></a>
                         </li>
                     </ul>
                 </li>
                 @endif
-
-                {{-- <li class="sidebar-item">
-                    <a href="{{ route('change/password') }}" class='sidebar-link'>
-                        <i class="bi bi-shield-lock"></i>
-                        <span>Chnage Password</span>
-                    </a>
-                </li> --}}
 
 
                 @if (Auth::user()->role_name=='Pemilik Usaha')
@@ -88,7 +80,7 @@
                             </a>
                             <ul class="submenu">
                                 <li class="submenu-item active">
-                                    <a href="{{ route('activity/log') }}">Ubah Profile</a>
+                                    <a href="{{ route('userManagement') }}">Ubah Profile</a>
                                     <a href=""></a>
                                 </li>
                             </ul>
@@ -101,8 +93,8 @@
                             </a>
                             <ul class="submenu">
                                 <li class="submenu-item active">
-                                    <a href="{{ route('karyawan.index') }}">Menambah Karyawan</a>
-                                    {{-- <a href="{{ route('karyawan.view-record') }}">List Karyawan</a> --}}
+                                    <a href="{{ route('karyawan.create') }}">Menambah Karyawan</a>
+                                    <a href="{{ route('karyawan.index') }}">List Karyawan</a>
                                 </li>
                             </ul>
                         </li>
@@ -122,7 +114,6 @@
 
 
 
-
                 @if (Auth::user()->role_name=='Perkebunan')
                 <li class="sidebar-item  has-sub">
                     <a href="#" class='sidebar-link'>
@@ -131,7 +122,7 @@
                     </a>
                     <ul class="submenu">
                         <li class="submenu-item active">
-                            <a href="{{ route('activity/log') }}">Ubah Profile</a>
+                            <a href="{{ route('userManagement') }}">Ubah Profile</a>
                             <a href=""></a>
                         </li>
                     </ul>

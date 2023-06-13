@@ -71,13 +71,6 @@
                 </li>
                 @endif
 
-                {{-- <li class="sidebar-item">
-                    <a href="{{ route('change/password') }}" class='sidebar-link'>
-                        <i class="bi bi-shield-lock"></i>
-                        <span>Chnage Password</span>
-                    </a>
-                </li> --}}
-
 
                 @if (Auth::user()->role_name=='Pemilik Usaha')
                         <li class="sidebar-item  has-sub">
@@ -114,11 +107,11 @@
                             <ul class="submenu">
                                 <li class="submenu-item active">
                                     <a href="{{ route('buyer.products.index') }}">List Produk</a>
+                                    <a href="{{ route('cart.store') }}">Cart Produk</a>
                                 </li>
                             </ul>
                         </li>
                 @endif
-
 
 
 

@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('menu')
-@extends('sidebar.usermanagement')
+  @extends('sidebar.usermanagement')
 @endsection
 @section('content')
 <div id="main">
@@ -13,14 +13,14 @@
         <div class="page-title">
             <div class="row">
                 <div class="col-12 col-md-6 order-md-1 order-last">
-                    <h3>User Control</h3>
+                    <h3>User Profile</h3>
                     <p class="text-subtitle text-muted"></p>
                 </div>
                 <div class="col-12 col-md-6 order-md-2 order-first">
                     <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('home') }}">Dashboard</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">User Mangement</li>
+                            <li class="breadcrumb-item active" aria-current="page">User Profile</li>
                         </ol>
                     </nav>
                 </div>
@@ -31,65 +31,27 @@
         <section class="section">
             <div class="card">
                 <div class="card-header">
-                    User Data
+                    Data User
                 </div>
                 <div class="card-body">
-                    <table class="table table-striped" id="table1">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nama Lengkap</th>
-                                <th>Profile</th>
-                                <th>Email Address</th>
-                                <th>Nomor Telepon</th>
-                                <th>Status</th>
-                                <th>Role Nama</th>
-                                <th class="text-center">Ubah</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($data as $key => $item)
-                                <tr>
-                                    <td class="id">{{ ++$key }}</td>
-                                    <td class="name">{{ $item->name }}</td>
-                                    <td class="name">
-                                        <div class="avatar avatar-xl">
-                                            <img src="{{ URL::to('/images/'. $item->avatar) }}" alt="{{ $item->avatar }}">
-                                        </div>
-                                    </td>
-                                    <td class="email">{{ $item->email }}</td>
-                                    <td class="phone_number">{{ $item->phone_number }}</td>
-                                    @if($item->status =='Active')
-                                    <td class="status"><span class="badge bg-success">{{ $item->status }}</span></td>
-                                    @endif
-                                    @if($item->status =='Disable')
-                                    <td class="status"><span class="badge bg-danger">{{ $item->status }}</span></td>
-                                    @endif
-                                    @if($item->status ==null)
-                                    <td class="status"><span class="badge bg-danger">{{ $item->status }}</span></td>
-                                    @endif
-                                    @if($item->role_name =='Admin')
-                                    <td class="role_name"><span  class="badge bg-success">{{ $item->role_name }}</span></td>
-                                    @endif
-                                    @if($item->role_name =='Perkebunan')
-                                    <td class="role_name"><span  class="badge bg-info">{{ $item->role_name }}</span></td>
-                                    @endif
-                                    @if($item->role_name =='Pemilik Usaha')
-                                    <td class="role_name"><span  class=" badge bg-warning">{{ $item->role_name }}</span></td>
-                                    @endif
-                                    <td class="text-center">
-                                        {{-- <a href="{{ route('user/add/new') }}">
-                                            <span class="badge bg-info"><i class="bi bi-person-plus-fill"></i></span>
-                                        </a> --}}
-                                        <a href="{{ url('view/detail/'.$item->id) }}">
-                                            <span class="badge bg-success"><i class="bi bi-pencil-square"></i></span>
-                                        </a>
-                                        {{-- <a href="{{ url('delete_user/'.$item->id) }}" onclick="return confirm('Are you sure to want to delete it?')"><span class="badge bg-danger"><i class="bi bi-trash"></i></span></a> --}}
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                    <ul class="list-group">
+                        @foreach ($data as $item)
+                            <li class="list-group-item">
+                                <div class="row align-items-center">
+                                    <div class="col-12 col-md-6">
+                                        <h5 class="mb-0">{{ $item->name }}</h5>
+                                        <small class="text-muted">{{ $item->email }}</small>
+                                    </div>
+                                    <div class="col-12 col-md-3">
+                                        <p class="mb-0">{{ $item->phone_number }}</p>
+                                    </div>
+                                    <div class="col-12 col-md-3 text-end">
+                                        <a href="{{ url('view/detail/'.$item->id) }}" class="btn btn-success"><i class="bi bi-pencil-square"></i></a>
+                                    </div>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
             </div>
         </section>
@@ -100,7 +62,7 @@
                 <p>2023 &copy; Local Coffe</p>
             </div>
             <div class="float-end">
-                <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
+                <p>Dibuat sepenuh <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
                 href="http://localcoffe.com">Local Coffe</a></p>
             </div>
         </div>

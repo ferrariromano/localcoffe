@@ -13,71 +13,74 @@ class CheckoutController extends Controller
     //
     public function index()
     {
-        $cart = session()->get('cart', []);
-        $productIds = array_keys($cart);
-        $products = DB::table('products')->whereIn('id', $productIds)->get();
-        $total = 0;
+        $userCart = Auth::user()->cart()->with('product')->get();
+        $subtotal = $userCart->sum(function ($item) {
+            return $item->product->price * $item->quantity;
+        });
+        $shippingCost = 10000; // misalnya biaya pengiriman sebesar Rp 10.000
+        $grandTotal = $subtotal + $shippingCost;
+        $product = null; // Tambahkan ini untuk menginisialisasi variabel $product pada view checkout
 
-        foreach ($products as $product) {
-            $quantity = $cart[$product->id]['quantity'];
-            $subtotal = $product->price * $quantity;
-            $total += $subtotal;
-        }
-
-        // Biaya pengiriman sebesar Rp10.000
-        $shippingCost = 10000;
-        $grandTotal = $total + $shippingCost;
-
-        return view('checkout.index', compact('cart', 'products', 'total', 'shippingCost', 'grandTotal'));
+        return view('checkout.index', compact('userCart', 'subtotal', 'shippingCost', 'grandTotal', 'product'));
     }
 
     public function store(Request $request)
     {
-        $cart = session()->get('cart', []);
-        $productIds = array_keys($cart);
-        $products = DB::table('products')->whereIn('id', $productIds)->get();
-        $total = 0;
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'phone_number' => 'required|string|max:20',
+            'address' => 'required|string|max:255',
+            'city' => 'required|string|max:50',
+            'postal_code' => 'required|string|max:10',
+            'notes' => 'nullable|string',
+        ]);
 
-        foreach ($products as $product) {
-            $quantity = $cart[$product->id]['quantity'];
-            $subtotal = $product->price * $quantity;
-            $total += $subtotal;
-        }
+        DB::beginTransaction();
 
-        // Biaya pengiriman sebesar Rp10.000
-        $shippingCost = 10000;
-        $grandTotal = $total + $shippingCost;
+        try {
+            $order = new Order($validatedData);
+            $order->user_id = Auth::id();
+            $order->status = 'pending';
+            $order->subtotal = 0;
+            $order->shipping_cost = 0;
+            $order->grand_total = 0;
+            $order->save();
 
-        // Simpan data order ke database
-        $order = new Order();
-        $order->user_id = Auth::id();
-        $order->total_price = $grandTotal;
-        $order->status = 'pending';
-        $order->save();
+            $userCart = Auth::user()->cart()->with('product')->get();
 
-        // Simpan detail order ke database
-        foreach ($products as $product) {
-            $quantity = $cart[$product->id]['quantity'];
-            $subtotal = $product->price * $quantity;
+            foreach ($userCart as $item) {
+                $order->orderItems()->create([
+                    'product_id' => $item->product_id,
+                    'quantity' => $item->quantity,
+                    'price' => $item->product->price,
+                ]);
+            }
 
-            DB::table('order_details')->insert([
-                'order_id' => $order->id,
-                'product_id' => $product->id,
-                'quantity' => $quantity,
-                'subtotal' => $subtotal
+            $subtotal = $userCart->sum(function ($item) {
+                return $item->product->price * $item->quantity;
+            });
+
+            $shippingCost = 10000; // Misalnya biaya pengiriman sebesar Rp 10.000
+            $grandTotal = $subtotal + $shippingCost;
+
+            $order->subtotal = $subtotal;
+            $order->shipping_cost = $shippingCost;
+            $order->grand_total = $grandTotal;
+            $order->save();
+
+            Auth::user()->cart()->delete();
+
+            DB::commit();
+
+            return redirect()->route('orders.payment', $order)->with([
+                'success' => 'Pesanan berhasil dibuat. Silakan konfirmasi pembayaran.',
             ]);
+        } catch (\Throwable $e) {
+            DB::rollback();
+
+            return redirect()->back()->with('error', 'Terjadi kesalahan, pesanan gagal diproses.');
         }
-
-        // Kosongkan keranjang belanja
-        session()->forget('cart');
-
-        return redirect()->route('order.show', $order->id)->with('success', 'Pesanan berhasil dibuat.');
     }
 
-    // public function show(Order $order)
-    // {
-    //     // Tampilkan halaman konfirmasi pemesanan dengan rincian pesanan
-    //     return view('orders.show', compact('order'));
-    // }
 
 }

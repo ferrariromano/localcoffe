@@ -11,9 +11,9 @@
     </header>
 
     <div class="container">
-        <h1>Products</h1>
+        <h1>Produk</h1>
 
-        <a href="{{ route('products.create') }}" class="btn btn-primary">Add Product</a>
+        <a href="{{ route('products.create') }}" class="btn btn-primary">Tambah Produk</a>
 
         @if (session('success'))
         <div class="alert alert-success mt-3">
@@ -27,11 +27,11 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Price</th>
-                    <th>Image</th>
-                    <th class="text-center" >Actions </th>
+                    <th>Nama</th>
+                    <th>Deskripsi</th>
+                    <th>Harga</th>
+                    <th>Gambar</th>
+                    <th class="text-center" >Ubah </th>
                 </tr>
             </thead>
             <tbody>
@@ -64,7 +64,7 @@
                 <p>2023 &copy; Local Coffe</p>
             </div>
             <div class="float-end">
-                <p>Crafted with <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
+                <p>Dibuat sepenuh <span class="text-danger"><i class="bi bi-heart"></i></span> by <a
                 href="http://localcoffe.com">Local Coffe</a></p>
             </div>
         </div>
